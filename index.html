@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./signin.css">
+
+
+    <title>Sign In</title>
+
+</head>
+<body>
+
+    <!-- Sign In Card Starts -->
+
+    <main class="signup-container">
+        <aside class="signup-left">
+            <img src="./images/sign up left.png" alt="Sign In Left" class="left-image">
+        </aside>
+
+        <div class="signup-right">
+            <!-- Move the logo outside the signup card -->
+            <div class="logo">
+                <img src="./images/logo.svg" alt="Neeramoy">
+            </div>
+
+            <div class="signup-card">
+                <h2>Get Started</h2>
+                <h4>Enter your phone number to get your account</h4>
+
+                <div class="toggle-btn">
+                    <button id="otp-btn">OTP</button>
+                    <button id="password-btn" class="active">Password</button> <!-- Set Password button as active -->
+                </div>
+
+                <div class="signup-options">
+                    <!-- Sign In by OTP -->
+                    <div id="otp-signup" class="signup-option hidden">
+                        <!-- Phone number input form -->
+                        <form id="otp-form-phone">
+                            <label for="phone-otp">Phone Number:</label>
+                            <input type="tel" id="phone-otp" name="phone-otp" placeholder="01XXXXXXXXX" required>
+                            <button type="submit">Send OTP</button>
+                        </form>
+                        
+                        <!-- OTP verification form (initially hidden) -->
+                        <form id="otp-form-verification" style="display: none;" action="./dashboard.html" method="post">
+                            <p id="otp-verification-message">Enter the OTP sent to <span>01XXXXXXXXX</span></p>
+                            <div class="otp-inputs-container">
+                                <input type="text" class="otp-input" maxlength="1" autofocus>
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                                <input type="text" class="otp-input" maxlength="1">
+                            </div>
+                            <div class="otp-timer">Resend OTP in <span id="timer">59</span>s</div>
+                            <div class="otp-actions">
+                                <button id="back-to-phone" type="button">Back</button>
+                                <button type="submit">Sign In</button>
+                            </div>
+                            <a href="#" id="resend-otp" class="resend-otp-link">Didn't receive OTP? Resend</a>
+                        </form>
+                    </div>
+
+                    <!-- Sign In by Password -->
+                    <div id="password-signup" class="signup-option">
+                        <form action="./dashboard.html" method="post">
+                            <label for="phone-password">Phone Number:</label>
+                            <input type="tel" id="phone-password" name="phone-password" placeholder="01XXXXXXXXX" required>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                            <button type="submit">Sign In</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="remember-forget">
+                    <div class="remember-me">
+                        <input type="checkbox" name="remember-me" id="remember-me">
+                        <label for="remember-me">Remember Me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sign In Card Ends -->
+
+    <!-- Footer Starts -->
+
+    <footer class="footer">
+        <p>&copy; 2025 Neeramoy | All right reserved</p>
+        <div class="footer-links">
+            <a href="#">Terms & Condition</a>
+            <a href="#">Privacy & Policy</a>
+        </div>
+    </footer>
+
+    <!-- Footer Ends -->
+
+    <script>
+        // JavaScript to handle OTP flow and toggle between sign-in options
+        const otpBtn = document.getElementById('otp-btn');
+        const passwordBtn = document.getElementById('password-btn');
+        const otpSignup = document.getElementById('otp-signup');
+        const passwordSignup = document.getElementById('password-signup');
+
+        // Show Password fields by default
+        otpSignup.classList.add('hidden'); // Hide OTP fields
+        passwordSignup.classList.remove('hidden'); // Show Password fields
+        passwordBtn.classList.add('active'); // Set Password button as active
+        otpBtn.classList.remove('active'); // Remove active class from OTP button
+
+        otpBtn.addEventListener('click', () => {
+            otpSignup.classList.remove('hidden'); // Show OTP fields
+            passwordSignup.classList.add('hidden'); // Hide Password fields
+            otpBtn.classList.add('active'); // Set OTP button as active
+            passwordBtn.classList.remove('active'); // Remove active class from Password button
+            
+            // Reset the OTP form to initial state (phone number input)
+            document.getElementById('otp-form-phone').style.display = 'block';
+            document.getElementById('otp-form-verification').style.display = 'none';
+        });
+
+        passwordBtn.addEventListener('click', () => {
+            passwordSignup.classList.remove('hidden'); // Show Password fields
+            otpSignup.classList.add('hidden'); // Hide OTP fields
+            passwordBtn.classList.add('active'); // Set Password button as active
+            otpBtn.classList.remove('active'); // Remove active class from OTP button
+        });
+
+        // Handle Send OTP button click
+        document.querySelector('#otp-form-phone button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const phoneNumber = document.getElementById('phone-otp').value;
+            
+            if(phoneNumber.trim() === '') {
+                alert('Please enter a valid phone number');
+                return;
+            }
+            
+            // Hide phone number form and show OTP verification form
+            document.getElementById('otp-form-phone').style.display = 'none';
+            document.getElementById('otp-form-verification').style.display = 'block';
+            
+            // Set phone number in the verification message
+            document.querySelector('#otp-verification-message span').textContent = phoneNumber;
+        });
+
+        // Handle Resend OTP click
+        document.getElementById('resend-otp').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('OTP has been resent');
+        });
+
+        // Handle OTP verification back button
+        document.getElementById('back-to-phone').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('otp-form-phone').style.display = 'block';
+            document.getElementById('otp-form-verification').style.display = 'none';
+        });
+        // Handle OTP input focus and auto-tab
+        const otpInputs = document.querySelectorAll('.otp-input'); 
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value === '' && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+        // OTP timer functionality
+        let timer = 59;
+        const timerElement = document.getElementById('timer');
+        const countdown = setInterval(() => {
+            if (timer > 0) {
+                timer--;
+                timerElement.textContent = timer;
+            } else {
+                clearInterval(countdown);
+                document.getElementById('resend-otp').style.display = 'block'; // Show resend link
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+/* Reset code and Common code Starts here */
+:root{
+    --primary-color: teal;
+    --secondary-color: #547792;
+    --third-color: #cfe5e1;
+    --text-color: white;
+    --padding: 1rem;
+    --transition: all 0.3s ease-in-out;
+    --border-radius: 0.6rem;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: underline;
+    color: var(--primary-color);
+
+}
+label{
+    font-size: 1.2rem;
+    
+}
+/* Reset code and Common code Ends here */
+/* Card Styling the body */
+.logo {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 1rem;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+    float: left;
+}
+/* Adjusting the container for proper layout */
+.signup-container {
+    display: flex;
+    justify-content: space-between; /* Space between the left and right sections */
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    padding: 2rem; /* Add padding for spacing */
+    background-color: #f5f9fc; /* Light background color */
+    gap: 2rem; /* Space between the left and right sections */
+}
+
+/* Styling the left section */
+.signup-left {
+    height: 95vh; /* Full height of the viewport */
+    background-color: var(--third-color);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 2rem;
+    flex: 1;
+    min-width: 50%;
+    max-width: 50%;
+    margin-right: 2rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;  
+}
+
+/* Centering the image inside the left section */
+.left-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 80%;
+    max-width: 80%;
+    border-radius: 2rem;
+    overflow: hidden; 
+}
+.left-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Ensure the card size remains the same */
+.signup-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #F9FAFB;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 0.5s ease-in-out;
+    width: 80%; /* Set a fixed width */
+    height: 500px; /* Set a fixed height to prevent resizing */
+}
+
+/* Ensure signup-option sections have the same height */
+.signup-option {
+    height: 100%; /* Match the height of the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Styling the form elements */
+.signup-card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.signup-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+.signup-card p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.signup-card input, .signup-card button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.signup-card input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--secondary-color);
+    outline: none;
+}
+
+.signup-card button {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: var(--transition);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+.signup-card button:hover {
+    background-color: #365f73; /* Darker shade for hover */
+    transform: scale(1.05);
+}
+
+/* Styling the footer links */
+.signup-card .footer-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.signup-card .footer-links a {
+    text-decoration: none;
+}
+
+.signup-card .footer-links a:hover {
+    text-decoration: underline;
+}
+.toggle-btn{
+    display: flex;  
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: fit-content; /* Ensure buttons span the full width */
+}
+
+/* Hide elements by default */
+.hidden {
+    display: none;
+}
+
+/* Active button styling */
+.toggle-btn button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 0; /* Remove border-radius for seamless buttons */
+    flex: 1; /* Make buttons equal in size */
+}
+
+.toggle-btn button:hover {
+    background-color: white; /* No hover effect */
+    color: black; /* No color change */
+}
+
+.toggle-btn button:first-child {
+    border-right: none; /* Remove right border of OTP button */
+    border-top-left-radius: var(--border-radius); /* Add rounded corners to the left */
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.toggle-btn button:last-child {
+    border-left: none; /* Remove left border of Password button */
+    border-top-right-radius: var(--border-radius); /* Add rounded corners to the right */
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.toggle-btn button.active {
+    background-color: teal;
+    color: white;
+    font-weight: bold;
+    border: 2px solid teal; /* Add teal border outside the button */
+    box-shadow: 0 0 0 2px teal; /* Create an outer border effect */
+}
+
+
+/* Styling the Remember Me and Forgot Password section */
+.remember-forget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0; /* Add spacing above and below */
+    width: 100%;
+}
+
+/* Styling the Remember Me section */
+.remember-me {
+    display: inline-flex; /* Use inline-flex to align items horizontally */
+    align-items: center; /* Align checkbox and text vertically */
+    gap: 0.5rem; /* Add spacing between checkbox and text */
+}
+
+.remember-me input[type="checkbox"] {
+    width: 1.5rem; /* Increase checkbox size */
+    height: 1.5rem;
+    accent-color: teal; /* Set the checkbox selected color to teal */
+    margin: 0; /* Remove any default margin */
+    vertical-align: middle; /* Ensure checkbox aligns with text */
+}
+
+.remember-me label {
+    font-size: 1.2rem; /* Ensure the label text is readable */
+    color: black;
+    line-height: 1.5; /* Match the checkbox's height */
+    margin: 0; /* Remove any default margin */
+}
+
+.forgot-password {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #6c757d;
+    bottom: 2rem; 
+    right: 2rem;
+}
+
+.footer p {
+    margin-right: 2rem; /* Add more space between the p tag and links */
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.footer-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Add animation for the card */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* OTP Verification Styling */
+#otp-verification-message {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#otp-verification-message span {
+    font-weight: bold;
+    color: #333;
+}
+
+.otp-inputs-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: large;
+}
+
+.otp-input {
+    width: 40px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.otp-input:focus {
+    border-color: #4CABB1;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.3);
+}
+
+.otp-timer {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.otp-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.otp-actions button {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.otp-actions button[type="button"] {
+    background-color: white;
+    color: teal;
+    border: 1px solid #4CABB1;
+    margin-right: 10px;
+}
+
+.otp-actions button[type="submit"] {
+    background-color: teal;
+    color: white;
+    border: none;
+}
+
+.resend-otp-link {
+    display: block;
+    text-align: center;
+    margin: 15px auto 0;
+    text-decoration: none;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.resend-otp-link:hover {
+    text-decoration: underline;
+    color: teal;
+}
+
+/* Responsiveness */
+
+/* Media query for screens smaller than 992px */
+@media (max-width: 992px) {
+    .signup-container {
+        flex-direction: column; /* Stack the left and right sections vertically */
+        align-items: center;
+        gap: 1rem; /* Reduce the gap between sections */
+    }
+
+    .signup-left {
+        display: none; /* Hide the left section for smaller screens */
+    }
+
+    .signup-card {
+        width: 90%; /* Reduce the card width */
+        height: auto; /* Allow height to adjust based on content */
+    }
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .signup-left {
+        display: none; /* Hide the left section for screens smaller than 768px */
+    }
+
+    .signup-card {
+        width: 95%; /* Further reduce the card width */
+    }
+
+    .toggle-btn {
+        flex-direction: row; /* Keep the toggle buttons side by side */
+        width: fit-content; /* Ensure buttons span the appropriate width */
+    }
+
+    .toggle-btn button {
+        margin-bottom: 0; /* Remove spacing between buttons */
+        padding: 0.8rem 1.5rem; /* Keep the original padding */
+        font-size: 1rem; /* Keep the original font size */
+    }
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .signup-left {
+        display: none; /* Ensure the left section is hidden for very small screens */
+    }
+
+    .signup-card {
+        width: 100%; /* Make the card take full width */
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .signup-card h2 {
+        font-size: 1.5rem; /* Reduce heading size */
+    }
+
+    .signup-card h4 {
+        font-size: 0.9rem; /* Reduce subheading size */
+    }
+
+    .signup-card input, .signup-card button {
+        padding: 0.6rem; /* Reduce padding for input fields and buttons */
+        font-size: 0.9rem; /* Reduce font size */
+    }
+
+    .toggle-btn {
+        flex-direction: row; /* Keep the toggle buttons side by side */
+        width: fit-content; /* Ensure buttons span the appropriate width */
+    }
+
+    .toggle-btn button {
+        margin-bottom: 0; /* Remove spacing between buttons */
+        padding: 0.8rem 1.5rem; /* Keep the original padding */
+        font-size: 1rem; /* Keep the original font size */
+    }
+}

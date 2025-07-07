@@ -1,0 +1,3349 @@
+/* Reset code and Common code Starts here */
+:root{
+    --primary-color: teal;
+    --secondary-color: #547792;
+    --third-color: #cfe5e1;
+    --text-color: white;
+    --padding: 1rem;
+    --transition: all 0.3s ease-in-out;
+    --border-radius: 0.6rem;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i{
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+    margin-right: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-btn{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.sidebar-btn:hover{
+    color: var(--primary-color);
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+/* Body Part */
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+}
+
+.sidebar {
+  height: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  background-color: #f5f9fc;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: height 0.3s ease-in-out;
+}
+
+.sidebar.expanded {
+  height: auto;
+  min-height: 100vh;
+}
+
+.sidebar .settings-dropdown .dropdown-content {
+  position: static;
+  box-shadow: none;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  width: calc(100% - 1rem);
+}
+
+.sidebar .doctor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.sidebar .doctor-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: #025b5b 3px solid;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
+.sidebar .doctor-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sidebar .doctor-info span {
+    font-size: 14px;
+    color: gray;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar nav button:hover {
+    background: #eaf4fb;
+    border-radius: 25px;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 1rem;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Topbar Design */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Enhanced Topbar Responsiveness - Keeping Horizontal Layout */
+
+/* Base topbar styling */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Default styles for clinic select and status section */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+}
+
+/* Left side - Clinic selector */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.clinic-logo {
+    width: 100px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain; /* Ensures image maintains aspect ratio */
+}
+
+.clinic-select select {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    min-width: 500px; 
+    width: 80%; 
+    max-width: 800px;
+    /* appearance: none; */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    margin-right: 2rem;
+}
+
+/* Enhanced Clinic Select Dropdown with Label */
+.clinic-select-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 600px;
+    margin-right: 1.5rem;
+}
+
+
+.clinic-select-field {
+    position: relative;
+    width: 100%;
+}
+
+/* Updated clinic dropdown display with smaller height and inline location */
+.clinic-dropdown-display {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced from 12px */
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px; /* Reduced from 10px 15px */
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    height: 56px; /* Increased from 48px */
+}
+
+.clinic-dropdown-display:hover {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.clinic-dropdown-display.active {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Updated clinic logo size */
+.clinic-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-info {
+    flex: 1;
+}
+
+/* Update clinic name */
+.clinic-name {
+    font-weight: 600;
+    font-size: 15px; /* Reduced from 16px */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Make location display inline with icon */
+.clinic-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1;
+}
+
+.clinic-address i {
+    font-size: 11px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #888;
+}
+
+.dropdown-arrow {
+    color: #025b5b;
+    transition: transform 0.3s;
+}
+
+.clinic-dropdown-display.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.clinic-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1020;
+    display: none;
+    animation: fadeInDown 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.clinic-dropdown-menu.show {
+    display: block;
+}
+
+/* Clinic options */
+/* Update clinic options for consistency */
+.clinic-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px; /* Reduced from 12px 15px */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.clinic-option:last-child {
+    border-bottom: none;
+}
+
+.clinic-option:hover {
+    background-color: #f5f9fc;
+}
+
+.clinic-option.selected {
+    background-color: #e6f7f6;
+}
+
+/* Updated clinic logo size */
+.clinic-option-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-option-info {
+    flex: 1;
+}
+
+/* Update clinic name */
+.clinic-option-name {
+    font-size: 14px; /* Reduced from 15px */
+    font-weight: 500;
+    margin: 0 0 2px; /* Reduced from 0 0 3px */
+    color: #333;
+}
+
+/* Update clinic address */
+.clinic-option-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clinic-option-check {
+    color: #025b5b;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.clinic-option.selected .clinic-option-check {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+    .clinic-dropdown-display {
+        padding: 8px 12px;
+    }
+    
+    .clinic-logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .clinic-name {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .clinic-dropdown-display {
+        padding: 6px 10px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-name {
+        font-size: 14px;
+    }
+    
+    .clinic-address {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .clinic-logo {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .clinic-name {
+        font-size: 13px;
+    }
+    
+    .clinic-address {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: 100%;
+    }
+}
+
+/* Right side - Status and Logout */
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+/* System Health Status button */
+.status-button {
+    background: linear-gradient(135deg, #e6f0ff 0%, #d1e0ff 100%);
+    color: #2c3e50;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    border-left: 4px solid #3a5fcd;
+}
+
+/* Add pulse icon before text */
+.status-button::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #3a5fcd;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(58, 95, 205, 0.4);
+    animation: pulse-blue 2s infinite;
+}
+
+/* Shine effect */
+.status-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+
+
+.status-button:hover {
+    background: linear-gradient(135deg, #d1e0ff 0%, #b9d1ff 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(65, 105, 225, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    color: #1e3799;
+}
+
+.status-button:hover::after {
+    left: 100%;
+}
+
+.status-button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(58, 95, 205, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0);
+    }
+}
+
+/* Active Status indicator */
+.status-indicator {
+    background: linear-gradient(135deg, #e8f5f5 0%, #f0fcfc 100%);
+    color: #025b5b;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(2, 91, 91, 0.1);
+    border-left: 4px solid #025b5b;
+}
+
+.status-indicator:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.status-indicator.online {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0fcf0 100%);
+    color: #28a745;
+    border-left: 4px solid #28a745;
+}
+
+.status-indicator.online:before {
+    background-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+.status-indicator.offline {
+    background: linear-gradient(135deg, #fbf0f0 0%, #fcf0f0 100%);
+    color: #dc3545;
+    border-left: 4px solid #dc3545;
+}
+
+.status-indicator.offline:before {
+    background-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6c757d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.logout:hover {
+    background-color: #f2f2f2;
+    color: #025b5b;
+}
+
+.logout i {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+/* Responsive Design */
+
+/* Desktop (medium screens): 992px and below */
+@media screen and (max-width: 992px) {
+    /* Dashboard adjustments - change to single column */
+
+    
+    /* Top bar improvements */
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 230px); /* Match the sidebar width */
+        left: 230px;
+    }
+    
+    /* Clinic selector improvements */
+    .clinic-select {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .clinic-select select {
+        min-width: 300px;
+        width: auto;
+        max-width: 450px;
+    }
+    
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Status section adjustments */
+    .status-section {
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1.2rem;
+        white-space: nowrap;
+    }
+    
+    .sidebar {
+        width: 230px;
+    }
+    
+    .main {
+        margin-left: 230px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Single column layout for dashboard - already set in 992px */
+    
+    /* Top bar improvements */
+    .topbar {
+        width: calc(100% - 200px);
+        left: 200px;
+        background-color: white;
+        padding: 0.8rem 1rem;
+        flex-direction: row; /* Keep horizontal layout */
+        flex-wrap: row; /* Allow wrapping if needed */
+    }
+    
+    .clinic-select {
+        width: auto;
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 0.8rem;
+    }
+    
+    .status-indicator {
+        white-space: nowrap;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Top bar adjustments */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.8rem 1rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    
+    /* Top bar adjustments */
+    .status-section {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        width: 100%;
+        justify-content: center;
+        order: -1; /* Move to top */
+    }
+    
+    .status-indicator {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar {
+        width: 180px;
+    }
+    
+    .main {
+        margin-left: 180px;
+    }
+    
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Top bar adjustments for mobile */
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+        padding: 0.8rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .status-button {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    .status-indicator {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    /* Status button improvements for mobile */
+    .status-button {
+        width: auto; /* Don't make it 100% width */
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+        margin-right: 0.5rem; /* Add some spacing */
+    }
+    
+    /* Adjust the pulse animation for smaller screens */
+    .status-button::before {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .status-indicator {
+        font-size: 12px;
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+    }
+    
+    /* Status section layout */
+    .status-section {
+        display: flex;
+        flex-wrap: nowrap; /* Keep items in a row */
+        gap: 0.5rem;
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        padding-bottom: 4px; /* Space for scroll bar */
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Hide scrollbar but maintain functionality */
+    .status-section::-webkit-scrollbar {
+        height: 2px;
+    }
+    
+    .status-section::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .sidebar {
+        width: 160px;
+    }
+    
+    .main {
+        margin-left: 160px;
+    }
+    
+    .topbar {
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Optimize status elements for tiny screens */
+    .status-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+    }
+    
+    .status-button::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.8rem;
+        font-size: 11px;
+    }
+    
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    /* Change topbar layout */
+    .topbar {
+        padding: 0.6rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* Medium screens: 992px and below */
+@media screen and (max-width: 992px) {
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        width: calc(100% - 230px);
+        left: 230px;
+    }
+    
+    .clinic-select {
+        gap: 0.8rem;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: auto;
+        max-width: 400px;
+        flex-shrink: 1;
+    }
+    
+    .status-section {
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+    
+    .status-indicator {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    .topbar {
+        padding: 0.8rem 1rem;
+        width: calc(100% - 200px);
+        left: 200px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-select {
+        gap: 0.6rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.4rem 0.8rem;
+        font-size: 13px;
+        width: auto;
+        flex: 1;
+    }
+    
+    .status-section {
+        gap: 0.6rem;
+    }
+    
+    .status-button {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-button::before {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .status-indicator {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-indicator::before {
+        width: 9px;
+        height: 9px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    .topbar {
+        padding: 0.7rem;
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .clinic-logo {
+        width: 25px;
+        height: 25px;
+        min-width: 25px; /* Prevent shrinking */
+    }
+    
+    .clinic-select {
+        gap: 0.4rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.6rem;
+        font-size: 12px;
+        max-width: 150px;
+    }
+    
+    .status-section {
+        gap: 0.4rem;
+    }
+    
+    .status-button {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-button::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 70px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-indicator::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .logout {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .topbar {
+        padding: 0.6rem;
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .clinic-select {
+        gap: 0.3rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.5rem;
+        font-size: 11px;
+        max-width: 100px;
+    }
+    
+    .status-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 80px;
+    }
+    
+    .status-indicator {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 60px;
+    }
+    
+    .status-button::before,
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 3px;
+    }
+    
+    .logout {
+        width: 28px;
+        height: 28px;
+    }
+}
+.see-all-clinics-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    font-weight: 600;
+    color: #025b5b;
+    background: #e6f7f6;
+    border-top: 1px solid #e0e0e0;
+    text-decoration: none;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.2s;
+}
+.see-all-clinics-btn:hover {
+    background: #d0f0ee;
+    color: #028080;
+}
+.see-all-clinics-btn i {
+    font-size: 16px;
+    color: #025b5b;
+}
+.sidebar nav button.selected,
+.sidebar nav button.selected a {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+/* Logout Modal Styling */
+.logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.logout-modal.active {
+    display: flex;
+}
+
+.logout-modal-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logout-modal-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #60BFC5;
+    color: white;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.logout-modal-icon i {
+    font-size: 36px;
+    color: white;
+    margin-right: 0 !important;
+}
+.logout-modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.logout-modal-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.logout-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-cancel {
+    padding: 12px 30px;
+    background-color: #F2F4F7;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #d7d8d9;
+}
+
+.btn-confirm {
+    padding: 12px 40px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-confirm:hover {
+    background-color: #8d0606;
+}
+
+/* Appointment specific styles */
+
+.appointment-container {
+    background-color: #f9fafb;
+    position: absolute;
+    left: 255px;
+    width: calc(100% - 255px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', sans-serif;
+    transition: padding 0.3s ease;
+}
+
+/* Header styles */
+.appointment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.appointment-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.new-appointment-btn {
+    background-color: rgb(0, 164, 164);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 1.25rem;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.new-appointment-btn:hover {
+    background-color: teal;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.new-appointment-btn i, 
+.export-btn i {
+    font-size: 16px;
+    margin-right: 2px !important;
+    color: white; /* Ensure icon color matches button text */
+}
+/* Controls section */
+.appointment-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.view-toggle {
+    display: flex;
+    background-color: #edf2f7;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.view-btn {
+    padding: 0.5rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 550;
+    color: #718096;
+    transition: all 0.3s ease;
+}
+
+.view-btn.active {
+    background-color: teal;
+    color: white;
+}
+
+.date-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #4a5568;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background-color: #edf2f7;
+}
+
+.date-range {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.export-btn {
+    background-color: #3051e0;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 0.6rem 1rem;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+    background-color: #1826a6;
+}
+/* Loading state for appointment table */
+.appointment-table.loading {
+    position: relative;
+    opacity: 0.7;
+}
+
+.appointment-table.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+/* Table styles */
+.appointment-table {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 1fr 1fr 1fr 0.5fr;
+    background-color: #f7fafc;
+    padding: 1rem;
+    font-weight: bolder;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.appointment-row {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 1fr 1fr 1fr 0.5fr;
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.appointment-row:hover {
+    background-color: #f8fafc;
+}
+
+.appointment-row:last-child {
+    border-bottom: none;
+}
+
+.patient-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem !important; /* Force a smaller gap with !important */
+}
+
+.patient-profile img {
+    width: 60px !important; /* Smaller image with !important */
+    height: 60px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0 !important;
+}
+
+.col-profile {
+    display: flex;
+    align-items: center;
+}
+
+.patient-info {
+    padding-left: 1rem; 
+}
+
+.patient-profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid teal;
+}
+.patient-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.patient-info h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.patient-info span {
+    display: block;
+    font-size: 12px;
+    color: #718096;
+}
+
+.col-datetime .date {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.col-datetime .time {
+    font-size: 12px;
+    color: #718096;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: teal;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 500px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-large {
+    width: 800px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #718096;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #2d3748;
+    background-color: white;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-cancel, .btn-save {
+    padding: 0.75rem 1.5rem;
+    border-radius: px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #f7eded;
+    color: #4a5568;
+    border: none;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.date-picker {
+    position: relative;
+}
+
+.date-picker i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+}
+
+/* Patient detail modal */
+.patient-card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: rgb(238, 253, 253);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.patient-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.patient-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.patient-details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #718096;
+}
+
+.details-grid {
+    margin-bottom: 1.5rem;
+}
+
+.details-row {
+    display: flex;
+    margin-bottom: 0.8rem;
+}
+
+.details-label {
+    width: 150px;
+    font-size: 14px;
+    color: #718096;
+}
+
+.details-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.action-buttons:hover {
+    background-color: #f7fafc;
+}
+.prescription-btn,
+.cancel-btn,
+.reschedule-btn {
+    padding: 0.75rem;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.prescription-btn {
+    background-color: #e2f5ff;
+    color: #286aa8;
+    border: 1px solid #bee3f8;
+}
+.prescription-btn:hover {
+    background-color: #bee3f8;
+}
+.cancel-btn {
+    background-color: #ffe3e3;
+    color: #c13131;
+    border: 1px solid #fed7d7;
+}
+.cancel-btn:hover {
+    background-color: #fed7d7;
+}
+.reschedule-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+.reschedule-btn:hover {
+    background-color: #3e8e41;
+}
+/* Reschedule modal */
+.reschedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+}
+
+.time-slots h4 {
+    margin: 0 0 0.5rem;
+    font-size: 16px;
+    color: #2d3748;
+}
+
+.selected-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.time-slot {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 5px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.time-slot:hover {
+    background-color: #3e8e41;
+}
+
+/* Enhanced Reschedule Modal Styling */
+#rescheduleModal .time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#rescheduleModal .time-period-block {
+    display: none;
+    margin-top: 1rem;
+}
+
+#rescheduleModal .time-period-block.active {
+    display: block;
+}
+
+#rescheduleModal .time-slot {
+    background-color: #e6f7e6;
+    color: #2d3748;
+    border: 1px solid #c6f6c8;
+    border-radius: 8px;
+    padding: 10px 5px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+#rescheduleModal .time-slot:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#rescheduleModal .time-slot.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#rescheduleModal .time-slot.unavailable {
+    background-color: #f7fafc;
+    color: #cbd5e0;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+#rescheduleModal .reschedule-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+#rescheduleModal .btn-confirm {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+#rescheduleModal .btn-confirm:hover {
+    background-color: #044906;
+}
+#rescheduleModal .btn-cancel {
+    background-color: #f52828;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+#rescheduleModal .btn-cancel:hover {
+    background-color: #e81c1c;
+}
+/* Responsive styles */
+@media (max-width: 992px) {
+    .appointment-controls {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .date-navigation {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .table-header, .appointment-row {
+        grid-template-columns: 2fr 0.5fr 1fr 1fr 0.5fr;
+    }
+    
+    .col-complaints {
+        display: none;
+    }
+    
+    .appointment-container {
+        padding: 1.25rem;
+    }
+    
+    .appointment-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .appointment-header h2 {
+        font-size: 22px;
+    }
+    
+    .new-appointment-btn {
+        width: auto;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-header, .appointment-row {
+        grid-template-columns: 2fr 1fr 1fr 0.5fr;
+    }
+    
+    .col-type {
+        display: none;
+    }
+    
+    .reschedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .time-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form-progress {
+        margin-bottom: 1.5rem;
+    }
+    
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .step-label {
+        font-size: 11px;
+    }
+    
+    .input-group {
+        margin-bottom: 1rem;
+    }
+    
+    .input-group i {
+        font-size: 16px !important;
+        width: 20px;
+        margin-right: 8px !important;
+    }
+    
+    .input-container input,
+    .input-container select,
+    .input-container textarea {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    
+    .input-container label {
+        font-size: 13px;
+    }
+    
+    .btn-next,
+    .btn-back,
+    .btn-save {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+    
+    .modal-large {
+        width: 95%;
+    }
+    
+    .action-buttons {
+        gap: 0.75rem;
+    }
+    
+    .prescription-btn,
+    .cancel-btn,
+    .reschedule-btn {
+        padding: 0.6rem;
+        font-size: 13px;
+        gap: 6px;
+    }
+    
+    .topbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .clinic-select {
+        width: 100%;
+    }
+    
+    .clinic-select select {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .status-button,
+    .status-indicator {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .table-header, .appointment-row {
+        grid-template-columns: 2fr 1fr 0.5fr;
+    }
+    
+    .col-age {
+        display: none;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .appointment-container {
+        padding: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .appointment-header h2 {
+        font-size: 20px;
+    }
+    
+    .progress-line {
+        margin: 0 0.5rem;
+    }
+    
+    .form-navigation {
+        flex-direction: column-reverse;
+        gap: 0.75rem;
+    }
+    
+    .btn-next,
+    .btn-back,
+    .btn-save {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .gender-group .radio-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .prescription-btn,
+    .cancel-btn,
+    .reschedule-btn {
+        width: 100%;
+    }
+    
+    .time-period-selector {
+        flex-direction: row;
+        padding: 3px;
+    }
+    
+    .time-period {
+        padding: 6px;
+        font-size: 12px;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .time-slot {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+}
+
+/* Fix for mobile overflow issues */
+@media (max-width: 480px) {
+    .main {
+        padding: 0.5rem;
+    }
+    
+    .modal-content {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    /* Force single column layout for tight spaces */
+    .appointment-form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* End of common code */
+
+/* Add these styles to your appointments.css file */
+
+/* Form Styling */
+.form-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number,
+.progress-step.completed .step-number {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.step-label {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 500;
+}
+
+.progress-step.active .step-label {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.progress-line {
+    flex: 1;
+    height: 3px;
+    background-color: #e2e8f0;
+    margin: 0 1rem;
+    position: relative;
+    top: -12px;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group i {
+    color: #4a5568;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    margin-right: 12px;
+}
+
+.input-container {
+    flex: 1;
+    position: relative;
+}
+
+.input-container input,
+.input-container select,
+.input-container textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #2d3748;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.input-container input:focus,
+.input-container select:focus,
+.input-container textarea:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+.input-container label {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    font-size: 14px;
+    color: #a0aec0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background: white;
+}
+
+.input-container input:focus ~ label,
+.input-container input:not(:placeholder-shown) ~ label,
+.input-container select:focus ~ label,
+.input-container select:not([value=""]):valid ~ label,
+.input-container textarea:focus ~ label,
+.input-container textarea:not(:placeholder-shown) ~ label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 0 5px;
+    color: #4CAF50;
+}
+
+.input-container input {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.textarea-container textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.date-label {
+    background-color: white;
+}
+
+/* This ensures date input labels stay positioned correctly */
+.input-container.date-field label {
+    position: relative;
+    margin-bottom: 6px;
+    color: #4a5568;
+}
+
+.gender-group {
+    margin-bottom: 1.5rem;
+}
+
+.gender-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.radio-options {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-left: 30px; /* Increased to match image */
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #2d3748;
+    background-color: transparent; /* Remove gray background */
+    transition: color 0.2s;
+}
+
+/* Custom radio button design */
+.radio-container .radio-custom {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 22px; /* Larger to match image */
+    width: 22px; /* Larger to match image */
+    background-color: #f2f2f2; /* Light gray background when not selected */
+    border: 2px solid #e2e8f0;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+/* Circle inside the custom radio when checked */
+.radio-container .radio-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; /* Larger inner circle */
+    height: 12px; /* Larger inner circle */
+    border-radius: 50%;
+    background: white; /* White inner circle */
+}
+
+/* Show the indicator when checked */
+.radio-container input:checked ~ .radio-custom {
+    border-color: teal; /* Teal border color when selected */
+    background-color: teal; /* Teal background when selected */
+}
+
+.radio-container input:checked ~ .radio-custom:after {
+    display: block;
+}
+
+.radio-container input:checked ~ .radio-label {
+    color: teal; /* Teal text color when selected */
+    font-weight: 500;
+}
+
+/* Add hover effects */
+.radio-container:hover .radio-custom {
+    border-color: #a0aec0;
+}
+
+.radio-container input:checked:hover ~ .radio-custom {
+    border-color: teal;
+    opacity: 0.9;
+}
+
+.radio-container:hover .radio-label {
+    color: #4a5568;
+}
+
+.radio-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-container input {
+    margin-right: 6px;
+}
+
+.radio-label {
+    font-size: 14px;
+    color: #2d3748;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-next,
+.btn-back,
+.btn-save {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.btn-next {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.btn-back {
+    background-color: white;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.btn-next:hover,
+.btn-save:hover {
+    background-color: #3e8e41;
+}
+
+.btn-back:hover {
+    background-color: #f7fafc;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.select-container::after {
+    content: '\f107';
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    pointer-events: none;
+    background-color: transparent;
+    z-index: 2;
+}
+
+.input-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none;
+    padding-right: 30px;
+}
+
+/* New appointment form grid */
+.appointment-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem; /* Increased from 1.5rem */
+}
+
+.appointment-form-right h4 {
+    margin: 0 0 1rem;
+    font-size: 16px;
+    color: #2d3748;
+}
+
+/* Time period selector styling */
+.time-period-selector {
+    display: flex;
+    margin-bottom: 1rem;
+    background: #ebf2f6;
+    border: #333 1px solid;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.time-period {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #4a5568;
+}
+
+.time-period.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.time-period-block {
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.time-period-block.active {
+    display: block;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.time-slot {
+    background-color: #e6f7e6;
+    color: #2d3748;
+    border: 1px solid #c6f6c8;
+    border-radius: 6px;
+    padding: 10px 8px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.time-slot:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.time-slot.selected {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #3e8e41;
+}
+
+.time-slot.unavailable {
+    background-color: #f7fafc;
+    color: #cbd5e0;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+/* Custom scrollbar for time slots */
+.time-period-block::-webkit-scrollbar {
+    width: 6px;
+}
+
+.time-period-block::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 3px;
+}
+
+.time-period-block::-webkit-scrollbar-track {
+    background-color: #f7fafc;
+}
+
+/* Responsive adjustments for the form */
+@media (max-width: 768px) {
+    .appointment-form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .radio-options {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Enhanced Calendar Styling for Appointment Forms */
+
+/* Base calendar input styling */
+.date-picker {
+    position: relative;
+    width: 100%;
+}
+
+.date-input {
+    width: 100%;
+    padding-right: 40px !important;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Calendar icon inside the date input */
+.date-picker::after {
+    content: '\f133';
+    font-family: 'FontAwesome', 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    pointer-events: none;
+    font-size: 18px;
+}
+
+/* Calendar open state - highlight */
+.date-input:focus {
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+    border-color: #4CAF50;
+}
+
+/* Selected date display enhancement */
+.selected-date {
+    font-size: 15px;
+    font-weight: 600;
+    color: #4CAF50;
+    margin: 8px 0 12px;
+    padding: 6px 10px;
+    background-color: #f0fff0;
+    border-radius: 6px;
+    display: inline-block;
+    border-left: 3px solid #4CAF50;
+}
+
+/* Style the actual calendar dropdown (browser native) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Fix for floating label with date input */
+.input-container input[type="date"]:valid + .date-label,
+.input-container input[type="date"]:focus + .date-label {
+    transform: translateY(-24px);
+    font-size: 12px;
+    color: #4CAF50;
+    background: white;
+    padding: 0 5px;
+}
+
+/* Custom calendar highlight colors (where browser supports it) */
+::-webkit-calendar-picker-indicator {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+
+/* Calendar animation effect */
+.date-picker:hover::after {
+    animation: pulse1 1s infinite;
+}
+
+@keyframes pulse1 {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Reschedule form specific calendar styling */
+#rescheduleModal .date-picker {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0 10px 0 0;
+    background-color: white;
+}
+
+#rescheduleModal .date-input {
+    border: none;
+    flex: 1;
+    padding: 12px;
+}
+
+#rescheduleModal .selected-date {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #e6f7e6, #f0fff0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Improve spacing between calendar and time slots */
+#rescheduleModal .time-period-selector {
+    margin-top: 1.5rem;
+}
+
+/* New appointment form specific calendar styling */
+#newAppointmentModal .date-picker {
+    width: 100%;
+}
+
+/* Make the calendar inputs consistent with other inputs */
+.input-container input[type="date"] {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* Today's date highlight in calendar */
+input[type="date"].highlight-today::-webkit-datetime-edit {
+    color: #4CAF50;
+}
+
+/* Calendar responsiveness */
+@media (max-width: 768px) {
+    .selected-date {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+    
+    #rescheduleModal .selected-date {
+        margin-bottom: 15px;
+    }
+}
+
+
+#newAppointmentModal .modal-content {
+    width: 900px; /* Increased from 800px */
+    max-width: 95%;
+}
+
+/* Enhance sidebar responsiveness */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .main {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+    
+    .sidebar .doctor-image {
+        height: 80px;
+        width: 80px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.7rem 0.8rem;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 65px;
+        overflow: hidden;
+    }
+    
+    .main {
+        margin-left: 65px;
+    }
+    
+    .sidebar .logo img {
+        width: 40px;
+    }
+    
+    .sidebar .doctor-image {
+        height: 45px;
+        width: 45px;
+        margin-bottom: 1rem;
+    }
+    
+    .sidebar .doctor-info h4,
+    .sidebar .doctor-info span {
+        display: none;
+    }
+    
+    .sidebar nav button {
+        padding: 0.7rem;
+        text-align: center;
+    }
+    
+    .sidebar nav button i {
+        margin-right: 0 !important;
+    }
+    
+    .sidebar nav button span {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 0;
+        z-index: 1001;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+    }
+    
+    .sidebar.mobile-open {
+        width: 200px;
+        transform: translateX(0);
+    }
+    
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #4CAF50;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1002;
+        border: none;
+        cursor: pointer;
+    }
+    
+    /* When sidebar is open in mobile view */
+    .sidebar.mobile-open .logo img {
+        width: 100px;
+    }
+    
+    .sidebar.mobile-open .doctor-image {
+        height: 80px;
+        width: 80px;
+    }
+    
+    .sidebar.mobile-open .doctor-info h4,
+    .sidebar.mobile-open .doctor-info span {
+        display: block;
+    }
+    
+    .sidebar.mobile-open nav button {
+        text-align: left;
+        padding: 0.7rem 1rem;
+    }
+    
+    .sidebar.mobile-open nav button i {
+        margin-right: 0.8rem !important;
+    }
+    
+    .sidebar.mobile-open nav button span {
+        display: inline;
+    }
+}
+
+/* Improved Sidebar Responsiveness to match dashboard.css */
+
+/* Desktop (medium screens): 992px and below */
+@media screen and (max-width: 992px) {
+    .sidebar {
+        width: 230px;
+    }
+    
+    .main {
+        margin-left: 230px;
+    }
+    
+    /* Top bar improvements */
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        width: calc(100% - 230px); /* Match the sidebar width */
+        left: 230px;
+    }
+    
+    /* Clinic selector improvements */
+    .clinic-select {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .clinic-select select {
+        min-width: 300px;
+        width: auto;
+        max-width: 450px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+    
+    .topbar {
+        width: calc(100% - 200px);
+        left: 200px;
+        padding: 0.8rem 1rem;
+    }
+    
+    .clinic-select {
+        width: auto;
+        flex: 1;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: auto;
+        justify-content: flex-end;
+        gap: 0.8rem;
+    }
+    
+    .sidebar-btn {
+        font-size: 14px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.7rem 0.8rem;
+    }
+    
+    i {
+        font-size: 18px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.8rem !important;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    .sidebar {
+        width: 180px;
+    }
+    
+    .main {
+        margin-left: 180px;
+    }
+    
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Status button and indicator sizing */
+    .status-button {
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+    }
+    
+    .status-indicator {
+        font-size: 12px;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .sidebar {
+        width: 160px;
+    }
+    
+    .main {
+        margin-left: 160px;
+    }
+    
+    .topbar {
+        width: calc(100% - 160px);
+        left: 160px;
+        padding: 0.6rem;
+    }
+    
+    .sidebar-btn {
+        font-size: 12px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.5rem 0.7rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.3rem !important;
+        margin-right: 0.6rem !important;
+    }
+    
+    /* Status elements for tiny screens */
+    .status-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.8rem;
+        font-size: 11px;
+    }
+}
+
+/* Move appointment date label to top of input field */
+.input-container.date-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container.date-field label {
+    position: static;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+    transform: none;
+    background: transparent;
+    padding: 0;
+    order: -1;
+}
+
+.input-container.date-field input[type="date"] {
+    padding: 12px 16px;
+}
+
+/* Remove floating label animation for date inputs */
+.input-container.date-field input[type="date"]:focus ~ label,
+.input-container.date-field input[type="date"]:not(:placeholder-shown) ~ label {
+    transform: none;
+    top: auto;
+    left: auto;
+    color: #4a5568;
+    background: transparent;
+    font-size: 14px;
+}
+.sidebar nav button.selected,
+.sidebar nav button.selected a {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+.sidebar .settings-dropdown .dropdown-content {
+  display: none !important;
+  position: static;
+  box-shadow: none;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  width: calc(100% - 1rem);
+}
+.sidebar .settings-dropdown .dropdown-content.show {
+  display: block !important;
+}
+/* Sidebar button selection styling - exclude settings button */
+.sidebar nav button:not(.settings-button) {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #333;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav button:not(.settings-button):hover {
+    background: #eaf4fb;
+    border-radius: 25px;
+}
+
+/* Active/Selected state for regular sidebar buttons only */
+.sidebar nav button:not(.settings-button).active,
+.sidebar nav button:not(.settings-button).selected {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+
+.sidebar nav button:not(.settings-button).active a,
+.sidebar nav button:not(.settings-button).selected a,
+.sidebar nav button:not(.settings-button).active .sidebar-btn,
+.sidebar nav button:not(.settings-button).selected .sidebar-btn {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+
+/* Settings button specific styling */
+.settings-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #333;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.settings-button:hover {
+    background: #eaf4fb;
+}
+
+.settings-button i.fa-gear {
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+    margin-right: 1rem !important;
+}
+
+.settings-button .sidebar-btn {
+    color: #333;
+    font-size: 15px;
+    flex-grow: 1;
+}
+
+.settings-button .fa-caret-down {
+    font-size: 16px !important;
+    margin-left: auto;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    transition: transform 0.3s ease;
+}
+
+/* Success Card Overlay */
+.success-card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.success-card-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Success Card */
+.success-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.success-card-overlay.show .success-card {
+    transform: scale(1) translateY(0);
+}
+
+/* Success Icon */
+.success-icon {
+    margin-bottom: 1.5rem;
+}
+
+.success-icon i {
+    font-size: 4rem !important;
+    color: #28a745;
+    margin: 0 !important;
+    padding: 0 !important;
+    animation: successPulse 0.6s ease-out;
+}
+
+/* Success Card Content */
+.success-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.success-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Success OK Button */
+.success-ok-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.success-ok-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.success-ok-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
+}
+
+/* Success Animation */
+@keyframes successPulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .success-card {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .success-icon i {
+        font-size: 3rem !important;
+    }
+    
+    .success-card h3 {
+        font-size: 1.25rem;
+    }
+    
+    .success-card p {
+        font-size: 0.9rem;
+    }
+    
+    .success-ok-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preset Data</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./presetdata.css">
+</head>
+<body>
+
+    <!-- Common Code Starts -->
+
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="./dashboard.html"><img src="./images/logo.svg" alt="Neeramoy"></a>
+        </div>
+        <div class="doctor-info">
+            <img src="./images/Rauf.png" alt="Doctor" class="doctor-image" id="doctor-image">
+            <h4 id="doctor-name">Doctor Name</h4>
+            <span id="doctor-designation">Designation</span>
+        </div>
+        <nav>
+            <button><a href="./dashboard.html" class="sidebar-btn"><i class="fa-solid fa-border-all"></i>Dashboard</a></button>
+            <button><a href="./appointments.html" class="sidebar-btn"><i class="fa-solid fa-calendar"></i>Appointments</a></button>
+            <button><a href="./patients.html" class="sidebar-btn"><i class="fa-solid fa-user-plus"></i>Patients</a></button>
+            <button><a href="./prescription.html" class="sidebar-btn"><i class="fa-solid fa-file-circle-plus"></i>Prescription</a></button>
+            <div class="settings-dropdown">
+                <button class="settings-button" onclick="toggleDropdown()">
+                    <i class="fa fa-gear"></i>
+                    <span class="sidebar-btn">Settings</span>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <button class="dropdown-item "><a href="./allclinic.html" class="sidebar-btn">All Clinic</a></button>
+                    <button class="dropdown-item"><a href="./setup.html" class="sidebar-btn">Setup</a></button>
+                    <button class="dropdown-item"><a href="./presetdata.html" class="sidebar-btn">Preset data</a></button>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="clinic-select-container">
+                <div class="clinic-select-field">
+                    <div class="clinic-dropdown-display" id="clinicDropdownDisplay">
+                        <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-logo">
+                        <div class="clinic-info">
+                            <h3 class="clinic-name">NDSL Clinic</h3>
+                            <p class="clinic-address">
+                                <i class="fa fa-map-marker-alt"></i>
+                                Mohakhali DOHS, Dhaka, Bangladesh
+                            </p>
+                        </div>
+                        <span class="dropdown-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="clinic-dropdown-menu" id="clinicDropdownMenu">
+                        <div class="clinic-option selected" data-id="clinic1">
+                            <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">NDSL Clinic</h4>
+                                <p class="clinic-option-address">Mohakhali DOHS, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic2">
+                            <img src="./images/logo.svg" alt="Mirpur Hospital" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Mirpur Hospital</h4>
+                                <p class="clinic-option-address">Mirpur, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic3">
+                            <img src="./images/logo.svg" alt="Medinova Medical Services" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Medinova Medical Services</h4>
+                                <p class="clinic-option-address">Kajal Shah, Sylhet, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic4">
+                            <img src="./images/logo.svg" alt="Neeramoy Online For Brac" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Neeramoy Online For Brac</h4>
+                                <p class="clinic-option-address">34 Kemal Ataturk Ave, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        <a href="allclinic.html" class="see-all-clinics-btn">
+                            <i class="fa fa-building"></i> See All Clinics
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-section">
+                <button class="status-button">System Health Status</button>
+                <span class="status-indicator online">Online</span>
+                <button class="logout logout-btn" title="Logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Logout Confirmation Modal -->
+            <div id="logout-modal" class="logout-modal">
+                <div class="logout-modal-content">
+                    <div class="logout-modal-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="logout-modal-title">Confirmation</h2>
+                    <p class="logout-modal-text">Are you sure that you want to logout?</p>
+                    <div class="logout-modal-actions">
+                        <button id="cancel-logout" class="btn-cancel">Cancel</button>
+                        <button id="confirm-logout" class="btn-confirm">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Common Code Ends -->
+
+        <!-- Preset Code Starts -->
+        <div class="preset-container">
+            <aside class="preset-sidebar">
+                <div class="preset-sidebar-header">
+                    <img src="./images/preset-sidebar.svg" alt="Preset" class="preset-icon">
+                    <h3>Preset Data</h3>
+                </div>
+                
+                <nav class="preset-nav">
+                    <ul>
+                        <li class="preset-nav-item active" data-section="chief-complaints">
+                            <a href="#chief-complaints">Chief complaints</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="history">
+                            <a href="#history">History</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="findings">
+                            <a href="#findings">Findings</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="investigations">
+                            <a href="#investigations">Investigations</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="medicine">
+                            <a href="#medicine">Medicine</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="medicine-remarks">
+                            <a href="#medicine-remarks">Medicine Remarks</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="special-notes">
+                            <a href="#special-notes">Special Notes</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="advices">
+                            <a href="#advices">Advices</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="followup-notes">
+                            <a href="#followup-notes">Followup notes</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="template-page">
+                            <a href="#template-page">Template page</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="diagnosis">
+                            <a href="#diagnosis">Diagnosis</a>
+                        </li>
+                        <li class="preset-nav-item" data-section="treatment-plan">
+                            <a href="#treatment-plan">Treatment plan</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="preset-content">
+                <!-- Common header with search and add button that will be shown for all sections -->
+                <div class="preset-content-header">
+                    <h2 id="current-section-title">Chief complaints</h2>
+                    <div class="preset-actions">
+                        <div class="preset-search">
+                            <input type="text" placeholder="Search" class="search-input">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <button class="add-new-btn">
+                            <i class="fa fa-plus"></i>
+                            Add New
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Content container that will display different items based on active section -->
+                <div class="preset-items-container">
+                    <!-- This will be populated dynamically -->
+                    <div id="chief-complaints" class="preset-section active">
+                        <!-- Example chief complaint items -->
+                        <div class="preset-item">
+                            <span>Abdominal Cramp</span>
+                            <div class="preset-item-actions">
+                                <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                                <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="preset-item">
+                            <span>Abrasion Lt shoulder</span>
+                            <div class="preset-item-actions">
+                                <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                                <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="preset-item">
+                            <span>Blister</span>
+                            <div class="preset-item-actions">
+                                <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                                <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="preset-item">
+                            <span>Both hip joint pain</span>
+                            <div class="preset-item-actions">
+                                <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                                <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="history" class="preset-section">
+                        <!-- History section content -->
+                        <div class="preset-item">
+                            <span>Neck pain</span>
+                            <div class="preset-item-actions">
+                                <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                                <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="preset-item">
+                            <span>Pain in the ankle</span>
+                            <div class="preset-item-actions">
+                                <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                                <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create empty sections for other categories -->
+                    <div id="findings" class="preset-section"></div>
+                    <div id="investigations" class="preset-section"></div>
+                    <div id="medicine" class="preset-section"></div>
+                    <div id="medicine-remarks" class="preset-section"></div>
+                    <div id="special-notes" class="preset-section"></div>
+                    <div id="advices" class="preset-section"></div>
+                    <div id="followup-notes" class="preset-section"></div>
+                    <div id="template-page" class="preset-section"></div>
+                    <div id="diagnosis" class="preset-section"></div>
+                    <div id="treatment-plan" class="preset-section"></div>
+                </div>
+            </div>
+        </div>
+    </div>   
+        <!-- Preset Code Ends -->
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.classList.toggle('show'); // Toggle the "show" class to display or hide the dropdown
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function (event) {
+            const dropdown = document.querySelector('.dropdown-content');
+            const settingsButton = document.querySelector('.settings-button');
+            if (!settingsButton.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show'); // Hide the dropdown
+            }
+        });
+        // Clinic Dropdown Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const clinicDropdownDisplay = document.getElementById('clinicDropdownDisplay');
+            const clinicDropdownMenu = document.getElementById('clinicDropdownMenu');
+            const clinicOptions = document.querySelectorAll('.clinic-option');
+            
+            // Toggle dropdown menu
+            if (clinicDropdownDisplay) {
+                clinicDropdownDisplay.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    clinicDropdownMenu.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!clinicDropdownDisplay.contains(event.target) && 
+                    !clinicDropdownMenu.contains(event.target)) {
+                    clinicDropdownDisplay.classList.remove('active');
+                    clinicDropdownMenu.classList.remove('show');
+                }
+            });
+            
+            // Handle clinic selection
+            clinicOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    clinicOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update display with selected clinic info
+                    const clinicName = this.querySelector('.clinic-option-name').innerText;
+                    const clinicAddress = this.querySelector('.clinic-option-address').innerText;
+                    const clinicLogo = this.querySelector('.clinic-option-logo').src;
+                    const clinicId = this.getAttribute('data-id');
+                    
+                    // Update the display
+                    document.querySelector('.clinic-name').innerText = clinicName;
+                    document.querySelector('.clinic-address').innerHTML = '<i class="fa fa-map-marker-alt"></i> ' + clinicAddress;
+                    document.querySelector('.clinic-logo').src = clinicLogo;
+                    
+                    // You could also store the selected clinic ID in a hidden input or data attribute
+                    // document.getElementById('selectedClinic').value = clinicId;
+                    
+                    // Close the dropdown
+                    clinicDropdownDisplay.classList.remove('active');
+                    clinicDropdownMenu.classList.remove('show');
+                });
+            });
+        });
+        // Highlight selected sidebar button
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarButtons = document.querySelectorAll('.sidebar nav button');
+
+            sidebarButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    sidebarButtons.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Optionally, highlight based on current page
+            const currentPath = window.location.pathname.split('/').pop();
+            sidebarButtons.forEach(btn => {
+                const link = btn.querySelector('a');
+                if (link && link.getAttribute('href') && link.getAttribute('href').includes(currentPath)) {
+                    btn.classList.add('selected');
+                }
+            });
+        });
+        // Logout Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const logoutModal = document.getElementById('logout-modal');
+            const cancelLogout = document.getElementById('cancel-logout');
+            const confirmLogout = document.getElementById('confirm-logout');
+            const logoutButtons = document.querySelectorAll('.logout-btn');
+            
+            // Show modal when logout button is clicked
+            logoutButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logoutModal.classList.add('active');
+                });
+            });
+            
+            // Hide modal when cancel is clicked
+            cancelLogout.addEventListener('click', function() {
+                logoutModal.classList.remove('active');
+            });
+            
+            // Handle logout confirmation
+            confirmLogout.addEventListener('click', function() {
+                // Perform logout actions here
+                // For example: redirect to login page
+                window.location.href = 'index.html'; // Replace with your login page URL
+            });
+            
+            // Close modal when clicking outside
+            logoutModal.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && logoutModal.classList.contains('active')) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preset sidebar navigation
+            const presetNavItems = document.querySelectorAll('.preset-nav-item');
+            const presetSections = document.querySelectorAll('.preset-section');
+            const currentSectionTitle = document.getElementById('current-section-title');
+            
+            presetNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    const sectionText = this.querySelector('a').textContent;
+                    
+                    // Update the section title
+                    currentSectionTitle.textContent = sectionText;
+                    
+                    // Remove active class from all nav items and sections
+                    presetNavItems.forEach(navItem => navItem.classList.remove('active'));
+                    presetSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked item and corresponding section
+                    this.classList.add('active');
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+            
+            // Initialize search functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                const activeSection = document.querySelector('.preset-section.active');
+                const items = activeSection.querySelectorAll('.preset-item');
+                
+                items.forEach(item => {
+                    const text = item.querySelector('span').textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // // Add New button functionality - show a modal or form
+            // const addNewBtn = document.querySelector('.add-new-btn');
+            // addNewBtn.addEventListener('click', function() {
+            //     const activeSection = document.querySelector('.preset-section.active').id;
+            //     // You can implement a modal here to add new items
+            //     alert(`Add new item to ${activeSection}`);
+            //     // Later you can replace this with a proper modal implementation
+            // });
+        });
+        
+        // Modal functionality for editing items
+        function setupEditModal() {
+            // Create modal HTML structure once and append to body
+            const modalHTML = `
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Edit Item</h3>
+                        <form id="editItemForm">
+                            <div class="form-group">
+                                <label for="itemTitle">Title <span class="required">*</span></label>
+                                <input type="text" id="itemTitle" class="form-input" required>
+                            </div>
+                            <input type="hidden" id="itemId">
+                            <input type="hidden" id="sectionId">
+                            <div class="form-actions">
+                                <button type="button" class="cancel-btn">
+                                    <i class="fa fa-times"></i> Cancel
+                                </button>
+                                <button type="submit" class="update-btn">
+                                    <i class="fa fa-plus"></i> Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            // Append modal to body
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // Get modal elements
+            const modal = document.getElementById('editModal');
+            const closeBtn = modal.querySelector('.close-modal');
+            const cancelBtn = modal.querySelector('.cancel-btn');
+            const form = document.getElementById('editItemForm');
+            
+            // Close modal functions
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+            
+            // Event listeners for closing modal
+            closeBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Form submission handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const itemId = document.getElementById('itemId').value;
+                const sectionId = document.getElementById('sectionId').value;
+                const title = document.getElementById('itemTitle').value.trim();
+                
+                if (!title) return; // Don't submit if title is empty
+                
+                // Find and update the item
+                const item = document.querySelector(`#${sectionId} .preset-item[data-id="${itemId}"]`);
+                if (item) {
+                    item.querySelector('span').textContent = title;
+                }
+                
+                // Close modal
+                closeModal();
+            });
+            
+            // Setup listeners for all edit buttons
+            setupEditButtons();
+        }
+
+        // Function to set up edit button handlers
+        function setupEditButtons() {
+            const editButtons = document.querySelectorAll('.edit-btn');
+            const modal = document.getElementById('editModal');
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get item and section information
+                    const item = this.closest('.preset-item');
+                    const section = this.closest('.preset-section');
+                    const itemText = item.querySelector('span').textContent;
+                    
+                    // Set form values
+                    document.getElementById('itemTitle').value = itemText;
+                    document.getElementById('itemId').value = item.dataset.id || '';
+                    document.getElementById('sectionId').value = section.id;
+                    
+                    // Show modal
+                    modal.style.display = 'block';
+                    document.getElementById('itemTitle').focus();
+                });
+            });
+        }
+
+        // Function to add IDs to all preset items
+        function initializePresetItems() {
+            const presetSections = document.querySelectorAll('.preset-section');
+            
+            presetSections.forEach(section => {
+                const items = section.querySelectorAll('.preset-item');
+                items.forEach((item, index) => {
+                    if (!item.dataset.id) {
+                        item.dataset.id = `${section.id}-item-${index}`;
+                    }
+                });
+            });
+        }
+
+        // Add the modal setup code to your DOMContentLoaded event
+        document.addEventListener('DOMContentLoaded', function() {
+            // Your existing code...
+            
+            // Set up the edit modal and functionality
+            setupEditModal();
+            initializePresetItems();
+        });
+        // Updated Add New button functionality to use the modal
+        document.addEventListener('DOMContentLoaded', function() {
+            // Your existing code...
+            
+            // Create a modal for adding new items
+            function setupAddModal() {
+                // Create modal HTML structure once and append to body
+                const modalHTML = `
+                    <div id="addModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3>Add New Item</h3>
+                            <form id="addItemForm">
+                                <div class="form-group">
+                                    <label for="newItemTitle">Title <span class="required">*</span></label>
+                                    <input type="text" id="newItemTitle" class="form-input" required>
+                                </div>
+                                <input type="hidden" id="newItemSectionId">
+                                <div class="form-actions">
+                                    <button type="button" class="cancel-btn">
+                                        <i class="fa fa-times"></i> Cancel
+                                    </button>
+                                    <button type="submit" class="add-btn">
+                                        <i class="fa fa-plus"></i> Add
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+                
+                // Append modal to body
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                
+                // Get modal elements
+                const modal = document.getElementById('addModal');
+                const closeBtn = modal.querySelector('.close-modal');
+                const cancelBtn = modal.querySelector('.cancel-btn');
+                const form = document.getElementById('addItemForm');
+                
+                // Close modal functions
+                function closeModal() {
+                    modal.style.display = 'none';
+                }
+                
+                // Event listeners for closing modal
+                closeBtn.addEventListener('click', closeModal);
+                cancelBtn.addEventListener('click', closeModal);
+                window.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+                
+                // Form submission handler
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const sectionId = document.getElementById('newItemSectionId').value;
+                    const title = document.getElementById('newItemTitle').value.trim();
+                    
+                    if (!title) return; // Don't submit if title is empty
+                    
+                    // Get the active section
+                    const activeSection = document.getElementById(sectionId);
+                    
+                    // Create new item
+                    const newItem = document.createElement('div');
+                    newItem.className = 'preset-item';
+                    newItem.dataset.id = `${sectionId}-item-${Date.now()}`;
+                    
+                    newItem.innerHTML = `
+                        <span>${title}</span>
+                        <div class="preset-item-actions">
+                            <button class="edit-btn" title="Edit"><i class="fa fa-pencil-alt"></i></button>
+                            <button class="delete-btn" title="Delete"><i class="fa fa-trash"></i></button>
+                        </div>
+                    `;
+                    
+                    // Add to section
+                    activeSection.appendChild(newItem);
+                    
+                    // Set up edit functionality for the new item
+                    const editBtn = newItem.querySelector('.edit-btn');
+                    editBtn.addEventListener('click', function() {
+                        const item = this.closest('.preset-item');
+                        const section = this.closest('.preset-section');
+                        const itemText = item.querySelector('span').textContent;
+                        
+                        // Set form values in edit modal
+                        document.getElementById('itemTitle').value = itemText;
+                        document.getElementById('itemId').value = item.dataset.id;
+                        document.getElementById('sectionId').value = section.id;
+                        
+                        // Show edit modal
+                        document.getElementById('editModal').style.display = 'block';
+                        document.getElementById('itemTitle').focus();
+                    });
+                    
+                    // Close modal and reset form
+                    closeModal();
+                    form.reset();
+                });
+                
+                return modal;
+            }
+            
+            // Set up modal for adding new items
+            const addModal = setupAddModal();
+            
+            // Add New button functionality updated to use modal
+            const addNewBtn = document.querySelector('.add-new-btn');
+            addNewBtn.addEventListener('click', function() {
+                const activeSection = document.querySelector('.preset-section.active');
+                const sectionId = activeSection.id;
+                
+                // Set the section ID for the form
+                document.getElementById('newItemSectionId').value = sectionId;
+                
+                // Show the add modal
+                addModal.style.display = 'block';
+                document.getElementById('newItemTitle').focus(); // Focus on the input field
+            });
+        });
+        // Setup delete confirmation modal
+        function setupDeleteConfirmationModal() {
+            // Create the delete confirmation modal HTML
+            const deleteModalHTML = `
+                <div id="deleteConfirmModal" class="modal delete-confirm-modal">
+                    <div class="modal-content delete-modal-content">
+                        <span class="close-modal">&times;</span>
+                        <div class="delete-icon-container">
+                            <i class="fa fa-times-circle delete-icon"></i>
+                        </div>
+                        <h3 class="delete-title">Delete favourite?</h3>
+                        <p class="delete-message">If you delete the item, it will be lost.</p>
+                        <div class="delete-actions">
+                            <button type="button" class="cancel-delete-btn">Cancel</button>
+                            <button type="button" class="confirm-delete-btn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Append modal to body
+            document.body.insertAdjacentHTML('beforeend', deleteModalHTML);
+            
+            // Get modal elements
+            const deleteModal = document.getElementById('deleteConfirmModal');
+            const closeBtn = deleteModal.querySelector('.close-modal');
+            const cancelBtn = deleteModal.querySelector('.cancel-delete-btn');
+            
+            // Close modal function
+            function closeDeleteModal() {
+                deleteModal.style.display = 'none';
+                // Remove any stored references
+                deleteModal.removeAttribute('data-item-to-delete');
+            }
+            
+            // Event listeners for closing modal
+            closeBtn.addEventListener('click', closeDeleteModal);
+            cancelBtn.addEventListener('click', closeDeleteModal);
+            window.addEventListener('click', (event) => {
+                if (event.target === deleteModal) {
+                    closeDeleteModal();
+                }
+            });
+            
+            // Handle delete confirmation
+            const confirmDeleteBtn = deleteModal.querySelector('.confirm-delete-btn');
+            confirmDeleteBtn.addEventListener('click', function() {
+                const itemToDelete = document.querySelector(deleteModal.getAttribute('data-item-to-delete'));
+                if (itemToDelete) {
+                    itemToDelete.remove();
+                }
+                closeDeleteModal();
+            });
+            
+            // Setup all delete buttons
+            setupDeleteButtons();
+            
+            return deleteModal;
+        }
+
+        // Function to set up delete button handlers
+        function setupDeleteButtons() {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            const deleteModal = document.getElementById('deleteConfirmModal');
+            
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Get the item to delete
+                    const item = this.closest('.preset-item');
+                    
+                    // Store reference to the item in the modal
+                    deleteModal.setAttribute('data-item-to-delete', `#${item.closest('.preset-section').id} .preset-item[data-id="${item.dataset.id}"]`);
+                    
+                    // Show delete confirmation modal
+                    deleteModal.style.display = 'block';
+                });
+            });
+        }
+
+        // Add this to your DOMContentLoaded event
+        document.addEventListener('DOMContentLoaded', function() {
+            // Your existing code...
+            
+            // Set up the delete confirmation modal
+            const deleteModal = setupDeleteConfirmationModal();
+            
+            // Make sure new items get delete functionality too
+            const addItemForm = document.getElementById('addItemForm');
+            if (addItemForm) {
+                addItemForm.addEventListener('submit', function() {
+                    // Wait for the DOM to update with the new item
+                    setTimeout(setupDeleteButtons, 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

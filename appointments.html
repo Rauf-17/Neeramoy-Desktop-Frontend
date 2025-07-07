@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+
+    <!-- Google Font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./appointments.css">
+</head>
+<body>
+
+    <!-- Common Code Starts -->
+
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="./dashboard.html"><img src="./images/logo.svg" alt="Neeramoy"></a>
+        </div>
+        <div class="doctor-info">
+            <img src="./images/Rauf.png" alt="Doctor" class="doctor-image" id="doctor-image">
+            <h4 id="doctor-name">Doctor Name</h4>
+            <span id="doctor-designation">Designation</span>
+        </div>
+        <nav>
+            <button><a href="./dashboard.html" class="sidebar-btn"><i class="fa-solid fa-border-all"></i>Dashboard</a></button>
+            <button><a href="./appointments.html" class="sidebar-btn"><i class="fa-solid fa-calendar"></i>Appointments</a></button>
+            <button><a href="./patients.html" class="sidebar-btn"><i class="fa-solid fa-user-plus"></i>Patients</a></button>
+            <button><a href="./prescription.html" class="sidebar-btn"><i class="fa-solid fa-file-circle-plus"></i>Prescription</a></button>
+            <div class="settings-dropdown">
+                <button class="settings-button" onclick="toggleDropdown()" >
+                    <i class="fa fa-gear"></i>
+                    <span class="sidebar-btn">Settings</span>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <button class="dropdown-item "><a href="./allclinic.html" class="sidebar-btn">All Clinic</a></button>
+                    <button class="dropdown-item"><a href="./setup.html" class="sidebar-btn">Setup</a></button>
+                    <button class="dropdown-item"><a href="./presetdata.html" class="sidebar-btn">Preset data</a></button>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="clinic-select-container">
+                <div class="clinic-select-field">
+                    <div class="clinic-dropdown-display" id="clinicDropdownDisplay">
+                        <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-logo">
+                        <div class="clinic-info">
+                            <h3 class="clinic-name">NDSL Clinic</h3>
+                            <p class="clinic-address">
+                                <i class="fa fa-map-marker-alt"></i>
+                                Mohakhali DOHS, Dhaka, Bangladesh
+                            </p>
+                        </div>
+                        <span class="dropdown-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="clinic-dropdown-menu" id="clinicDropdownMenu">
+                        <div class="clinic-option selected" data-id="clinic1">
+                            <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">NDSL Clinic</h4>
+                                <p class="clinic-option-address">Mohakhali DOHS, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic2">
+                            <img src="./images/logo.svg" alt="Mirpur Hospital" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Mirpur Hospital</h4>
+                                <p class="clinic-option-address">Mirpur, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic3">
+                            <img src="./images/logo.svg" alt="Medinova Medical Services" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Medinova Medical Services</h4>
+                                <p class="clinic-option-address">Kajal Shah, Sylhet, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic4">
+                            <img src="./images/logo.svg" alt="Neeramoy Online For Brac" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Neeramoy Online For Brac</h4>
+                                <p class="clinic-option-address">34 Kemal Ataturk Ave, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        <a href="allclinic.html" class="see-all-clinics-btn">
+                            <i class="fa fa-building"></i> See All Clinics
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-section">
+                <button class="status-button">System Health Status</button>
+                <span class="status-indicator online">Online</span>
+                <button class="logout logout-btn" title="Logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Logout Confirmation Modal -->
+            <div id="logout-modal" class="logout-modal">
+                <div class="logout-modal-content">
+                    <div class="logout-modal-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="logout-modal-title">Confirmation</h2>
+                    <p class="logout-modal-text">Are you sure that you want to logout?</p>
+                    <div class="logout-modal-actions">
+                        <button id="cancel-logout" class="btn-cancel">Cancel</button>
+                        <button id="confirm-logout" class="btn-confirm">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Common Code Ends -->
+
+        <!-- Appointment Code Starts -->
+        <div class="appointment-container">
+            <!-- Header with title and new appointment button -->
+            <div class="appointment-header">
+                <h2>Appointments</h2>
+                <button class="new-appointment-btn" onclick="openNewAppointmentModal()">
+                    <i class="fa fa-plus"></i> New Appointment
+                </button>
+            </div>
+
+            <!-- View selector and export section -->
+            <div class="appointment-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="week">Week</button>
+                    <button class="view-btn" data-view="day">Day</button>
+                </div>
+                
+                <div class="date-navigation">
+                    <button class="nav-btn prev"><i class="fa fa-chevron-left"></i></button>
+                    <span class="date-range">May 10 - May 16, 2025</span>
+                    <button class="nav-btn next"><i class="fa fa-chevron-right"></i></button>
+                </div>
+                
+                <button class="export-btn">
+                    <i class="fa fa-download"></i> Export
+                </button>
+            </div>
+
+            <!-- Appointment table -->
+            <div class="appointment-table">
+                <div class="table-header">
+                    <div class="col-profile">Profile</div>
+                    <div class="col-age">Age</div>
+                    <div class="col-datetime">Date & Time</div>
+                    <div class="col-type">Type</div>
+                    <div class="col-complaints">Chief complaints</div>
+                    <div class="col-action">Action</div>
+                </div>
+                
+                <div class="appointment-row" onclick="openAppointmentDetails(1)">
+                    <div class="col-profile">
+                        <div class="patient-profile">
+                            <img src="./images/Rauf.png" alt="patient-image">
+                            <div class="patient-info">
+                                <h4 class="patient-name">Raufull Islam Rauf</h4>
+                                <span class="patinet-id">Patient ID: 06028955429</span>
+                                <span class="patient-phone">+880111454664</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-age">25 years</div>
+                    <div class="col-datetime">
+                        <div class="date">10 May, 2025</div>
+                        <div class="time">3:30 am - 3:40 am</div>
+                    </div>
+                    <div class="col-type">Existing Patient</div>
+                    <div class="col-complaints">Fever</div>
+                    <div class="col-action">
+                        <button class="edit-btn" onclick="event.stopPropagation(); editAppointment(1)"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <!-- New Appointment Modal -->
+        <div class="modal" id="newAppointmentModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>New Appointment</h3>
+                    <button class="close-btn" onclick="closeModal('newAppointmentModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-progress">
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Patient Info</div>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Appointment Details</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step active" id="step1">
+                        <div class="input-group">
+                            <i class="fa fa-phone-alt"></i>
+                            <div class="input-container">
+                                <input type="text" id="patientPhone" placeholder=" ">
+                                <label for="patientPhone">Patient Phone Number</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <i class="fa fa-user"></i>
+                            <div class="input-container">
+                                <input type="text" id="patientName" placeholder=" ">
+                                <label for="patientName">Patient Full Name</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa fa-envelope"></i>
+                            <div class="input-container">
+                                <input type="email" id="patientEmail" placeholder=" ">
+                                <label for="patientEmail">Email Address</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <i class="fa fa-user-clock"></i>
+                            <div class="input-container">
+                                <input type="number" id="patientAge" min="0" max="120" placeholder=" ">
+                                <label for="patientAge">Age (years)</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa fa-calendar-alt"></i>
+                            <div class="input-container">
+                                <input type="date" id="patientDOB" placeholder=" ">
+                                <label for="patientDOB" class="date-label">Date of Birth</label>
+                            </div>
+                        </div>
+                        
+                        <div class="gender-group">
+                            <label class="gender-label">Gender</label>
+                            <div class="radio-options">
+                                <label class="radio-container">
+                                    <input type="radio" name="gender" value="male" checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Male</span>
+                                </label>
+                                <label class="radio-container">
+                                    <input type="radio" name="gender" value="female">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Female</span>
+                                </label>
+                                <label class="radio-container">
+                                    <input type="radio" name="gender" value="other">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Other</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button class="btn-cancel" onclick="closeModal('newAppointmentModal')">Cancel</button>
+                            <button class="btn-next" id="nextToStep2">Next <i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" id="step2">
+                        <div class="appointment-form-grid">
+                            <div class="appointment-form-left">
+                                <div class="input-group">
+                                    <i class="fa fa-clinic-medical"></i>
+                                    <div class="input-container select-container">
+                                        <select id="clinicSelect">
+                                            <option value="" disabled selected></option>
+                                            <option value="ndsl">NDSL Clinic</option>
+                                            <option value="uttara">Uttara Clinic</option>
+                                            <option value="dhanmondi">Dhanmondi Clinic</option>
+                                        </select>
+                                        <label for="clinicSelect">Select Clinic</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <i class="fa fa-user-md"></i>
+                                    <div class="input-container select-container">
+                                        <select id="appointmentType">
+                                            <option value="" disabled selected></option>
+                                            <option value="existing">Existing Patient</option>
+                                            <option value="new">New Patient</option>
+                                            <option value="followup">Follow-up</option>
+                                        </select>
+                                        <label for="appointmentType">Appointment Type</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <i class="fa fa-calendar"></i>
+                                    <div class="input-container date-field">
+                                        <label for="appointmentDate">Appointment Date</label>
+                                        <input type="date" id="appointmentDate" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <i class="fa fa-comment-medical"></i>
+                                    <div class="input-container textarea-container">
+                                        <textarea id="chiefComplaint" placeholder=" "></textarea>
+                                        <label for="chiefComplaint">Chief Complaint</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="appointment-form-right">
+                                <h4>Select Time Slot</h4>
+                                <div class="time-period-selector">
+                                    <button class="time-period active" data-period="morning">Morning</button>
+                                    <button class="time-period" data-period="afternoon">Afternoon</button>
+                                    <button class="time-period" data-period="evening">Evening</button>
+                                </div>
+                                
+                                <div class="time-period-block active" data-period="morning">
+                                    <div class="time-slots-grid">
+                                        <div class="time-slot">10:00 AM</div>
+                                        <div class="time-slot">10:15 AM</div>
+                                        <div class="time-slot">10:30 AM</div>
+                                        <div class="time-slot">10:45 AM</div>
+                                        <div class="time-slot">11:00 AM</div>
+                                        <div class="time-slot unavailable">11:15 AM</div>
+                                        <div class="time-slot">11:30 AM</div>
+                                        <div class="time-slot">11:45 AM</div>
+                                        <div class="time-slot">12:00 PM</div>
+                                        <div class="time-slot">12:15 PM</div>
+                                        <div class="time-slot">12:30 PM</div>
+                                        <div class="time-slot">12:45 PM</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="time-period-block" data-period="afternoon">
+                                    <div class="time-slots-grid">
+                                        <div class="time-slot">1:00 PM</div>
+                                        <div class="time-slot">1:15 PM</div>
+                                        <div class="time-slot unavailable">1:30 PM</div>
+                                        <div class="time-slot">1:45 PM</div>
+                                        <div class="time-slot">2:00 PM</div>
+                                        <div class="time-slot">2:15 PM</div>
+                                        <div class="time-slot">2:30 PM</div>
+                                        <div class="time-slot">2:45 PM</div>
+                                        <div class="time-slot">3:00 PM</div>
+                                        <div class="time-slot">3:15 PM</div>
+                                        <div class="time-slot">3:30 PM</div>
+                                        <div class="time-slot">3:45 PM</div>
+                                        <div class="time-slot">4:00 PM</div>
+                                        <div class="time-slot">4:15 PM</div>
+                                        <div class="time-slot">4:30 PM</div>
+                                        <div class="time-slot">4:45 PM</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="time-period-block" data-period="evening">
+                                    <div class="time-slots-grid">
+                                        <div class="time-slot">5:00 PM</div>
+                                        <div class="time-slot">5:15 PM</div>
+                                        <div class="time-slot">5:30 PM</div>
+                                        <div class="time-slot">5:45 PM</div>
+                                        <div class="time-slot">6:00 PM</div>
+                                        <div class="time-slot">6:15 PM</div>
+                                        <div class="time-slot">6:30 PM</div>
+                                        <div class="time-slot">6:45 PM</div>
+                                        <div class="time-slot">7:00 PM</div>
+                                        <div class="time-slot">7:15 PM</div>
+                                        <div class="time-slot">7:30 PM</div>
+                                        <div class="time-slot">7:45 PM</div>
+                                        <div class="time-slot">8:00 PM</div>
+                                        <div class="time-slot">8:15 PM</div>
+                                        <div class="time-slot">8:30 PM</div>
+                                        <div class="time-slot">8:45 PM</div>
+                                        <div class="time-slot">9:00 PM</div>
+                                        <div class="time-slot">9:15 PM</div>
+                                        <div class="time-slot">9:30 PM</div>
+                                        <div class="time-slot">9:45 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button class="btn-back" id="backToStep1"><i class="fa fa-arrow-left"></i> Back</button>
+                            <button class="btn-save" onclick="saveNewAppointment()">Create Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointment Details Modal -->
+        <div class="modal" id="appointmentDetailsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Appointment details</h3>
+                    <button class="close-btn" onclick="closeModal('appointmentDetailsModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="patient-card">
+                        <img src="./images/Rauf.png" alt="Patient" class="patient-image">
+                        <div class="patient-details">
+                            <h3>Rauf</h3>
+                            <p>25 years, Male</p>
+                        </div>
+                    </div>
+                    
+                    <div class="details-grid">
+                        <div class="details-row">
+                            <div class="details-label">Time</div>
+                            <div class="details-value" class>7:30 pm - 7:40 pm</div>
+                        </div>
+                        <div class="details-row">
+                            <div class="details-label">Type</div>
+                            <div class="details-value">Existing Patient</div>
+                        </div>
+                        <div class="details-row">
+                            <div class="details-label">Chief Complaint</div>
+                            <div class="details-value">Fever</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="prescription-btn" onclick="createPrescription()">
+                            <i class="fa fa-file-medical icon"></i> Prescription
+                        </button>
+                        <button class="cancel-btn" onclick="cancelAppointment()">
+                            <i class="fa fa-times icon"></i> Cancel
+                        </button>
+                        <button class="reschedule-btn" onclick="openRescheduleModal()">
+                            <i class="fa fa-calendar icon"></i> Reschedule
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reschedule Appointment Modal -->
+        <div class="modal" id="rescheduleModal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h3>Reschedule Appointment</h3>
+                    <button class="close-btn" onclick="closeModal('rescheduleModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="reschedule-grid">
+                        <div class="reschedule-column">
+                            <div class="form-group">
+                                <label>Select clinic</label>
+                                <select>
+                                    <option>NDSL Clinic</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select appointment type</label>
+                                <select>
+                                    <option>Existing Patient</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rescheduleDate">Select New Date</label>
+                                <div class="date-picker">
+                                    <input type="date" id="rescheduleDate" class="date-input" required>
+                                </div>
+                                <div class="selected-date">Today</div>
+                            </div>
+                        </div>
+                        <div class="reschedule-column">
+                            <div class="time-slots-header">
+                                <h4>Select Time Slot</h4>
+                                <div class="selected-date" id="selectedRescheduleDate">Saturday, May 10, 2025</div>
+                            </div>
+                            
+                            <div class="time-period-selector">
+                                <button class="time-period active" data-period="morning">Morning</button>
+                                <button class="time-period" data-period="afternoon">Afternoon</button>
+                                <button class="time-period" data-period="evening">Evening</button>
+                            </div>
+                            
+                            <!-- Time slots will be displayed here -->
+                            <div class="time-period-block active" data-period="morning">
+                                <div class="time-slots-grid">
+                                    <div class="time-slot">10:00 AM</div>
+                                    <div class="time-slot">10:15 AM</div>
+                                    <div class="time-slot">10:30 AM</div>
+                                    <div class="time-slot">10:45 AM</div>
+                                    <div class="time-slot">11:00 AM</div>
+                                    <div class="time-slot unavailable">11:15 AM</div>
+                                    <div class="time-slot">11:30 AM</div>
+                                    <div class="time-slot">11:45 AM</div>
+                                    <div class="time-slot">12:00 PM</div>
+                                    <div class="time-slot">12:15 PM</div>
+                                    <div class="time-slot">12:30 PM</div>
+                                    <div class="time-slot">12:45 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="time-period-block" data-period="afternoon">
+                                <div class="time-slots-grid">
+                                    <div class="time-slot">1:00 PM</div>
+                                    <div class="time-slot">1:15 PM</div>
+                                    <div class="time-slot unavailable">1:30 PM</div>
+                                    <div class="time-slot">1:45 PM</div>
+                                    <div class="time-slot">2:00 PM</div>
+                                    <div class="time-slot">2:15 PM</div>
+                                    <div class="time-slot">2:30 PM</div>
+                                    <div class="time-slot">2:45 PM</div>
+                                    <div class="time-slot">3:00 PM</div>
+                                    <div class="time-slot">3:15 PM</div>
+                                    <div class="time-slot">3:30 PM</div>
+                                    <div class="time-slot">3:45 PM</div>
+                                    <div class="time-slot">4:00 PM</div>
+                                    <div class="time-slot">4:15 PM</div>
+                                    <div class="time-slot">4:30 PM</div>
+                                    <div class="time-slot">4:45 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="time-period-block" data-period="evening">
+                                <div class="time-slots-grid">
+                                    <div class="time-slot">5:00 PM</div>
+                                    <div class="time-slot">5:15 PM</div>
+                                    <div class="time-slot">5:30 PM</div>
+                                    <div class="time-slot">5:45 PM</div>
+                                    <div class="time-slot">6:00 PM</div>
+                                    <div class="time-slot">6:15 PM</div>
+                                    <div class="time-slot">6:30 PM</div>
+                                    <div class="time-slot">6:45 PM</div>
+                                    <div class="time-slot">7:00 PM</div>
+                                    <div class="time-slot">7:15 PM</div>
+                                    <div class="time-slot">7:30 PM</div>
+                                    <div class="time-slot">7:45 PM</div>
+                                    <div class="time-slot">8:00 PM</div>
+                                    <div class="time-slot">8:15 PM</div>
+                                    <div class="time-slot">8:30 PM</div>
+                                    <div class="time-slot">8:45 PM</div>
+                                    <div class="time-slot">9:00 PM</div>
+                                    <div class="time-slot">9:15 PM</div>
+                                    <div class="time-slot">9:30 PM</div>
+                                    <div class="time-slot">9:45 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="reschedule-actions">
+                                <button class="btn-cancel" onclick="closeModal('rescheduleModal')">Cancel</button>
+                                <button class="btn-confirm" onclick="confirmReschedule()">Confirm Reschedule</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Add JavaScript -->
+        <script>
+            function toggleDropdown() {
+                const dropdown = document.querySelector('.dropdown-content');
+                dropdown.classList.toggle('show'); // Toggle the "show" class to display or hide the dropdown
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', function (event) {
+                const dropdown = document.querySelector('.dropdown-content');
+                const settingsButton = document.querySelector('.settings-button');
+                if (!settingsButton.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show'); // Hide the dropdown
+                }
+            });
+            // Logout Modal Functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get modal elements
+                const logoutModal = document.getElementById('logout-modal');
+                const cancelLogout = document.getElementById('cancel-logout');
+                const confirmLogout = document.getElementById('confirm-logout');
+                const logoutButtons = document.querySelectorAll('.logout-btn');
+                
+                // Show modal when logout button is clicked
+                logoutButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logoutModal.classList.add('active');
+                    });
+                });
+                
+                // Hide modal when cancel is clicked
+                cancelLogout.addEventListener('click', function() {
+                    logoutModal.classList.remove('active');
+                });
+                
+                // Handle logout confirmation
+                confirmLogout.addEventListener('click', function() {
+                    // Perform logout actions here
+                    // For example: redirect to login page
+                    window.location.href = 'index.html'; // Replace with your login page URL
+                });
+                
+                // Close modal when clicking outside
+                logoutModal.addEventListener('click', function(e) {
+                    if (e.target === logoutModal) {
+                        logoutModal.classList.remove('active');
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && logoutModal.classList.contains('active')) {
+                        logoutModal.classList.remove('active');
+                    }
+                });
+            });
+       
+            // Appointment functionality
+            function openNewAppointmentModal() {
+                document.getElementById('newAppointmentModal').classList.add('show');
+            }
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).classList.remove('show');
+            }
+
+            function saveNewAppointment() {
+                // Code to save the new appointment
+                // After saving, close the modal
+                closeModal('newAppointmentModal');
+            }
+
+            function openAppointmentDetails(id) {
+                document.getElementById('appointmentDetailsModal').classList.add('show');
+            }
+
+            function editAppointment(id) {
+                // Code to edit appointment
+                openAppointmentDetails(id);
+            }
+
+            function createPrescription() {
+                // Redirect to prescription page
+                window.location.href = './prescription.html';
+            }
+
+            function cancelAppointment() {
+                // Code to cancel appointment
+                closeModal('appointmentDetailsModal');
+            }
+
+            function openRescheduleModal() {
+                closeModal('appointmentDetailsModal');
+                document.getElementById('rescheduleModal').classList.add('show');
+            }
+
+            // View toggle functionality
+            document.querySelectorAll('.view-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        </script>
+        <script>
+            // Add this script at the end of your file or in an existing script tag
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Step navigation for new appointment form
+                document.getElementById('nextToStep2').addEventListener('click', function() {
+                    document.getElementById('step1').classList.remove('active');
+                    document.getElementById('step2').classList.add('active');
+                    document.querySelector('.progress-step[data-step="1"]').classList.add('completed');
+                    document.querySelector('.progress-step[data-step="2"]').classList.add('active');
+                });
+                
+                document.getElementById('backToStep1').addEventListener('click', function() {
+                    document.getElementById('step2').classList.remove('active');
+                    document.getElementById('step1').classList.add('active');
+                    document.querySelector('.progress-step[data-step="2"]').classList.remove('active');
+                });
+                
+                // Time period toggle for new appointments
+                document.querySelectorAll('.time-period').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const period = this.getAttribute('data-period');
+                        
+                        // button state
+                        document.querySelectorAll('.time-period').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Show corresponding time blocks
+                        document.querySelectorAll('.time-period-block').forEach(block => {
+                            block.classList.remove('active');
+                        });
+                        document.querySelector(`.time-period-block[data-period="${period}"]`).classList.add('active');
+                    });
+                });
+                
+                // Time slot selection
+                document.querySelectorAll('.time-slot:not(.unavailable)').forEach(slot => {
+                    slot.addEventListener('click', function() {
+                        document.querySelectorAll('.time-slot').forEach(s => {
+                            s.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                    });
+                });
+                
+                // Initialize other necessary functions
+                function openNewAppointmentModal() {
+                    document.getElementById('newAppointmentModal').classList.add('show');
+                }
+                
+                function closeModal(modalId) {
+                    document.getElementById(modalId).classList.remove('show');
+                    
+                    // Reset the form to step 1 when closing
+                    if (modalId === 'newAppointmentModal') {
+                        document.getElementById('step2').classList.remove('active');
+                        document.getElementById('step1').classList.add('active');
+                        document.querySelector('.progress-step[data-step="2"]').classList.remove('active');
+                        document.querySelector('.progress-step[data-step="1"]').classList.add('active');
+                        document.querySelector('.progress-step[data-step="1"]').classList.remove('completed');
+                    }
+                }
+                
+                function saveNewAppointment() {
+                    const selectedTimeSlot = document.querySelector('.time-slot.selected');
+                    
+                    if (!selectedTimeSlot) {
+                        alert('Please select a time slot');
+                        return;
+                    }
+                    
+                    // Collect form data
+                    const patientName = document.getElementById('patientName').value;
+                    const patientPhone = document.getElementById('patientPhone').value;
+                    const patientDOB = document.getElementById('patientDOB').value;
+                    const gender = document.querySelector('input[name="gender"]:checked').value;
+                    const clinicSelect = document.getElementById('clinicSelect').value;
+                    const appointmentType = document.getElementById('appointmentType').value;
+                    const appointmentDate = document.getElementById('appointmentDate').value;
+                    const chiefComplaint = document.getElementById('chiefComplaint').value;
+                    const timeSlot = selectedTimeSlot.textContent.trim();
+                    
+                    // Validate required fields
+                    if (!patientName || !patientPhone || !clinicSelect || !appointmentType || !appointmentDate) {
+                        alert('Please fill all required fields');
+                        return;
+                    }
+                    
+                    // Create a new appointment object
+                    const newAppointment = {
+                        id: Date.now(), // Use timestamp as ID for demo
+                        patientName: patientName,
+                        patientPhone: patientPhone,
+                        patientId: generatePatientId(),
+                        patientAge: calculateAge(patientDOB),
+                        date: appointmentDate,
+                        time: calculateEndTime(timeSlot),
+                        type: document.getElementById('appointmentType').options[document.getElementById('appointmentType').selectedIndex].text,
+                        complaints: chiefComplaint || 'NA',
+                        status: 'scheduled'
+                    };
+                    
+                    // Add to appointmentsData if it exists
+                    if (typeof appointmentsData !== 'undefined') {
+                        appointmentsData.push(newAppointment);
+                        updateCalendarView(currentView);
+                    }
+                    
+                    // Close modal and show success message
+                    closeModal('newAppointmentModal');
+                    showCreatedCard('Appointment created successfully');
+
+                    function showCreatedCard(message) {
+                        // Create success card element
+                        const successCard = document.createElement('div');
+                        successCard.className = 'success-card-overlay';
+                        successCard.innerHTML = `
+                            <div class="success-card">
+                                <div class="success-icon">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <h3>Success!</h3>
+                                <p>${message}</p>
+                                <button class="success-ok-btn" onclick="closeSuccessCard()">OK</button>
+                            </div>
+                        `;
+                        
+                        document.body.appendChild(successCard);
+                        
+                        // Show with animation
+                        setTimeout(() => {
+                            successCard.classList.add('show');
+                        }, 10);
+                        
+                        // Auto close after 3 seconds
+                        setTimeout(() => {
+                            closeSuccessCard();
+                        }, 3000);
+                    }
+                    function closeSuccessCard() {
+                        const successCard = document.querySelector('.success-card-overlay');
+                        if (successCard) {
+                            successCard.classList.remove('show');
+                            setTimeout(() => {
+                                successCard.remove();
+                            }, 300);
+                        }
+                    }
+                    
+                    // Reset form
+                    document.getElementById('patientName').value = '';
+                    document.getElementById('patientPhone').value = '';
+                    document.getElementById('patientDOB').value = '';
+                    document.getElementById('clinicSelect').value = '';
+                    document.getElementById('appointmentType').value = '';
+                    document.getElementById('appointmentDate').value = '';
+                    document.getElementById('chiefComplaint').value = '';
+                    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                }
+                
+                // Helper functions
+                function generatePatientId() {
+                    return Math.random().toString(36).substring(2, 15);
+                }
+                
+                function calculateAge(dob) {
+                    if (!dob) return 'Unknown';
+                    const birthDate = new Date(dob);
+                    const today = new Date();
+                    let age = today.getFullYear() - birthDate.getFullYear();
+                    const m = today.getMonth() - birthDate.getMonth();
+                    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                        age--;
+                    }
+                    return age;
+                }
+                
+                function calculateEndTime(startTime) {
+                    // Parse the start time
+                    const timeRegex = /(\d+):(\d+)\s*(AM|PM)/i;
+                    const match = startTime.match(timeRegex);
+                    
+                    if (!match) return startTime;
+                    
+                    let hours = parseInt(match[1]);
+                    const minutes = parseInt(match[2]);
+                    const period = match[3].toUpperCase();
+                    
+                    // Convert to 24-hour format
+                    if (period === 'PM' && hours < 12) {
+                        hours += 12;
+                    } else if (period === 'AM' && hours === 12) {
+                        hours = 0;
+                    }
+                    
+                    // Add 15 minutes for end time
+                    let endHours = hours;
+                    let endMinutes = minutes + 15;
+                    
+                    if (endMinutes >= 60) {
+                        endMinutes -= 60;
+                        endHours += 1;
+                    }
+                    
+                    // Convert back to 12-hour format
+                    let endPeriod = period;
+                    if (endHours >= 12) {
+                        endPeriod = 'PM';
+                        if (endHours > 12) {
+                            endHours -= 12;
+                        }
+                    } else if (endHours === 0) {
+                        endHours = 12;
+                        endPeriod = 'AM';
+                    }
+                    
+                    return `${startTime} - ${endHours}:${endMinutes.toString().padStart(2, '0')} ${endPeriod}`;
+                }
+                
+                // Make sure these functions are available globally if needed
+                window.openNewAppointmentModal = openNewAppointmentModal;
+                window.closeModal = closeModal;
+                window.saveNewAppointment = saveNewAppointment;
+            });
+
+            // Toast notification function
+            function showToast(message) {
+                // Create toast element if it doesn't exist
+                let toast = document.querySelector('.toast-notification');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.className = 'toast-notification';
+                    document.body.appendChild(toast);
+                }
+                
+                // Set message and show
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                // Auto hide after 3 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        </script>
+        <script>
+            // Add this script to the end of your file or in an existing script tag
+            document.addEventListener('DOMContentLoaded', function() {
+                // Time period selector functionality for reschedule modal
+                const rescheduleModal = document.getElementById('rescheduleModal');
+                if (rescheduleModal) {
+                    const periodButtons = rescheduleModal.querySelectorAll('.time-period');
+                    const timeBlocks = rescheduleModal.querySelectorAll('.time-period-block');
+                    const timeSlots = rescheduleModal.querySelectorAll('.time-slot:not(.unavailable)');
+                    
+                    // Time period toggle
+                    periodButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const period = this.getAttribute('data-period');
+                            
+                            // Update active state for buttons
+                            periodButtons.forEach(btn => btn.classList.remove('active'));
+                            this.classList.add('active');
+                            
+                            // Show the corresponding time period block
+                            timeBlocks.forEach(block => block.classList.remove('active'));
+                            rescheduleModal.querySelector(`.time-period-block[data-period="${period}"]`).classList.add('active');
+                        });
+                    });
+                    
+                    // Time slot selection
+                    timeSlots.forEach(slot => {
+                        slot.addEventListener('click', function() {
+                            // Remove selected class from all slots
+                            timeSlots.forEach(s => s.classList.remove('selected'));
+                            // Add selected class to clicked slot
+                            this.classList.add('selected');
+                        });
+                    });
+                }
+                
+                // Function to open reschedule modal
+                window.openRescheduleModal = function() {
+                    closeModal('appointmentDetailsModal');
+                    document.getElementById('rescheduleModal').classList.add('show');
+                };
+                
+                // Function to confirm reschedule
+                window.confirmReschedule = function() {
+                    const selectedTimeSlot = document.querySelector('#rescheduleModal .time-slot.selected');
+                    
+                    if (!selectedTimeSlot) {
+                        alert('Please select a time slot');
+                        return;
+                    }
+                    
+                    // Perform reschedule logic here
+                    closeModal('rescheduleModal');
+                    showSuccessCard('Appointment rescheduled successfully');
+                };
+                
+                // Function to show success card
+                function showSuccessCard(message) {
+                    // Create success card element
+                    const successCard = document.createElement('div');
+                    successCard.className = 'success-card-overlay';
+                    successCard.innerHTML = `
+                        <div class="success-card">
+                            <div class="success-icon">
+                                <i class="fa fa-check-circle"></i>
+                            </div>
+                            <h3>Success!</h3>
+                            <p>${message}</p>
+                            <button class="success-ok-btn" onclick="closeSuccessCard()">OK</button>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(successCard);
+                    
+                    // Show with animation
+                    setTimeout(() => {
+                        successCard.classList.add('show');
+                    }, 10);
+                    
+                    // Auto close after 3 seconds
+                    setTimeout(() => {
+                        closeSuccessCard();
+                    }, 3000);
+                }
+                
+                // Function to close success card
+                function closeSuccessCard() {
+                    const successCard = document.querySelector('.success-card-overlay');
+                    if (successCard) {
+                        successCard.classList.remove('show');
+                        setTimeout(() => {
+                            successCard.remove();
+                        }, 300);
+                    }
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Handle date selection in the reschedule modal
+                const rescheduleDate = document.querySelector('#rescheduleModal .date-input');
+                
+                if (rescheduleDate) {
+                    // Set default date to today
+                    const today = new Date();
+                    const formattedDate = today.toISOString().split('T')[0];
+                    rescheduleDate.value = formattedDate;
+                    
+                    // Update the selected date display when changed
+                    rescheduleDate.addEventListener('change', function() {
+                        const selectedDate = new Date(this.value);
+                        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                        const formattedDisplayDate = selectedDate.toLocaleDateString('en-US', options);
+                        
+                        // Update the displayed date in the modal
+                        const selectedDateElement = document.querySelector('#rescheduleModal .selected-date');
+                        if (selectedDateElement) {
+                            selectedDateElement.textContent = formattedDisplayDate;
+                        }
+                        
+                        // You might want to also refresh available time slots based on the selected date
+                        // This would require an API call in a real application
+                        refreshTimeSlots(this.value);
+                    });
+                }
+                
+                // Function to refresh time slots based on selected date
+                function refreshTimeSlots(date) {
+                    // In a real app, this would fetch available slots from the server
+                    // For now, we'll simulate by making some slots unavailable randomly
+                    
+                    const timeSlots = document.querySelectorAll('#rescheduleModal .time-slot');
+                    timeSlots.forEach(slot => {
+                        // Remove any previous unavailable status
+                        slot.classList.remove('unavailable');
+                        
+                        // Make some slots randomly unavailable to simulate a real calendar
+                        if (Math.random() > 0.8) {
+                            slot.classList.add('unavailable');
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Set min date to today for all date inputs
+                const today = new Date();
+                const formattedToday = today.toISOString().split('T')[0];
+                
+                // Set min date for all date inputs to prevent selecting past dates
+                document.querySelectorAll('input[type="date"]').forEach(dateInput => {
+                    dateInput.setAttribute('min', formattedToday);
+                    
+                    // Set default value to today if not already set
+                    if (!dateInput.value) {
+                        dateInput.value = formattedToday;
+                    }
+                    
+                    // Add today highlight class
+                    dateInput.classList.add('highlight-today');
+                });
+                
+                // Format the displayed date in the reschedule modal
+                const rescheduleDate = document.getElementById('rescheduleDate');
+                if (rescheduleDate) {
+                    updateSelectedDateDisplay(rescheduleDate);
+                    
+                    rescheduleDate.addEventListener('change', function() {
+                        updateSelectedDateDisplay(this);
+                    });
+                }
+                
+                // Format the displayed date in the new appointment form
+                const appointmentDate = document.getElementById('appointmentDate');
+                if (appointmentDate) {
+                    appointmentDate.addEventListener('change', function() {
+                        // You could add a similar date display here if needed
+                    });
+                }
+                
+                // Helper function to update the displayed date
+                function updateSelectedDateDisplay(dateInput) {
+                    const selectedDate = new Date(dateInput.value);
+                    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+                    const formattedDisplayDate = selectedDate.toLocaleDateString('en-US', options);
+                    
+                    // Find the closest selected-date element
+                    const displayElement = dateInput.closest('.form-group').querySelector('.selected-date');
+                    if (displayElement) {
+                        displayElement.textContent = formattedDisplayDate;
+                    }
+                }
+            });
+             // Clinic Dropdown Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const clinicDropdownDisplay = document.getElementById('clinicDropdownDisplay');
+            const clinicDropdownMenu = document.getElementById('clinicDropdownMenu');
+            const clinicOptions = document.querySelectorAll('.clinic-option');
+            
+            // Toggle dropdown menu
+            if (clinicDropdownDisplay) {
+                clinicDropdownDisplay.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    clinicDropdownMenu.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!clinicDropdownDisplay.contains(event.target) && 
+                    !clinicDropdownMenu.contains(event.target)) {
+                    clinicDropdownDisplay.classList.remove('active');
+                    clinicDropdownMenu.classList.remove('show');
+                }
+            });
+            
+            // Handle clinic selection
+            clinicOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    clinicOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update display with selected clinic info
+                    const clinicName = this.querySelector('.clinic-option-name').innerText;
+                    const clinicAddress = this.querySelector('.clinic-option-address').innerText;
+                    const clinicLogo = this.querySelector('.clinic-option-logo').src;
+                    const clinicId = this.getAttribute('data-id');
+                    
+                    // Update the display
+                    document.querySelector('.clinic-name').innerText = clinicName;
+                    document.querySelector('.clinic-address').innerHTML = '<i class="fa fa-map-marker-alt"></i> ' + clinicAddress;
+                    document.querySelector('.clinic-logo').src = clinicLogo;
+                    
+                    // You could also store the selected clinic ID in a hidden input or data attribute
+                    // document.getElementById('selectedClinic').value = clinicId;
+                    
+                    // Close the dropdown
+                    clinicDropdownDisplay.classList.remove('active');
+                    clinicDropdownMenu.classList.remove('show');
+                });
+            });
+        });
+        </script>
+        <script>
+            // Calculate date of birth from age input
+            document.addEventListener('DOMContentLoaded', function() {
+                const patientAgeInput = document.getElementById('patientAge');
+                const patientDOBInput = document.getElementById('patientDOB');
+                
+                if (patientAgeInput && patientDOBInput) {
+                    // When age is entered, calculate and set the DOB
+                    patientAgeInput.addEventListener('input', function() {
+                        const age = parseInt(this.value);
+                        
+                        // Validate age input
+                        if (!isNaN(age) && age >= 0 && age <= 120) {
+                            // Calculate DOB based on age
+                            const today = new Date();
+                            const birthYear = today.getFullYear() - age;
+                            
+                            // Format the date to YYYY-MM-DD (HTML date input format)
+                            const dob = new Date(birthYear, today.getMonth(), today.getDate());
+                            const formattedDOB = dob.toISOString().split('T')[0];
+                            
+                            // Set the DOB field
+                            patientDOBInput.value = formattedDOB;
+                        }
+                    });
+                    
+                    // When DOB is entered, calculate and set the age
+                    patientDOBInput.addEventListener('input', function() {
+                        if (this.value) {
+                            const dob = new Date(this.value);
+                            const today = new Date();
+                            
+                            let age = today.getFullYear() - dob.getFullYear();
+                            const monthDiff = today.getMonth() - dob.getMonth();
+                            
+                            // Adjust age if birthday hasn't occurred yet this year
+                            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                                age--;
+                            }
+                            
+                            // Update the age input without triggering its event handler
+                            patientAgeInput.value = age;
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            // Handle sidebar button selection
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get current page URL
+                const currentPage = window.location.pathname.split('/').pop();
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('.sidebar nav button').forEach(btn => {
+                    btn.classList.remove('active', 'selected');
+                });
+                
+                // Add active class to current page button
+                document.querySelectorAll('.sidebar nav button a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && href.includes(currentPage)) {
+                        link.closest('button').classList.add('active');
+                    }
+                });
+                
+                // Handle click events for sidebar buttons
+                document.querySelectorAll('.sidebar nav button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        document.querySelectorAll('.sidebar nav button').forEach(btn => {
+                            btn.classList.remove('active', 'selected');
+                        });
+                        
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                    });
+                });
+            });
+        </script>
+        
+        <!-- Date Navigation functionality -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Elements
+                const viewButtons = document.querySelectorAll('.view-btn');
+                const dateRangeElement = document.querySelector('.date-range');
+                const prevBtn = document.querySelector('.nav-btn.prev');
+                const nextBtn = document.querySelector('.nav-btn.next');
+                
+                // Variables to track current state
+                let currentDate = new Date(); // Today's date
+                let currentView = 'week'; // Default view is week
+
+                // Format options
+                const dateOptions = { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                };
+                const dayOptions = {
+                    weekday: 'long',
+                    month: 'long', 
+                    day: 'numeric', 
+                    year: 'numeric'
+                };
+
+                // Initialize the date range display
+                updateDateRangeDisplay();
+
+                // Event listeners for view buttons
+                viewButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Update active button
+                        viewButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Get the view type
+                        currentView = this.getAttribute('data-view');
+                        
+                        // Reset to current date when switching views
+                        currentDate = new Date();
+                        
+                        // Update the date range display
+                        updateDateRangeDisplay();
+                    });
+                });
+
+                // Event listeners for navigation buttons
+                prevBtn.addEventListener('click', function() {
+                    navigateDate(-1);
+                    updateDateRangeDisplay();
+                });
+
+                nextBtn.addEventListener('click', function() {
+                    navigateDate(1);
+                    updateDateRangeDisplay();
+                });
+
+                // Function to navigate dates based on current view
+                function navigateDate(direction) {
+                    if (currentView === 'week') {
+                        // Move by 7 days
+                        currentDate.setDate(currentDate.getDate() + (direction * 7));
+                    } else {
+                        // Move by 1 day
+                        currentDate.setDate(currentDate.getDate() + direction);
+                    }
+                }
+
+                // Function to update the date range display
+                function updateDateRangeDisplay() {
+                    if (currentView === 'week') {
+                        // Calculate the start of the week (Sunday)
+                        const startOfWeek = new Date(currentDate);
+                        startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+                        
+                        // Calculate the end of the week (Saturday)
+                        const endOfWeek = new Date(startOfWeek);
+                        endOfWeek.setDate(startOfWeek.getDate() + 6);
+                        
+                        // Format the date range
+                        const startFormatted = startOfWeek.toLocaleDateString('en-US', dateOptions);
+                        const endFormatted = endOfWeek.toLocaleDateString('en-US', dateOptions);
+                        dateRangeElement.textContent = `${startFormatted} - ${endFormatted}`;
+                        
+                    } else {
+                        // Display just the current day
+                        dateRangeElement.textContent = currentDate.toLocaleDateString('en-US', dayOptions);
+                    }
+                    
+                    // Update the appointment display (you would need to implement this based on your data)
+                    updateAppointmentDisplay();
+                }
+
+                // Update the appointment display based on the current date/view
+                function updateAppointmentDisplay() {
+                    // Get the appointment table
+                    const appointmentTable = document.querySelector('.appointment-table');
+                    if (!appointmentTable) return;
+                    
+                    // Add loading class
+                    appointmentTable.classList.add('loading');
+                    
+                    // Simulate fetching appointments with a short delay
+                    setTimeout(() => {
+                        appointmentTable.classList.remove('loading');
+                        
+                        // Get date info for display/filtering
+                        let displayDate = '';
+                        if (currentView === 'week') {
+                            const startOfWeek = new Date(currentDate);
+                            startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+                            displayDate = startOfWeek.toLocaleDateString('en-US', dateOptions);
+                        } else {
+                            displayDate = currentDate.toLocaleDateString('en-US', dayOptions);
+                        }
+                        
+                        // In a real application, you would fetch appointments for the selected date/week
+                        // For demo purposes, let's check if there are appointment rows
+                        const appointmentRows = appointmentTable.querySelectorAll('.appointment-row');
+                        
+                        // Check if we should display "No appointments" message
+                        // For demo purposes, let's show "No appointments" if currentDate is more than 1 week in future
+                        const oneWeekFromNow = new Date();
+                        oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 7);
+                        
+                        const shouldShowNoAppointments = currentDate > oneWeekFromNow;
+                        
+                        if (shouldShowNoAppointments || appointmentRows.length === 0) {
+                            // First check if we already have a no-appointments message
+                            let noAppointmentsMsg = appointmentTable.querySelector('.no-appointments-message');
+                            
+                            if (!noAppointmentsMsg) {
+                                // Create the no appointments message
+                                noAppointmentsMsg = document.createElement('div');
+                                noAppointmentsMsg.className = 'no-appointments-message';
+                                noAppointmentsMsg.innerHTML = `
+                                    <div class="empty-state">
+                                        <i class="fa fa-calendar-times"></i>
+                                        <p>No appointments found for this ${currentView === 'week' ? 'week' : 'day'}.</p>
+                                    </div>
+                                `;
+                                
+                                // Insert after the table header
+                                const tableHeader = appointmentTable.querySelector('.table-header');
+                                if (tableHeader) {
+                                    tableHeader.insertAdjacentElement('afterend', noAppointmentsMsg);
+                                } else {
+                                    appointmentTable.appendChild(noAppointmentsMsg);
+                                }
+                            }
+                            
+                            // Hide all appointment rows if any
+                            appointmentRows.forEach(row => {
+                                row.style.display = 'none';
+                            });
+                            
+                            // Show the no appointments message
+                            noAppointmentsMsg.style.display = 'block';
+                            
+                        } else {
+                            // We have appointments to display
+                            // Hide the no appointments message if it exists
+                            const noAppointmentsMsg = appointmentTable.querySelector('.no-appointments-message');
+                            if (noAppointmentsMsg) {
+                                noAppointmentsMsg.style.display = 'none';
+                            }
+                            
+                            // Show all appointment rows
+                            // In a real app, you would filter these based on the selected date
+                            appointmentRows.forEach(row => {
+                                row.style.display = 'flex';
+                            });
+                        }
+                    }, 300);
+                }
+            });
+        </script>
+</body>
+</html>

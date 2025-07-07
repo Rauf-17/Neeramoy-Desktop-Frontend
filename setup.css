@@ -1,0 +1,3428 @@
+/* Reset code and Common code Starts here */
+:root{
+    --primary-color: teal;
+    --secondary-color: #547792;
+    --third-color: #cfe5e1;
+    --text-color: white;
+    --padding: 1rem;
+    --transition: all 0.3s ease-in-out;
+    --border-radius: 0.6rem;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i{
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+    margin-right: 1rem;
+}
+
+.sidebar-btn{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.sidebar-btn:hover{
+    color: var(--primary-color);
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+/* Body Part */
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+}
+
+.sidebar {
+  height: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  background-color: #f5f9fc;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: height 0.3s ease-in-out;
+}
+
+.sidebar.expanded {
+  height: auto;
+  min-height: 100vh;
+}
+
+.sidebar .settings-dropdown .dropdown-content {
+  position: static;
+  box-shadow: none;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  width: calc(100% - 1rem);
+}
+
+.sidebar .doctor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.sidebar .doctor-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: #025b5b 3px solid;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
+.sidebar .doctor-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sidebar .doctor-info span {
+    font-size: 14px;
+    color: gray;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar nav button:hover {
+    background: #eaf4fb;
+    border-radius: 25px;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 1rem;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Topbar Design */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Enhanced Topbar Responsiveness - Keeping Horizontal Layout */
+
+/* Base topbar styling */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Default styles for clinic select and status section */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+}
+
+/* Left side - Clinic selector */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.clinic-logo {
+    width: 100px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain; /* Ensures image maintains aspect ratio */
+}
+
+.clinic-select select {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    min-width: 500px; 
+    width: 80%; 
+    max-width: 800px;
+    /* appearance: none; */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    margin-right: 2rem;
+}
+
+/* Enhanced Clinic Select Dropdown with Label */
+.clinic-select-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 600px;
+    margin-right: 1.5rem;
+}
+
+
+.clinic-select-field {
+    position: relative;
+    width: 100%;
+}
+
+/* Updated clinic dropdown display with smaller height and inline location */
+.clinic-dropdown-display {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced from 12px */
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px; /* Reduced from 10px 15px */
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    height: 56px; /* Increased from 48px */
+}
+
+.clinic-dropdown-display:hover {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.clinic-dropdown-display.active {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Updated clinic logo size */
+.clinic-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-info {
+    flex: 1;
+}
+
+/* Update clinic name */
+.clinic-name {
+    font-weight: 600;
+    font-size: 15px; /* Reduced from 16px */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Make location display inline with icon */
+.clinic-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1;
+}
+
+.clinic-address i {
+    font-size: 11px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #888;
+}
+
+.dropdown-arrow {
+    color: #025b5b;
+    transition: transform 0.3s;
+}
+
+.clinic-dropdown-display.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.clinic-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1020;
+    display: none;
+    animation: fadeInDown 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.clinic-dropdown-menu.show {
+    display: block;
+}
+
+/* Clinic options */
+/* Update clinic options for consistency */
+.clinic-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px; /* Reduced from 12px 15px */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.clinic-option:last-child {
+    border-bottom: none;
+}
+
+.clinic-option:hover {
+    background-color: #f5f9fc;
+}
+
+.clinic-option.selected {
+    background-color: #e6f7f6;
+}
+
+/* Updated clinic logo size */
+.clinic-option-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-option-info {
+    flex: 1;
+}
+
+/* Update clinic name */
+.clinic-option-name {
+    font-size: 14px; /* Reduced from 15px */
+    font-weight: 500;
+    margin: 0 0 2px; /* Reduced from 0 0 3px */
+    color: #333;
+}
+
+/* Update clinic address */
+.clinic-option-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clinic-option-check {
+    color: #025b5b;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.clinic-option.selected .clinic-option-check {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+    .clinic-dropdown-display {
+        padding: 8px 12px;
+    }
+    
+    .clinic-logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .clinic-name {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .clinic-dropdown-display {
+        padding: 6px 10px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-name {
+        font-size: 14px;
+    }
+    
+    .clinic-address {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .clinic-logo {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .clinic-name {
+        font-size: 13px;
+    }
+    
+    .clinic-address {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: 100%;
+    }
+}
+.see-all-clinics-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    font-weight: 600;
+    color: #025b5b;
+    background: #e6f7f6;
+    border-top: 1px solid #e0e0e0;
+    text-decoration: none;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.2s;
+}
+.see-all-clinics-btn:hover {
+    background: #d0f0ee;
+    color: #028080;
+}
+.see-all-clinics-btn i {
+    font-size: 16px;
+    color: #025b5b;
+}
+/* Right side - Status and Logout */
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* System Health Status button */
+.status-button {
+    background: linear-gradient(135deg, #e6f0ff 0%, #d1e0ff 100%);
+    color: #2c3e50;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    border-left: 4px solid #3a5fcd;
+}
+
+/* Add pulse icon before text */
+.status-button::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #3a5fcd;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(58, 95, 205, 0.4);
+    animation: pulse-blue 2s infinite;
+}
+
+/* Shine effect */
+.status-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+
+
+.status-button:hover {
+    background: linear-gradient(135deg, #d1e0ff 0%, #b9d1ff 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(65, 105, 225, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    color: #1e3799;
+}
+
+.status-button:hover::after {
+    left: 100%;
+}
+
+.status-button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(58, 95, 205, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0);
+    }
+}
+
+/* Active Status indicator */
+.status-indicator {
+    background: linear-gradient(135deg, #e8f5f5 0%, #f0fcfc 100%);
+    color: #025b5b;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(2, 91, 91, 0.1);
+    border-left: 4px solid #025b5b;
+}
+
+.status-indicator:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.status-indicator.online {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0fcf0 100%);
+    color: #28a745;
+    border-left: 4px solid #28a745;
+}
+
+.status-indicator.online:before {
+    background-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+.status-indicator.offline {
+    background: linear-gradient(135deg, #fbf0f0 0%, #fcf0f0 100%);
+    color: #dc3545;
+    border-left: 4px solid #dc3545;
+}
+
+.status-indicator.offline:before {
+    background-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6c757d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.logout:hover {
+    background-color: #f2f2f2;
+    color: #025b5b;
+}
+
+.logout i {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+/* Responsive Design */
+
+/* Desktop (medium screens): 992px and below */
+@media screen and (max-width: 992px) {
+    /* Dashboard adjustments - change to single column */
+
+    
+    /* Top bar improvements */
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 230px); /* Match the sidebar width */
+        left: 230px;
+    }
+    
+    /* Clinic selector improvements */
+    .clinic-select {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .clinic-select select {
+        min-width: 300px;
+        width: auto;
+        max-width: 450px;
+    }
+    
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Status section adjustments */
+    .status-section {
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1.2rem;
+        white-space: nowrap;
+    }
+    
+    .sidebar {
+        width: 230px;
+    }
+    
+    .main {
+        margin-left: 230px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Single column layout for dashboard - already set in 992px */
+    
+    /* Top bar improvements */
+    .topbar {
+        width: calc(100% - 200px);
+        left: 200px;
+        background-color: white;
+        padding: 0.8rem 1rem;
+        flex-direction: row; /* Keep horizontal layout */
+        flex-wrap: row; /* Allow wrapping if needed */
+    }
+    
+    .clinic-select {
+        width: auto;
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 0.8rem;
+    }
+    
+    .status-indicator {
+        white-space: nowrap;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Top bar adjustments */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.8rem 1rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    
+    /* Top bar adjustments */
+    .status-section {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        width: 100%;
+        justify-content: center;
+        order: -1; /* Move to top */
+    }
+    
+    .status-indicator {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar {
+        width: 180px;
+    }
+    
+    .main {
+        margin-left: 180px;
+    }
+    
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Top bar adjustments for mobile */
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+        padding: 0.8rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .status-button {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    .status-indicator {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    /* Status button improvements for mobile */
+    .status-button {
+        width: auto; /* Don't make it 100% width */
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+        margin-right: 0.5rem; /* Add some spacing */
+    }
+    
+    /* Adjust the pulse animation for smaller screens */
+    .status-button::before {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .status-indicator {
+        font-size: 12px;
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+    }
+    
+    /* Status section layout */
+    .status-section {
+        display: flex;
+        flex-wrap: nowrap; /* Keep items in a row */
+        gap: 0.5rem;
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        padding-bottom: 4px; /* Space for scroll bar */
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Hide scrollbar but maintain functionality */
+    .status-section::-webkit-scrollbar {
+        height: 2px;
+    }
+    
+    .status-section::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .sidebar {
+        width: 160px;
+    }
+    
+    .main {
+        margin-left: 160px;
+    }
+    
+    .topbar {
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Optimize status elements for tiny screens */
+    .status-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+    }
+    
+    .status-button::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.8rem;
+        font-size: 11px;
+    }
+    
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    /* Change topbar layout */
+    .topbar {
+        padding: 0.6rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* Medium screens: 992px and below */
+@media screen and (max-width: 992px) {
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        width: calc(100% - 230px);
+        left: 230px;
+    }
+    
+    .clinic-select {
+        gap: 0.8rem;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: auto;
+        max-width: 400px;
+        flex-shrink: 1;
+    }
+    
+    .status-section {
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+    
+    .status-indicator {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    .topbar {
+        padding: 0.8rem 1rem;
+        width: calc(100% - 200px);
+        left: 200px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-select {
+        gap: 0.6rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.4rem 0.8rem;
+        font-size: 13px;
+        width: auto;
+        flex: 1;
+    }
+    
+    .status-section {
+        gap: 0.6rem;
+    }
+    
+    .status-button {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-button::before {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .status-indicator {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-indicator::before {
+        width: 9px;
+        height: 9px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    .topbar {
+        padding: 0.7rem;
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .clinic-logo {
+        width: 25px;
+        height: 25px;
+        min-width: 25px; /* Prevent shrinking */
+    }
+    
+    .clinic-select {
+        gap: 0.4rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.6rem;
+        font-size: 12px;
+        max-width: 150px;
+    }
+    
+    .status-section {
+        gap: 0.4rem;
+    }
+    
+    .status-button {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-button::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 70px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-indicator::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .logout {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .topbar {
+        padding: 0.6rem;
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .clinic-select {
+        gap: 0.3rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.5rem;
+        font-size: 11px;
+        max-width: 100px;
+    }
+    
+    .status-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 80px;
+    }
+    
+    .status-indicator {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 60px;
+    }
+    
+    .status-button::before,
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 3px;
+    }
+    
+    .logout {
+        width: 28px;
+        height: 28px;
+    }
+}
+.sidebar nav button.selected,
+.sidebar nav button.selected a {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+/* Logout Modal Styling */
+.logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.logout-modal.active {
+    display: flex;
+}
+
+.logout-modal-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logout-modal-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #60BFC5;
+    color: white;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.logout-modal-icon i {
+    font-size: 36px;
+    color: white;
+    margin-right: 0 !important;
+}
+.logout-modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.logout-modal-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.logout-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-cancel {
+    padding: 12px 30px;
+    background-color: #F2F4F7;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #d7d8d9;
+}
+
+.btn-confirm {
+    padding: 12px 40px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-confirm:hover {
+    background-color: #8d0606;
+}
+/* setup Container Layout */
+.setup-container {
+    display: flex;
+    height: calc(100vh - 80px); /* Adjust based on your topbar height */
+    margin-top: 10px;
+    border-radius: 12px;
+    overflow: auto;
+    display: flex;
+    height: calc(100vh - 80px);
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.setup-sidebar {
+    width: 260px;
+    background-color: #eef7f9;
+    height: 100%;
+    overflow-y: auto;
+    flex-shrink: 0;
+    border-right: 1px solid #eaeaea;
+    padding-top: 0;
+    border-radius: 12px 0 0 12px;
+    height: 90vh;
+}
+
+/* Show the header image and styling */
+.setup-sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+.setup-icon {
+    width: fit-content;
+    height: fit-content;
+    display: block;
+    margin-bottom: 20px;
+}
+h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Navigation list styling */
+.setup-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual navigation items - blue links style */
+.setup-nav-item {
+    position: relative;
+    border-radius: 0;
+    margin: 2px 0;
+}
+
+.setup-nav-item a {
+    display: block;
+    padding: 10px 20px;
+    color: #4a4a4a; /* Blue link color */
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 15px;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+/* Add bullet points */
+.setup-nav-item a::before {
+    content: '•';
+    display: inline-block;
+    margin-right: 8px;
+    color: #eef7f9;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.setup-nav-item a::after {
+    content: '\f054'; /* FontAwesome chevron-right unicode */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    display: inline-block;
+    color: #ccc; /* Light color initially */
+    position: absolute;
+    right: 20px;
+    transition: all 0.2s ease;
+}
+
+/* Active state bullet point */
+.setup-nav-item.active a::before {
+    color: teal;
+}
+
+.setup-nav-item.active a::after {
+    color: teal;
+
+}
+
+/* Hover state */
+.setup-nav-item:hover a {
+    background-color: rgba(0, 102, 204, 0.03);
+    color: teal;
+}
+
+/* Active state styling */
+.setup-nav-item.active a {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: teal;
+    font-weight: 600;
+}
+
+/* Content area styling */
+.setup-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 270px); 
+    margin-top: 0;
+    height: 90vh;
+
+}
+
+/* Header with search and add button */
+.setup-content-header {
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.setup-content-header h2 {
+    font-size: 20px; /* Reduced from 22px */
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.setup-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.setup-search {
+    position: relative;
+}
+
+.setup-search .search-input {
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #ddd;
+    color: #333;
+    border-radius: 30px;
+    font-size: 14px;
+    width: 250px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-left: 8px;
+}
+
+.setup-search .search-input:focus {
+    border-color: #4CABB1;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.2);
+}
+
+.setup-search i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 14px;
+}
+
+
+/* setup sections and items */
+.setup-section {
+    display: none;
+}
+
+.setup-section.active {
+    display: block;
+}
+
+.setup-items-container {
+    display: block;
+}
+
+.setup-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.setup-item:hover {
+    background-color: #f0f0f0;
+}
+
+.setup-item span {
+    font-size: 15px;
+    color: #333;
+}
+
+.setup-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.setup-item-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    color: #4CABB1;
+    transition: transform 0.2s ease;
+}
+
+.edit-btn:hover {
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    color: #e74c3c;
+    transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+}
+
+.close-modal:hover {
+    color: #666;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* Form input styles */
+.form-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #4CABB1;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.1);
+}
+
+/* Appointment type options */
+.appointment-type-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.appointment-type-option {
+    flex: 1;
+}
+
+/* Custom checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 22px;
+    width: 22px;
+    background-color: white;
+    border: 2px solid #4CABB1;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #4CABB1;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label {
+    margin-left: 5px;
+}
+
+/* Modal buttons */
+.cancel-btn, .add-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cancel-btn {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.cancel-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.add-btn {
+    background-color: #4CABB1;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #3d9a9f;
+}
+
+/* Delete modal specific styles */
+.delete-modal-content {
+    width: 350px;
+    text-align: center;
+}
+
+.delete-modal-body {
+    padding: 30px 20px;
+}
+
+.delete-icon-container {
+    margin-bottom: 20px;
+}
+
+.delete-icon {
+    font-size: 48px;
+    color: #ff7b7b;
+    background-color: rgba(255, 123, 123, 0.1);
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.delete-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.delete-message {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cancel-delete-btn, .confirm-delete-btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancel-delete-btn {
+    background-color: #f0f0f0;
+    color: #444;
+}
+
+.confirm-delete-btn {
+    background-color: #ff7b7b;
+    color: white;
+}
+
+.cancel-delete-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.confirm-delete-btn:hover {
+    background-color: #ff6b6b;
+}
+
+/* Availability table styles */
+/* Opening Hours Table */
+.opening-hours {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.hours-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 0.5fr;
+    background-color: #f5f5f5;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+}
+
+.hours-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 0.5fr;
+    padding: 12px 16px;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.hours-day {
+    font-size: 14px;
+    color: #555;
+}
+
+.time-input {
+    position: relative;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #111111;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s ease;
+}
+
+.time-input:hover {
+    border-color: #bbb;
+}
+
+.time-input input {
+    width: 100%;
+    padding: 10px 35px 10px 12px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    background: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+.time-input i {
+    position: absolute;
+    right: 12px;
+    color: #c2c1c1;
+    font-size: 16px;
+}
+
+/* Improve edit hours button styling */
+.edit-hours-btn {
+    background-color: transparent;
+    color: #4CABB1;
+    border: none;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-hours-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Fix the "readonly" text showing in your HTML */
+.hours-time {
+    position: relative;
+}
+/* Time Picker Modal Styling */
+.time-picker-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20000;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-picker-modal.active {
+    display: flex;
+}
+
+.time-picker-content {
+    background-color: white;
+    width: 450px;
+    max-width: 90%;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-time-picker {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+}
+
+.time-picker-section {
+    margin-bottom: 30px;
+}
+
+.time-picker-section label {
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.time-picker-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-value {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 60px;
+    height: 40px;
+}
+
+.time-separator {
+    font-size: 24px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-arrow {
+    background: none;
+    border: none;
+    color: #4CABB1;
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.time-arrow:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+    border-radius: 50%;
+}
+
+.time-picker-days {
+    margin-bottom: 30px;
+}
+
+.time-picker-days p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.day-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.day-btn {
+    background-color: #f0f2f5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;    
+    font-weight: 500;
+    gap: 0;
+}
+
+.day-btn.selected {
+    background-color: #4CABB1;
+    color: white;
+}
+
+.time-picker-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.remove-time-btn {
+    background-color: #f96666;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancel-time-btn {
+    background-color: #f0f2f5;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.add-time-btn {
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+.edit-hours-btn {
+    background-color: transparent;
+    color: #03595f;
+    border: none;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-hours-btn:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+}
+
+
+.done-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.done-btn {
+    background-color: #4CABB1;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.done-btn:hover {
+    background-color: #3d9a9f;
+}
+
+.done-btn i {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Appointment type styles */
+.appointment-types {
+    margin-bottom: 20px;
+}
+
+.appointment-type-item {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.appointment-type-details {
+    flex: 1;
+}
+
+.appointment-type-details h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.appointment-type-details p {
+    margin: 0;
+    color: #666;
+    font-size: 13px; /* Reduced from 14px */
+}
+
+.appointment-type-price {
+    width: 100px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.appointment-type-actions {
+    width: 90px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.edit-btn {
+    color: #4CABB1;
+}
+
+.edit-btn:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+}
+
+.delete-btn {
+    color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.edit-btn i, .delete-btn i {
+    font-size: 15px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.add-new-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.add-new-btn {
+    background-color: #4CABB1;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-new-btn:hover {
+    background-color: #3d9a9f;
+}
+
+/* Select container with arrow */
+.select-container {
+    position: relative;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.select-container .select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+    font-size: 14px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.dropdown-select {
+    width: 100%;
+    padding: 10px 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 13px; /* Reduced from 14px */
+    color: #333;
+}
+
+.dropdown-select:focus {
+    outline: none;
+    border-color: #4CABB1;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.1);
+}
+
+/* Modern Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+input:checked + .toggle-slider {
+    background-color: #4CABB1;
+}
+
+input:focus + .toggle-slider {
+    box-shadow: 0 0 1px #4CABB1;
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+}
+
+/* Setting row styles */
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    margin-bottom: 10px;
+}
+
+.setting-description {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.setting-description h4 {
+    margin: 0;
+    font-size: 14px; /* Reduced from 15px */
+    font-weight: 500;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* Setting headers */
+.setting-group h3 {
+    font-size: 18px; /* Reduced from 20px */
+    margin-bottom: 18px;
+}
+
+/* Form labels */
+.form-group label {
+    font-size: 14px; /* Reduced from default */
+}
+
+/* Table headers */
+.availability-header {
+    font-size: 14px; /* Reduced font size */
+    padding: 10px 12px; /* Smaller padding */
+}
+
+/* Day column text */
+.day-column {
+    font-size: 14px; /* Reduced font size */
+}
+
+/* Time inputs */
+.time-input {
+    font-size: 13px; /* Reduced from 14px */
+    padding: 8px 12px; /* Smaller padding */
+}
+
+/* Appointment type details */
+.appointment-type-details h4 {
+    font-size: 14px; /* Already at 14px, but making consistent */
+}
+
+.appointment-type-details p {
+    font-size: 13px; /* Reduced from 14px */
+}
+
+.appointment-type-price {
+    font-size: 14px; /* Already at 14px, but making consistent */
+}
+
+/* Buttons */
+.done-btn, .add-new-btn {
+    font-size: 14px; /* Reduced from 15px */
+    padding: 8px 20px; /* Slightly smaller padding */
+}
+
+/* Navigation items */
+.setup-nav-item a {
+    font-size: 14px; /* Reduced from 15px */
+    padding: 9px 18px; /* Slightly smaller padding */
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+}
+
+.close-modal:hover {
+    color: #666;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+/* Form input styles */
+.form-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #4CABB1;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.1);
+}
+
+/* Appointment type options */
+.appointment-type-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.appointment-type-option {
+    flex: 1;
+}
+
+/* Password form styling */
+.password-form {
+    max-width: 500px;
+    gap: 1.5rem;
+}
+
+.password-form .form-group {
+    margin-bottom: 1.2rem;
+}
+
+.password-form label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.password-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-form .form-input {
+    border: 1px solid #ddd;
+}
+
+.password-form .form-input:focus {
+    border-color: #4CABB1;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.1);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.toggle-password:hover {
+    color: #666;
+}
+
+.form-actions {
+    margin-top: 30px;
+}
+
+.save-btn {
+    background-color: #4CABB1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+    background-color: #3d9a9f;
+}
+/* Invitation Section Styles */
+
+/* Doctor Invitation Table */
+.invitation-table,
+.clinic-request-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.invitation-header,
+.clinic-request-header {
+    display: grid;
+    padding: 16px 20px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #555;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+
+.invitation-header {
+    grid-template-columns: 2fr 1fr 2fr 1fr 1fr;
+}
+
+.clinic-request-header {
+    grid-template-columns: 1.5fr 2fr 1fr 1fr;
+}
+
+.invitation-row,
+.clinic-request-row {
+    display: grid;
+    padding: 16px 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.invitation-row {
+    grid-template-columns: 2fr 1fr 2fr 1fr 1fr;
+}
+
+.clinic-request-row {
+    grid-template-columns: 1.5fr 2fr 1fr 1fr;
+}
+
+.invitation-row:hover,
+.clinic-request-row:hover {
+    background-color: #f9f9f9;
+}
+
+/* Doctor info with avatar */
+.doctor-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.doctor-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor-info h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Status badge */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-badge.pending {
+    background-color: #fff8e6;
+    color: #e6a319;
+}
+
+.status-badge.accepted {
+    background-color: #e7f7ee;
+    color: #28a745;
+}
+
+.status-badge.rejected {
+    background-color: #ffeeee;
+    color: #dc3545;
+}
+
+/* Action buttons */
+.invitation-action-column,
+.clinic-action-column {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.resend-btn,
+.delete-invitation-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: transparent;
+}
+.resend-btn i,
+.delete-invitation-btn i {
+    margin-right: 0rem !important;
+}
+
+.resend-btn {
+    color: #4CABB1;
+}
+
+.resend-btn:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+}
+
+.delete-invitation-btn {
+    color: #ff6b6b;
+}
+
+.delete-invitation-btn:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+}
+
+/* Accept/Reject buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.accept-btn,
+.reject-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.accept-btn {
+    background-color: #4CABB1;
+    color: white;
+}
+
+.accept-btn:hover {
+    background-color: #3d9a9f;
+}
+
+.reject-btn {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.reject-btn:hover {
+    background-color: #ff5252;
+}
+
+.accept-btn i,
+.reject-btn i {
+    margin-right: 0rem !important;
+}
+
+/* Add invitation button */
+.add-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.add-invitation-btn {
+    background-color: #4CABB1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-invitation-btn:hover {
+    background-color: #3d9a9f;
+}
+
+.add-invitation-btn i {
+    margin-right: 0rem !important;
+}
+
+/* Empty state messages */
+.no-invitations-message,
+.no-requests-message {
+    padding: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    background-color: #f9f9f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .invitation-header,
+    .invitation-row {
+        grid-template-columns: 2fr 1fr 1.5fr 0.8fr;
+    }
+    
+    .doctor-email-column {
+        display: none;
+    }
+    
+    .clinic-request-header,
+    .clinic-request-row {
+        grid-template-columns: 1.5fr 2fr 1fr;
+    }
+    
+    .clinic-contact-column {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .invitation-header,
+    .invitation-row {
+        grid-template-columns: 2fr 1fr 1fr;
+        font-size: 13px;
+    }
+    
+    .doctor-specialty-column {
+        display: none;
+    }
+    
+    .clinic-request-header,
+    .clinic-request-row {
+        grid-template-columns: 1.5fr 1fr;
+    }
+    
+    .clinic-address-column {
+        display: none;
+    }
+}
+/* Invoice Section Styles */
+.invoice-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.invoice-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.8fr;
+    background-color: #f5f5f5;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.invoice-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.8fr;
+    padding: 14px 20px;
+    border-top: 1px solid #eee;
+    align-items: center;
+}
+
+.invoice-row:hover {
+    background-color: #f9f9f9;
+}
+
+.invoice-id-column {
+    font-weight: 500;
+    color: #4CABB1;
+}
+
+.patient-name-column {
+    font-weight: 500;
+    color: #333;
+}
+
+.invoice-date-column,
+.invoice-amount-column {
+    color: #555;
+}
+
+.invoice-amount-column {
+    font-weight: 500;
+}
+
+.invoice-status-column .status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.invoice-status-column .pending {
+    background-color: #fff8e6;
+    color: #e6a319;
+}
+
+.invoice-status-column .paid {
+    background-color: #e7f7ee;
+    color: #28a745;
+}
+
+.invoice-action-column {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.view-invoice-btn,
+.download-invoice-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: transparent;
+}
+.view-invoice-btn i,
+.download-invoice-btn i {
+    margin-right: 0rem !important;
+}
+
+.view-invoice-btn {
+    color: #4CABB1;
+}
+
+.view-invoice-btn:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+}
+
+.download-invoice-btn {
+    color: #6c757d;
+}
+
+.download-invoice-btn:hover {
+    background-color: rgba(108, 117, 125, 0.1);
+}
+
+.no-invoice-message {
+    padding: 30px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Add invoice button */
+.add-invoice-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-invoice-btn {
+    background-color: #4CABB1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-invoice-btn:hover {
+    background-color: #3d9a9f;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .invoice-header,
+    .invoice-row {
+        grid-template-columns: 1fr 2fr 1fr 1fr 0.8fr;
+    }
+    
+    .invoice-action-column {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .invoice-header,
+    .invoice-row {
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        font-size: 13px;
+    }
+    
+    .invoice-status-column {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .invoice-header,
+    .invoice-row {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+    
+    .invoice-date-column {
+        display: none;
+    }
+}
+/* Doctor Profile Styles */
+.profile-form {
+    max-width: 800px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.profile-image-upload {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border: 2px dashed #4CABB1;
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: white;
+}
+
+.profile-image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay i {
+    font-size: 24px;
+    margin-bottom: 8px;
+    margin-right: 0rem !important;
+}
+
+.input-hint {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Tags input styling */
+.tags-input-container {
+    border: 1px solid #4CABB1;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 45px;
+}
+
+.tags-input-container:focus-within {
+    border-color: #025b5b;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.2);
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    background-color: #e6f7f6;
+    color: #025b5b;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #d0f0ee;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background-color: #d0f0ee;
+    border-color: #b8e8e5;
+}
+
+.tag-close-icon {
+    margin-left: 8px;
+    cursor: pointer;
+    color: #025b5b;
+    font-size: 12px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.tag-close-icon:hover {
+    opacity: 1;
+}
+
+.tags-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    min-width: 150px;
+    font-size: 14px;
+    background: transparent;
+}
+
+.document-upload-container {
+    border: 2px dashed teal;
+    border-radius: 8px;
+    background-color: #f9fdfd;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.document-upload-container:hover {
+    border-color: #025b5b;
+    background-color: #f0f9f9;
+}
+
+.document-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+    cursor: pointer;
+}
+
+.document-upload i {
+    font-size: 48px;
+    color: teal;
+    margin-bottom: 16px;
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+
+.document-upload p {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.document-upload small {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.upload-btn {
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-btn:hover {
+    background-color: #066268;
+}
+
+.upload-btn i {
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Radio Button Styling - Updated Design */
+.radio-group {
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* The outer circle */
+.radio-container input + .radio-custom,
+.radio-container input + span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-color: white;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+
+/* The selected state - outer circle */
+.radio-container input:checked + .radio-custom,
+.radio-container input:checked + span {
+    border-color: teal;
+    background-color: white;
+}
+
+/* The inner circle - fill */
+.radio-container input:checked + .radio-custom:after,
+.radio-container input:checked + span:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: teal;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+/* Focus state */
+.radio-container input:focus + .radio-custom,
+.radio-container input:focus + span {
+    box-shadow: 0 0 0 3px rgba(76, 171, 177, 0.2);
+}
+
+/* Label text */
+.radio-container {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+/* Override any previous label styles */
+label.radio-container {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+/* Form textarea styles */
+.form-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid #4CABB1;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+    line-height: 1.5;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #025b5b;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.1);
+}
+
+.form-textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Large textarea variant */
+.form-textarea.large {
+    min-height: 180px;
+}
+
+/* Extra large textarea variant */
+.form-textarea.xl {
+    min-height: 250px;
+}
+/* Save and Preview Button Styles */
+.save-preview-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.save-btn,
+.preview-btn {
+    padding: 12px 24px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    min-width: 140px;
+    white-space: nowrap;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #4CABB1 0%, #3d9a9f 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(76, 171, 177, 0.3);
+}
+
+.save-btn:hover {
+    background: linear-gradient(135deg, #3d9a9f 0%, #2e8085 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(76, 171, 177, 0.4);
+}
+
+.preview-btn {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #495057;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.preview-btn:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    color: #343a40;
+}
+
+.save-btn:active,
+.preview-btn:active {
+    transform: translateY(0);
+}
+
+.save-btn i,
+.preview-btn i {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Loading state for save button */
+.save-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.save-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .save-preview-buttons {
+        gap: 12px;
+    }
+    
+    .save-btn,
+    .preview-btn {
+        padding: 12px 20px;
+        min-width: 120px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .save-preview-buttons {
+        gap: 10px;
+    }
+    
+    .save-btn,
+    .preview-btn {
+        font-size: 12px;
+        padding: 10px 16px;
+        min-width: 100px;
+    }
+}

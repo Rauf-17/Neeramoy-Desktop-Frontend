@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+
+    <!-- Google Font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./prescription.css">
+</head>
+<body>
+
+    <!-- Common Code Starts -->
+
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="./dashboard.html"><img src="./images/logo.svg" alt="Neeramoy"></a>
+        </div>
+        <div class="doctor-info">
+            <img src="./images/Rauf.png" alt="Doctor" class="doctor-image" id="doctor-image">
+            <h4 id="doctor-name">Doctor Name</h4>
+            <span id="doctor-designation">Designation</span>
+        </div>
+        <nav>
+            <button><a href="./dashboard.html" class="sidebar-btn"><i class="fa-solid fa-border-all"></i>Dashboard</a></button>
+            <button><a href="./appointments.html" class="sidebar-btn"><i class="fa-solid fa-calendar"></i>Appointments</a></button>
+            <button><a href="./patients.html" class="sidebar-btn"><i class="fa-solid fa-user-plus"></i>Patients</a></button>
+            <button><a href="./prescription.html" class="sidebar-btn"><i class="fa-solid fa-file-circle-plus"></i>Prescription</a></button>
+            <div class="settings-dropdown">
+                <button class="settings-button" onclick="toggleDropdown()">
+                    <i class="fa fa-gear"></i>
+                    <span class="sidebar-btn">Settings</span>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <button class="dropdown-item "><a href="./allclinic.html" class="sidebar-btn">All Clinic</a></button>
+                    <button class="dropdown-item"><a href="./setup.html" class="sidebar-btn">Setup</a></button>
+                    <button class="dropdown-item"><a href="./presetdata.html" class="sidebar-btn">Preset data</a></button>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="clinic-select-container">
+                <div class="clinic-select-field">
+                    <div class="clinic-dropdown-display" id="clinicDropdownDisplay">
+                        <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-logo">
+                        <div class="clinic-info">
+                            <h3 class="clinic-name">NDSL Clinic</h3>
+                            <p class="clinic-address">
+                                <i class="fa fa-map-marker-alt"></i>
+                                Mohakhali DOHS, Dhaka, Bangladesh
+                            </p>
+                        </div>
+                        <span class="dropdown-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="clinic-dropdown-menu" id="clinicDropdownMenu">
+                        <div class="clinic-option selected" data-id="clinic1">
+                            <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">NDSL Clinic</h4>
+                                <p class="clinic-option-address">Mohakhali DOHS, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic2">
+                            <img src="./images/logo.svg" alt="Mirpur Hospital" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Mirpur Hospital</h4>
+                                <p class="clinic-option-address">Mirpur, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic3">
+                            <img src="./images/logo.svg" alt="Medinova Medical Services" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Medinova Medical Services</h4>
+                                <p class="clinic-option-address">Kajal Shah, Sylhet, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic4">
+                            <img src="./images/logo.svg" alt="Neeramoy Online For Brac" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Neeramoy Online For Brac</h4>
+                                <p class="clinic-option-address">34 Kemal Ataturk Ave, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        <a href="allclinic.html" class="see-all-clinics-btn">
+                            <i class="fa fa-building"></i> See All Clinics
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-section">
+                <button class="status-button">System Health Status</button>
+                <span class="status-indicator online">Online</span>
+                <button class="logout logout-btn" title="Logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Logout Confirmation Modal -->
+            <div id="logout-modal" class="logout-modal">
+                <div class="logout-modal-content">
+                    <div class="logout-modal-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="logout-modal-title">Confirmation</h2>
+                    <p class="logout-modal-text">Are you sure that you want to logout?</p>
+                    <div class="logout-modal-actions">
+                        <button id="cancel-logout" class="btn-cancel">Cancel</button>
+                        <button id="confirm-logout" class="btn-confirm">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Common Code Ends -->
+
+        <!-- Prescription Management Section -->
+
+
+        <div class="prescription-container">
+            <div class="prescription-header">
+                <h2>Prescription</h2>
+                <div class="prescription-actions">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search by Patient Name">
+                    </div>
+                    <button class="add-new-prescription">
+                        <i class="fas fa-plus"></i>
+                        Add New Prescription
+                    </button>
+                </div>
+            </div>
+            
+            <table class="prescription-table">
+                <thead>
+                    <tr>
+                        <th>Prescription for</th>
+                        <th>View Rx</th>
+                        <th>Reference</th>
+                        <th>Update Rx</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Prescription 1 -->
+                    <tr>
+                        <td>
+                            <div class="prescription-card">
+                                <div class="prescription-icon">
+                                    <img src="./images/medicine.svg" alt="Prescription">
+                                </div>
+                                <div class="prescription-details">
+                                    <div class="prescription-name">Raufull_Islam_Rauf_Rx_001</div>
+                                    <div class="prescription-date">Date: 2:19 PM - 22 May, 2025</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="view-actions">
+                                <button class="action-btn quick-view-btn" title="Quick View">
+                                    <i class="far fa-file-alt"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="reference-patient" data-patient-id="137e39e80871">
+                                <div class="patient-avatar">
+                                    <img src="./images/Rauf.png" alt="Ishtiak Ahmed">
+                                </div>
+                                <div class="patient-info">
+                                    <div class="patient-name">Raufull Islam Rauf</div>
+                                    <div class="patient-id">Patient Id: 137e39e80871</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="update-rx">
+                                <button class="action-btn update-rx-btn" title="Update Rx">
+                                    <i class="far fa-copy"></i>
+                                </button>
+                                <div class="update-rx-tooltip">Update Rx will create a duplicate prescription</div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Prescription 2 -->
+                    <tr>
+                        <td>
+                            <div class="prescription-card">
+                                <div class="prescription-icon">
+                                    <img src="./images/medicine.svg" alt="Prescription">
+                                </div>
+                                <div class="prescription-details">
+                                    <div class="prescription-name">Rasel_Mia_Rx_006</div>
+                                    <div class="prescription-date">Date: 4:30 PM - 22 May, 2025</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="view-actions">
+                                <button class="action-btn quick-view-btn" title="Quick View">
+                                    <i class="far fa-file-alt"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="reference-patient" data-patient-id="a2325a541383">
+                                <div class="patient-avatar">
+                                    <img src="./images/Rauf.png" alt="Swagoto Paul">
+                                </div>
+                                <div class="patient-info">
+                                    <div class="patient-name">Rasel Mia</div>
+                                    <div class="patient-id">Patient Id: a2325a541383</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="update-rx">
+                                <button class="action-btn update-rx-btn" title="Update Rx">
+                                    <i class="far fa-copy"></i>
+                                </button>
+                                <div class="update-rx-tooltip">Update Rx will create a duplicate prescription</div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Add more prescription rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <script>
+            function toggleDropdown() {
+                const dropdown = document.querySelector('.dropdown-content');
+                dropdown.classList.toggle('show'); // Toggle the "show" class to display or hide the dropdown
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', function (event) {
+                const dropdown = document.querySelector('.dropdown-content');
+                const settingsButton = document.querySelector('.settings-button');
+                if (!settingsButton.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show'); // Hide the dropdown
+                }
+            });
+            // Clinic Dropdown Functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const clinicDropdownDisplay = document.getElementById('clinicDropdownDisplay');
+                const clinicDropdownMenu = document.getElementById('clinicDropdownMenu');
+                const clinicOptions = document.querySelectorAll('.clinic-option');
+                
+                // Toggle dropdown menu
+                if (clinicDropdownDisplay) {
+                    clinicDropdownDisplay.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        this.classList.toggle('active');
+                        clinicDropdownMenu.classList.toggle('show');
+                    });
+                }
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!clinicDropdownDisplay.contains(event.target) && 
+                        !clinicDropdownMenu.contains(event.target)) {
+                        clinicDropdownDisplay.classList.remove('active');
+                        clinicDropdownMenu.classList.remove('show');
+                    }
+                });
+                
+                // Handle clinic selection
+                clinicOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        // Remove selected class from all options
+                        clinicOptions.forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Add selected class to clicked option
+                        this.classList.add('selected');
+                        
+                        // Update display with selected clinic info
+                        const clinicName = this.querySelector('.clinic-option-name').innerText;
+                        const clinicAddress = this.querySelector('.clinic-option-address').innerText;
+                        const clinicLogo = this.querySelector('.clinic-option-logo').src;
+                        const clinicId = this.getAttribute('data-id');
+                        
+                        // Update the display
+                        document.querySelector('.clinic-name').innerText = clinicName;
+                        document.querySelector('.clinic-address').innerHTML = '<i class="fa fa-map-marker-alt"></i> ' + clinicAddress;
+                        document.querySelector('.clinic-logo').src = clinicLogo;
+                        
+                        // You could also store the selected clinic ID in a hidden input or data attribute
+                        // document.getElementById('selectedClinic').value = clinicId;
+                        
+                        // Close the dropdown
+                        clinicDropdownDisplay.classList.remove('active');
+                        clinicDropdownMenu.classList.remove('show');
+                    });
+                });
+            });
+            // Highlight selected sidebar button
+            document.addEventListener('DOMContentLoaded', function() {
+                const sidebarButtons = document.querySelectorAll('.sidebar nav button');
+
+                sidebarButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        sidebarButtons.forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                });
+
+                // Optionally, highlight based on current page
+                const currentPath = window.location.pathname.split('/').pop();
+                sidebarButtons.forEach(btn => {
+                    const link = btn.querySelector('a');
+                    if (link && link.getAttribute('href') && link.getAttribute('href').includes(currentPath)) {
+                        btn.classList.add('selected');
+                    }
+                });
+            });
+            // Logout Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const logoutModal = document.getElementById('logout-modal');
+            const cancelLogout = document.getElementById('cancel-logout');
+            const confirmLogout = document.getElementById('confirm-logout');
+            const logoutButtons = document.querySelectorAll('.logout-btn');
+            
+            // Show modal when logout button is clicked
+            logoutButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logoutModal.classList.add('active');
+                });
+            });
+            
+            // Hide modal when cancel is clicked
+            cancelLogout.addEventListener('click', function() {
+                logoutModal.classList.remove('active');
+            });
+            
+            // Handle logout confirmation
+            confirmLogout.addEventListener('click', function() {
+                // Perform logout actions here
+                // For example: redirect to login page
+                window.location.href = 'index.html'; // Replace with your login page URL
+            });
+            
+            // Close modal when clicking outside
+            logoutModal.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && logoutModal.classList.contains('active')) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+        });
+            // Quick View functionality
+            document.querySelectorAll('.quick-view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Show quick view popup with prescription details
+                    alert("Quick view of prescription would open here with print and download options");
+                });
+            });
+            
+            // Patient Reference functionality
+            document.querySelectorAll('.reference-patient').forEach(patientRef => {
+                patientRef.addEventListener('click', function() {
+                    const patientId = this.getAttribute('data-patient-id');
+                    // Open patient modal similar to patients.html
+                    alert(`Opening patient profile modal for ID: ${patientId}`);
+                });
+            });
+            
+            // Update Rx functionality
+            document.querySelectorAll('.update-rx-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Duplicate the prescription and open for editing
+                    alert("Creating a duplicate prescription for updating");
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-bar input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                document.querySelectorAll('.prescription-table tbody tr').forEach(row => {
+                    const prescriptionName = row.querySelector('.prescription-name').textContent.toLowerCase();
+                    const patientName = row.querySelector('.patient-name').textContent.toLowerCase();
+                    const patientId = row.querySelector('.patient-id').textContent.toLowerCase();
+                    
+                    if (prescriptionName.includes(searchTerm) || patientName.includes(searchTerm) || patientId.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

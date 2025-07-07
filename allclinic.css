@@ -1,0 +1,2588 @@
+/* Reset code and Common code Starts here */
+:root{
+    --primary-color: teal;
+    --secondary-color: #547792;
+    --third-color: #cfe5e1;
+    --text-color: white;
+    --padding: 1rem;
+    --transition: all 0.3s ease-in-out;
+    --border-radius: 0.6rem;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i{
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+    margin-right: 1rem;
+}
+
+.sidebar-btn{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.sidebar-btn:hover{
+    color: var(--primary-color);
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+/* Body Part */
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+}
+
+.sidebar {
+  height: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  background-color: #f5f9fc;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: height 0.3s ease-in-out;
+}
+
+.sidebar.expanded {
+  height: auto;
+  min-height: 100vh;
+}
+
+.sidebar .settings-dropdown .dropdown-content {
+  position: static;
+  box-shadow: none;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  width: calc(100% - 1rem);
+}
+
+.sidebar .doctor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.sidebar .doctor-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: #025b5b 3px solid;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
+.sidebar .doctor-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sidebar .doctor-info span {
+    font-size: 14px;
+    color: gray;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar nav button:hover {
+    background: #eaf4fb;
+    border-radius: 25px;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 1rem;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Topbar Design */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Enhanced Topbar Responsiveness - Keeping Horizontal Layout */
+
+/* Base topbar styling */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Default styles for clinic select and status section */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+}
+
+/* Left side - Clinic selector */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.clinic-logo {
+    width: 100px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain; /* Ensures image maintains aspect ratio */
+}
+
+.clinic-select select {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    min-width: 500px; 
+    width: 80%; 
+    max-width: 800px;
+    /* appearance: none; */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    margin-right: 2rem;
+}
+
+/* Enhanced Clinic Select Dropdown with Label */
+.clinic-select-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 600px;
+    margin-right: 1.5rem;
+}
+
+
+.clinic-select-field {
+    position: relative;
+    width: 100%;
+}
+
+/* clinic dropdown display with smaller height and inline location */
+.clinic-dropdown-display {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced from 12px */
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px; /* Reduced from 10px 15px */
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    height: 56px; /* Increased from 48px */
+}
+
+.clinic-dropdown-display:hover {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.clinic-dropdown-display.active {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/*  clinic logo size */
+.clinic-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-info {
+    flex: 1;
+}
+
+/*  clinic name */
+.clinic-name {
+    font-weight: 600;
+    font-size: 15px; /* Reduced from 16px */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Make location display inline with icon */
+.clinic-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1;
+}
+
+.clinic-address i {
+    font-size: 11px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #888;
+}
+
+.dropdown-arrow {
+    color: #025b5b;
+    transition: transform 0.3s;
+}
+
+.clinic-dropdown-display.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.clinic-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1020;
+    display: none;
+    animation: fadeInDown 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.clinic-dropdown-menu.show {
+    display: block;
+}
+
+/* Clinic options */
+/*clinic options for consistency */
+.clinic-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px; /* Reduced from 12px 15px */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.clinic-option:last-child {
+    border-bottom: none;
+}
+
+.clinic-option:hover {
+    background-color: #f5f9fc;
+}
+
+.clinic-option.selected {
+    background-color: #e6f7f6;
+}
+
+/* clinic logo size */
+.clinic-option-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-option-info {
+    flex: 1;
+}
+
+/* clinic name */
+.clinic-option-name {
+    font-size: 14px; /* Reduced from 15px */
+    font-weight: 500;
+    margin: 0 0 2px; /* Reduced from 0 0 3px */
+    color: #333;
+}
+
+/* clinic address */
+.clinic-option-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clinic-option-check {
+    color: #025b5b;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.clinic-option.selected .clinic-option-check {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+    .clinic-dropdown-display {
+        padding: 8px 12px;
+    }
+    
+    .clinic-logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .clinic-name {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .clinic-dropdown-display {
+        padding: 6px 10px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-name {
+        font-size: 14px;
+    }
+    
+    .clinic-address {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .clinic-logo {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .clinic-name {
+        font-size: 13px;
+    }
+    
+    .clinic-address {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: 100%;
+    }
+}
+
+/* Right side - Status and Logout */
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+/* System Health Status button */
+.status-button {
+    background: linear-gradient(135deg, #e6f0ff 0%, #d1e0ff 100%);
+    color: #2c3e50;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    border-left: 4px solid #3a5fcd;
+}
+
+/* Add pulse icon before text */
+.status-button::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #3a5fcd;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(58, 95, 205, 0.4);
+    animation: pulse-blue 2s infinite;
+}
+
+/* Shine effect */
+.status-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+
+
+.status-button:hover {
+    background: linear-gradient(135deg, #d1e0ff 0%, #b9d1ff 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(65, 105, 225, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    color: #1e3799;
+}
+
+.status-button:hover::after {
+    left: 100%;
+}
+
+.status-button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(58, 95, 205, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0);
+    }
+}
+
+/* Active Status indicator */
+.status-indicator {
+    background: linear-gradient(135deg, #e8f5f5 0%, #f0fcfc 100%);
+    color: #025b5b;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(2, 91, 91, 0.1);
+    border-left: 4px solid #025b5b;
+}
+
+.status-indicator:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.status-indicator.online {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0fcf0 100%);
+    color: #28a745;
+    border-left: 4px solid #28a745;
+}
+
+.status-indicator.online:before {
+    background-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+.status-indicator.offline {
+    background: linear-gradient(135deg, #fbf0f0 0%, #fcf0f0 100%);
+    color: #dc3545;
+    border-left: 4px solid #dc3545;
+}
+
+.status-indicator.offline:before {
+    background-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6c757d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.logout:hover {
+    background-color: #f2f2f2;
+    color: #025b5b;
+}
+
+.logout i {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+/* Responsive Design */
+
+/* Desktop (medium screens): 992px and below */
+@media screen and (max-width: 992px) {
+    /* Dashboard adjustments - change to single column */
+
+    
+    /* Top bar improvements */
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 230px); /* Match the sidebar width */
+        left: 230px;
+    }
+    
+    /* Clinic selector improvements */
+    .clinic-select {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .clinic-select select {
+        min-width: 300px;
+        width: auto;
+        max-width: 450px;
+    }
+    
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Status section adjustments */
+    .status-section {
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1.2rem;
+        white-space: nowrap;
+    }
+    
+    .sidebar {
+        width: 230px;
+    }
+    
+    .main {
+        margin-left: 230px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Single column layout for dashboard - already set in 992px */
+    
+    /* Top bar improvements */
+    .topbar {
+        width: calc(100% - 200px);
+        left: 200px;
+        background-color: white;
+        padding: 0.8rem 1rem;
+        flex-direction: row; /* Keep horizontal layout */
+        flex-wrap: row; /* Allow wrapping if needed */
+    }
+    
+    .clinic-select {
+        width: auto;
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 0.8rem;
+    }
+    
+    .status-indicator {
+        white-space: nowrap;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Top bar adjustments */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.8rem 1rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    
+    /* Top bar adjustments */
+    .status-section {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        width: 100%;
+        justify-content: center;
+        order: -1; /* Move to top */
+    }
+    
+    .status-indicator {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar {
+        width: 180px;
+    }
+    
+    .main {
+        margin-left: 180px;
+    }
+    
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Top bar adjustments for mobile */
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+        padding: 0.8rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .status-button {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    .status-indicator {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    /* Status button improvements for mobile */
+    .status-button {
+        width: auto; /* Don't make it 100% width */
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+        margin-right: 0.5rem; /* Add some spacing */
+    }
+    
+    /* Adjust the pulse animation for smaller screens */
+    .status-button::before {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .status-indicator {
+        font-size: 12px;
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+    }
+    
+    /* Status section layout */
+    .status-section {
+        display: flex;
+        flex-wrap: nowrap; /* Keep items in a row */
+        gap: 0.5rem;
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        padding-bottom: 4px; /* Space for scroll bar */
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Hide scrollbar but maintain functionality */
+    .status-section::-webkit-scrollbar {
+        height: 2px;
+    }
+    
+    .status-section::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .sidebar {
+        width: 160px;
+    }
+    
+    .main {
+        margin-left: 160px;
+    }
+    
+    .topbar {
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Optimize status elements for tiny screens */
+    .status-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+    }
+    
+    .status-button::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.8rem;
+        font-size: 11px;
+    }
+    
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    /* Change topbar layout */
+    .topbar {
+        padding: 0.6rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* Medium screens: 992px and below */
+@media screen and (max-width: 992px) {
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        width: calc(100% - 230px);
+        left: 230px;
+    }
+    
+    .clinic-select {
+        gap: 0.8rem;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: auto;
+        max-width: 400px;
+        flex-shrink: 1;
+    }
+    
+    .status-section {
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+    
+    .status-indicator {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    .topbar {
+        padding: 0.8rem 1rem;
+        width: calc(100% - 200px);
+        left: 200px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-select {
+        gap: 0.6rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.4rem 0.8rem;
+        font-size: 13px;
+        width: auto;
+        flex: 1;
+    }
+    
+    .status-section {
+        gap: 0.6rem;
+    }
+    
+    .status-button {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-button::before {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .status-indicator {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-indicator::before {
+        width: 9px;
+        height: 9px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    .topbar {
+        padding: 0.7rem;
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .clinic-logo {
+        width: 25px;
+        height: 25px;
+        min-width: 25px; /* Prevent shrinking */
+    }
+    
+    .clinic-select {
+        gap: 0.4rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.6rem;
+        font-size: 12px;
+        max-width: 150px;
+    }
+    
+    .status-section {
+        gap: 0.4rem;
+    }
+    
+    .status-button {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-button::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 70px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-indicator::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .logout {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .topbar {
+        padding: 0.6rem;
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .clinic-select {
+        gap: 0.3rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.5rem;
+        font-size: 11px;
+        max-width: 100px;
+    }
+    
+    .status-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 80px;
+    }
+    
+    .status-indicator {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 60px;
+    }
+    
+    .status-button::before,
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 3px;
+    }
+    
+    .logout {
+        width: 28px;
+        height: 28px;
+    }
+}
+.see-all-clinics-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    font-weight: 600;
+    color: #025b5b;
+    background: #e6f7f6;
+    border-top: 1px solid #e0e0e0;
+    text-decoration: none;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.2s;
+}
+.see-all-clinics-btn:hover {
+    background: #d0f0ee;
+    color: #028080;
+}
+.see-all-clinics-btn i {
+    font-size: 16px;
+    color: #025b5b;
+}
+.sidebar nav button.selected,
+.sidebar nav button.selected a {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+/* Logout Modal Styling */
+.logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.logout-modal.active {
+    display: flex;
+}
+
+.logout-modal-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logout-modal-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #60BFC5;
+    color: white;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.logout-modal-icon i {
+    font-size: 36px;
+    color: white;
+    margin-right: 0 !important;
+}
+.logout-modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.logout-modal-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.logout-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-cancel {
+    padding: 12px 30px;
+    background-color: #F2F4F7;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #d7d8d9;
+}
+
+.btn-confirm {
+    padding: 12px 40px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-confirm:hover {
+    background-color: #8d0606;
+}
+
+/* All Clinic Page Styles */
+.all-clinic-container {
+    padding: 1.5rem;
+}
+
+/* Header with Add Clinic Button */
+.clinic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.clinic-header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.add-clinic-btn {
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.add-clinic-btn:hover {
+    background-color: #019d9d;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+.add-clinic-btn i {
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Clinic Sections */
+.clinic-section {
+    margin-bottom: 2rem;
+}
+
+.clinic-section h2 {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Clinic List */
+.clinic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.clinic-item {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+    border: 1px solid #f0f0f0;
+    width: 100%;
+}
+
+.clinic-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+.clinic-information {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.clinic-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.clinic-details h3 {
+    font-size: 17px;
+    margin: 0 0 4px 0;
+    color: #333;
+}
+
+.clinic-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clinic-details p i {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #888;
+}
+
+.edit-clinic-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: teal;
+    transition: all 0.2s ease;
+}
+
+.edit-clinic-btn:hover {
+    background: #e0f7f7;
+    color: #025b5b;
+}
+
+.edit-clinic-btn i {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 75%;
+    height: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+/* Form Styles */
+.modal-body h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 1.5rem 0 1rem;
+    font-weight: 600;
+}
+
+.modal-body h3:first-child {
+    margin-top: 0;
+}
+
+.upload-container {
+    margin-bottom: 1.5rem;
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: #025b5b;
+    background-color: #f5fafa;
+}
+
+.upload-area i {
+    font-size: 32px !important;
+    color: #aaa;
+    margin: 0 0 1rem 0 !important;
+    padding: 0 !important;
+}
+
+.upload-area p {
+    margin: 0 0 1rem;
+    color: #666;
+    font-size: 14px;
+}
+
+.upload-btn {
+    background-color: #025b5b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.upload-btn:hover {
+    background-color: #037878;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+    color: #444;
+}
+
+.form-group label .required {
+    color: #e53935;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #025b5b;
+    box-shadow: 0 0 0 2px rgba(2, 91, 91, 0.1);
+    outline: none;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Tag Input */
+.tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-height: 48px;
+    align-items: center;
+}
+
+.tag {
+    background-color: #dcdbdb;
+    color: #191919;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag i {
+    font-size: 12px !important;
+    cursor: pointer;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.tag-input input {
+    flex: 1;
+    min-width: 100px;
+    border: none;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.tag-input input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Opening Hours Table */
+.opening-hours {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.hours-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 0.5fr;
+    background-color: #f5f5f5;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #444;
+}
+
+.hours-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 0.5fr;
+    padding: 12px 16px;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.hours-day {
+    font-size: 14px;
+    color: #555;
+}
+
+.time-input {
+    position: relative;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #111111;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s ease;
+}
+
+.time-input:hover {
+    border-color: #bbb;
+}
+
+.time-input input {
+    width: 100%;
+    padding: 10px 35px 10px 12px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    background: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+.time-input i {
+    position: absolute;
+    right: 12px;
+    color: #c2c1c1;
+    font-size: 16px;
+}
+
+/* Improve edit hours button styling */
+.edit-hours-btn {
+    background-color: transparent;
+    color: #4CABB1;
+    border: none;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-hours-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Fix the "readonly" text showing in your HTML */
+.hours-time {
+    position: relative;
+}
+
+/* Doctor Lists */
+.doctors-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.requested-doctors-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.requested-doctor-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f5f9fc;
+    padding: 8px 12px;
+    border-radius: 25px;
+}
+.requested-doctor-avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+.requested-doctor-item p{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Clinic Admin */
+.doctor-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f5f9fc;
+    padding: 8px 12px;
+    border-radius: 25px;
+}
+
+.add-doctor-btn,
+.invite-admin-btn {
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    min-width: 100px;
+    height: 40px;
+}
+/* Invitation Card Styles */
+.invitation-section {
+    margin-bottom: 2rem;
+}
+
+.invitation-table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.invitation-header {
+    display: flex;
+    background-color: #f0f2f5;
+    padding: 1rem;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.invitation-item {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+}
+
+.invitation-item:last-child {
+    border-bottom: none;
+}
+
+.invitation-item:hover {
+    background-color: #f9f9f9;
+}
+
+.column {
+    padding: 0.5rem;
+}
+
+.clinic-name {
+    flex: 1;
+    font-weight: 500;
+}
+
+.address {
+    flex: 1.5;
+    color: #666;
+}
+
+.contacts {
+    flex: 1;
+    color: #666;
+}
+
+.actions {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.accept-btn, .reject-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accept-btn {
+    background-color: #4CABB1;
+    color: white;
+}
+
+.accept-btn:hover {
+    background-color: #3d9a9f;
+    transform: translateY(-2px);
+}
+
+.reject-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.reject-btn:hover {
+    background-color: #d44637;
+    transform: translateY(-2px);
+}
+
+.action-buttons i {
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .invitation-header, .invitation-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0.5rem;
+    }
+    
+    .column {
+        padding: 0.5rem 0;
+    }
+    
+    .clinic-name, .address {
+        grid-column: 1 / span 2;
+    }
+    
+    .contacts {
+        text-align: left;
+    }
+    
+    .actions {
+        text-align: right;
+    }
+}
+
+.add-doctor-btn:hover,
+.invite-admin-btn:hover {
+    background-color: #025b5b;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+}
+
+.save-btn {
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    min-width: 120px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    margin-left: auto;
+}
+
+.save-btn:hover {
+    background-color: #025b5b;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+
+.save-btn i {
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Doctor section styling */
+.doctors-section {
+    position: relative;
+    width: 100%;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Doctor card list container */
+.doctors-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Doctor card styling */
+.doctor-card {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    position: relative;
+    gap: 12px;
+    width: 100%;
+}
+
+.doctor-card:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+}
+
+/* Doctor avatar container */
+.doctor-avatar-container {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+}
+
+.doctor-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Doctor info styling */
+.doctor-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.doctor-info h4 {
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.doctor-info p {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.doctor-info p i {
+    font-size: 13px !important;
+    color: #4CABB1;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Delete doctor button */
+.delete-doctor-btn {
+    background-color: transparent;
+    color: #e74c3c;
+    border: 1px solid #fbe0dd;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-doctor-btn:hover {
+    background-color: #fff1f0;
+    color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.delete-doctor-btn i {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Add doctor button positioning */
+.add-doctor-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: teal;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    height: 40px;
+}
+
+.add-doctor-btn:hover {
+    background-color: #3d9a9f;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+.add-doctor-btn i {
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.doctor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.doctor-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.admin-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Clinic Admin Section */
+.admin-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+/* Doctor card list container */
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Doctor card styling */
+.doctor-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    position: relative;
+    gap: 12px;
+    width: 100%;
+}
+
+.doctor-item:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+}
+
+/* Doctor avatar container */
+
+
+.admin-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    object-fit: cover;
+}
+/* Time Picker Modal Styling */
+.time-picker-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20000;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-picker-modal.active {
+    display: flex;
+}
+
+.time-picker-content {
+    background-color: white;
+    width: 450px;
+    max-width: 90%;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-time-picker {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+}
+
+.time-picker-section {
+    margin-bottom: 30px;
+}
+
+.time-picker-section label {
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.time-picker-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-value {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 60px;
+    height: 40px;
+}
+
+.time-separator {
+    font-size: 24px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-arrow {
+    background: none;
+    border: none;
+    color: #4CABB1;
+    font-size: 16px;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.time-arrow:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+    border-radius: 50%;
+}
+
+.time-picker-days {
+    margin-bottom: 30px;
+}
+
+.time-picker-days p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.day-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.day-btn {
+    background-color: #f0f2f5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;    
+    font-weight: 500;
+    gap: 0;
+}
+
+.day-btn.selected {
+    background-color: #4CABB1;
+    color: white;
+}
+
+.time-picker-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.remove-time-btn {
+    background-color: #f96666;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancel-time-btn {
+    background-color: #f0f2f5;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.add-time-btn {
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+.edit-hours-btn {
+    background-color: transparent;
+    color: #03595f;
+    border: none;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-hours-btn:hover {
+    background-color: rgba(76, 171, 177, 0.1);
+}
+
+
+/* Phone Search Modal */
+.phone-search-modal .modal-content {
+    max-width: 500px;
+    padding: 25px;
+}
+
+.phone-search-body {
+    padding: 10px 0;
+}
+
+.phone-search-body .form-group {
+    margin-bottom: 20px;
+}
+
+.phone-search-body label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.phone-search-body .required {
+    color: #ff4d4d;
+}
+
+.phone-search-body .form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.phone-search-body .form-input:focus {
+    border-color: #4CABB1;
+    box-shadow: 0 0 0 2px rgba(76, 171, 177, 0.1);
+}
+
+.search-results {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.no-results {
+    padding: 15px;
+    text-align: center;
+    color: #666;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+.search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
+.search-result-item.selected {
+    background-color: rgba(76, 171, 177, 0.1);
+    border: 1px solid #4CABB1;
+}
+
+.search-result-item .doctor-info {
+    flex: 1;
+}
+
+.search-result-item .doctor-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.search-result-item .doctor-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.select-doctor-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s;
+    margin-right: 0px !important;
+    border-radius: 4px;
+}
+
+.selected .select-doctor-btn {
+    background-color: #4CABB1;
+    color: white;
+}
+
+.select-doctor-btn:hover {
+    background-color: #ddd;
+}
+
+.selected .select-doctor-btn:hover {
+    background-color: #3a9a9e;
+}
+
+.phone-search-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.add-number-btn {
+    padding: 10px 30px;
+    background-color: #4CABB1;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-number-btn:hover {
+    background-color: #3a9a9e;
+}
+
+/* Add this to your CSS to properly position the close button */
+.phone-search-modal .modal-content {
+    position: relative;
+    padding-top: 40px; /* Add space for close button */
+}
+
+.phone-search-modal .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #777;
+}
+
+.phone-search-modal .close-modal:hover {
+    background-color: #f1f1f1;
+    color: #333;
+}

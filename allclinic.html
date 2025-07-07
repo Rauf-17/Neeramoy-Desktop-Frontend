@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Clinic</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./allclinic.css">
+</head>
+<body>
+
+    <!-- Common Code Starts -->
+
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="./dashboard.html"><img src="./images/logo.svg" alt="Neeramoy"></a>
+        </div>
+        <div class="doctor-info">
+            <img src="./images/Rauf.png" alt="Doctor" class="doctor-image" id="doctor-image">
+            <h4 id="doctor-name">Doctor Name</h4>
+            <span id="doctor-designation">Designation</span>
+        </div>
+        <nav>
+            <button><a href="./dashboard.html" class="sidebar-btn"><i class="fa-solid fa-border-all"></i>Dashboard</a></button>
+            <button><a href="./appointments.html" class="sidebar-btn"><i class="fa-solid fa-calendar"></i>Appointments</a></button>
+            <button><a href="./patients.html" class="sidebar-btn"><i class="fa-solid fa-user-plus"></i>Patients</a></button>
+            <button><a href="./prescription.html" class="sidebar-btn"><i class="fa-solid fa-file-circle-plus"></i>Prescription</a></button>
+            <div class="settings-dropdown">
+                <button class="settings-button" onclick="toggleDropdown()">
+                    <i class="fa fa-gear"></i>
+                    <span class="sidebar-btn">Settings</span>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <button class="dropdown-item "><a href="./allclinic.html" class="sidebar-btn">All Clinic</a></button>
+                    <button class="dropdown-item"><a href="./setup.html" class="sidebar-btn">Setup</a></button>
+                    <button class="dropdown-item"><a href="./presetdata.html" class="sidebar-btn">Preset data</a></button>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="clinic-select-container">
+                <div class="clinic-select-field">
+                    <div class="clinic-dropdown-display" id="clinicDropdownDisplay">
+                        <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-logo">
+                        <div class="clinic-info">
+                            <h3 class="clinic-name">NDSL Clinic</h3>
+                            <p class="clinic-address">
+                                <i class="fa fa-map-marker-alt"></i>
+                                Mohakhali DOHS, Dhaka, Bangladesh
+                            </p>
+                        </div>
+                        <span class="dropdown-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="clinic-dropdown-menu" id="clinicDropdownMenu">
+                        <div class="clinic-option selected" data-id="clinic1">
+                            <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">NDSL Clinic</h4>
+                                <p class="clinic-option-address">Mohakhali DOHS, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic2">
+                            <img src="./images/logo.svg" alt="Mirpur Hospital" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Mirpur Hospital</h4>
+                                <p class="clinic-option-address">Mirpur, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic3">
+                            <img src="./images/logo.svg" alt="Medinova Medical Services" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Medinova Medical Services</h4>
+                                <p class="clinic-option-address">Kajal Shah, Sylhet, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic4">
+                            <img src="./images/logo.svg" alt="Neeramoy Online For Brac" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Neeramoy Online For Brac</h4>
+                                <p class="clinic-option-address">34 Kamal Ataturk Ave, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        <a href="allclinic.html" class="see-all-clinics-btn">
+                            <i class="fa fa-building"></i> See All Clinics
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-section">
+                <button class="status-button">System Health Status</button>
+                <span class="status-indicator online">Online</span>
+                <button class="logout logout-btn" title="Logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Logout Confirmation Modal -->
+            <div id="logout-modal" class="logout-modal">
+                <div class="logout-modal-content">
+                    <div class="logout-modal-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="logout-modal-title">Confirmation</h2>
+                    <p class="logout-modal-text">Are you sure that you want to logout?</p>
+                    <div class="logout-modal-actions">
+                        <button id="cancel-logout" class="btn-cancel">Cancel</button>
+                        <button id="confirm-logout" class="btn-confirm">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Common Code Ends -->
+
+        <!-- All Clinic Code Starts -->
+
+        <div class="all-clinic-container">
+            <div class="clinic-header">
+                <h1>All Clinic</h1>
+                <button class="add-clinic-btn" id="addClinicBtn">
+                    <i class="fa fa-plus"></i> Add New Clinic
+                </button>
+            </div>
+
+            <div class="clinic-section">
+                <h2>Invitation</h2>
+                <div class="invitation-table">
+                    <div class="invitation-header">
+                        <div class="column clinic-name">CLINIC NAME</div>
+                        <div class="column address">ADDRESS</div>
+                        <div class="column contacts">CONTACTS</div>
+                        <div class="column actions">ACCEPT/REJECT</div>
+                    </div>
+                    
+                    <div class="invitation-item">
+                        <div class="column clinic-name">AMZ Hospital</div>
+                        <div class="column address">Uttar Badda, Dhaka, Bangladesh</div>
+                        <div class="column contacts">01956254687</div>
+                        <div class="column actions">
+                            <div class="action-buttons">
+                                <button class="accept-btn" title="Accept invitation">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                                <button class="reject-btn" title="Reject invitation">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="invitation-item">
+                        <div class="column clinic-name">Popular Dignositic Center</div>
+                        <div class="column address"> Kamal Ataturk Avenue, Dhaka, Bangladesh</div>
+                        <div class="column contacts">01236587961</div>
+                        <div class="column actions">
+                            <div class="action-buttons">
+                                <button class="accept-btn" title="Accept invitation">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                                <button class="reject-btn" title="Reject invitation">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Added</h2>
+                <div class="clinic-list">
+                    <!-- Clinic Item -->
+                    <div class="clinic-item">
+                        <div class="clinic-information">
+                            <img src="./images/logo.svg" alt="Hospital Icon" class="clinic-icon">
+                            <div class="clinic-details">
+                                <h3>NDSL Clinic</h3>
+                                <p><i class="fa fa-map-marker-alt"></i> Mohakhali DOHS, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <button class="edit-clinic-btn" data-id="clinic1">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
+                    </div>
+
+                    <!-- Clinic Item -->
+                    <div class="clinic-item">
+                        <div class="clinic-information">
+                            <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-icon">
+                            <div class="clinic-details">
+                                <h3>Mirpur Hospital</h3>
+                                <p><i class="fa fa-map-marker-alt"></i>Mirpur, Dhaka, Bangladesh </p>
+                            </div>
+                        </div>
+                        <button class="edit-clinic-btn" data-id="clinic2">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
+                    </div>
+
+                    <!-- Clinic Item -->
+                    <div class="clinic-item">
+                        <div class="clinic-information">
+                            <img src="./images/logo.svg" alt="Hospital Icon" class="clinic-icon">
+                            <div class="clinic-details">
+                                <h3>Medinova Medical Services</h3>
+                                <p><i class="fa fa-map-marker-alt"></i> Kajal Shah, Sylhet, Bangladesh</p>
+                            </div>
+                        </div>
+                        <button class="edit-clinic-btn" data-id="clinic3">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                    <!-- Clinic Item -->
+                    <div class="clinic-item">
+                        <div class="clinic-information">
+                            <img src="./images/logo.svg" alt="Hospital Icon" class="clinic-icon">
+                            <div class="clinic-details">
+                                <h3>Neeramoy Online For Brac</h3>
+                                <p><i class="fa fa-map-marker-alt"></i> 34 Kamal Ataturk Ave, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <button class="edit-clinic-btn" data-id="clinic4">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Clinic Modal -->
+            <div class="modal" id="editClinicModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Update Clinic</h2>
+                        <button class="close-modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editClinicForm">
+                            <h3>Clinic profile</h3>
+                            <div class="upload-container">
+                                <div class="upload-area">
+                                    <i class="fa fa-upload"></i>
+                                    <p>Drag and drop image or</p>
+                                    <button type="button" class="upload-btn">Upload image</button>
+                                    <input type="file" hidden id="clinicImageUpload" accept="image/*">
+                                </div>
+                            </div>
+                            
+                            <h3>Clinic info</h3>
+                            <div class="form-group">
+                                <label for="clinicName">Name <span class="required">*</span></label>
+                                <input type="text" id="clinicName" placeholder="Enter Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="clinicEmail">Email</label>
+                                <input type="email" id="clinicEmail" placeholder="Enter Email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="clinicAddress">Address <span class="required">*</span></label>
+                                <input type="text" id="clinicAddress" placeholder="Enter a location" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="clinicPhone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="clinicPhone" placeholder="Enter Phone Number" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="clinicCategory">Category <span class="required">*</span></label>
+                                <div class="tag-input" id="tagInputContainer">
+                                    <div class="tag">General <i class="fa fa-times-circle" onclick="removeTag(this)"></i></div>
+                                    <div class="tag">Medicine <i class="fa fa-times-circle" onclick="removeTag(this)"></i></div>
+                                    <input type="text" id="clinicCategory" placeholder="Enter Category" onkeypress="handleTagInput(event)" required>
+                                </div>
+                            </div>
+
+                            <script>
+                            function handleTagInput(event) {
+                                if (event.key === 'Enter') {
+                                    event.preventDefault();
+                                    const input = event.target;
+                                    const value = input.value.trim();
+                                    
+                                    if (value !== '') {
+                                        addTag(value);
+                                        input.value = '';
+                                    }
+                                }
+                            }
+
+                            function addTag(tagText) {
+                                const tagContainer = document.getElementById('tagInputContainer');
+                                const input = document.getElementById('clinicCategory');
+                                
+                                const tagElement = document.createElement('div');
+                                tagElement.className = 'tag';
+                                tagElement.innerHTML = `${tagText} <i class="fa fa-times-circle" onclick="removeTag(this)"></i>`;
+                                
+                                tagContainer.insertBefore(tagElement, input);
+                            }
+
+                            function removeTag(closeIcon) {
+                                const tag = closeIcon.parentElement;
+                                tag.remove();
+                            }
+                            </script>
+                            
+                            <div class="form-group">
+                                <label for="clinicDescription">Description <span class="required">*</span></label>
+                                <textarea id="clinicDescription" placeholder="Enter Description" required></textarea>
+                            </div>
+                            
+                            <h3>Opening Hours</h3>
+                            <div class="opening-hours">
+                                <div class="hours-header">
+                                    <div class="hours-day">Days</div>
+                                    <div class="hours-time">Starts at</div>
+                                    <div class="hours-time">Ends at</div>
+                                    <div class="hours-action">Action</div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Saturday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Sunday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Monday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Tuesday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Wednesday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Thursday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Friday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Bank & License</h3>
+                            <div class="form-group">
+                                <label for="bankName">Bank Name</label>
+                                <input type="text" id="bankName" placeholder="Enter Bank Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accountName">Account Name</label>
+                                <input type="text" id="accountName" placeholder="Enter Account Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accountNumber">Account Number</label>
+                                <input type="text" id="accountNumber" placeholder="Enter Account Number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="licenseNumber">License Number</label>
+                                <input type="text" id="licenseNumber" placeholder="License Number">
+                            </div>
+                            
+                            <div class="upload-container">
+                                <label>License Copy</label>
+                                <div class="upload-area">
+                                    <i class="fa fa-upload"></i>
+                                    <p>Drag and drop image or</p>
+                                    <button type="button" class="upload-btn">Upload Image</button>
+                                    <input type="file" hidden id="licenseImageUpload" accept="image/*">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="binNumber">BIN</label>
+                                <input type="text" id="binNumber" placeholder="Enter BIN">
+                            </div>
+                            
+                            
+                            <div class="doctor-header">
+                                <h3>Available Doctors</h3>
+                                <button type="button" class="add-doctor-btn">
+                                    <i class="fa fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div class="doctors-section">
+                                <div class="doctors-card-list" id="availableDoctorsList">
+                                    <!-- Doctor Item 1 -->
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar-container">
+                                            <img src="./images/doctor.png" alt="Doctor" class="doctor-avatar">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <h4>Sakib Zaman</h4>
+                                            <p><i class="fa fa-map-marker-alt"></i> Niketan, Dhaka, Bangladesh</p>
+                                        </div>
+                                        <button class="delete-doctor-btn" title="Remove doctor">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Doctor Item 2 -->
+                                    <div class="doctor-card">
+                                        <div class="doctor-avatar-container">
+                                            <img src="./images/doctor.png" alt="Doctor" class="doctor-avatar">
+                                        </div>
+                                        <div class="doctor-info">
+                                            <h4>Sheikh Shopnil</h4>
+                                            <p><i class="fa fa-map-marker-alt"></i> Banasree, Dhaka, Bangladesh</p>
+                                        </div>
+                                        <button class="delete-doctor-btn" title="Remove doctor">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Requested Doctors</h3>
+                            <div class="requested-doctors-list" id="requestedDoctorsList">
+                                <div class="requested-doctor-item">
+                                    <img src="./images/doctor.png" alt="Doctor" class="requested-doctor-avatar">
+                                    <p>01634567898</p>
+                                </div>
+                            </div>
+                            
+                            <div class="admin-header">
+                                <h3>Clinic Admin</h3>
+                                <button type="button" class="invite-admin-btn">
+                                    <i class="fa fa-plus"></i> Invite
+                                </button>
+                            </div>
+                            <div class="admin-section">
+                                <div class="admin-list" id="clinicAdminList">
+                                    <div class="doctor-item">
+                                        <img src="./images/doctor.png" alt="Admin" class="admin-avatar">
+                                        <div class="doctor-info">
+                                            <h4>Mridul Khandakar</h4>
+                                            <p><i class="fa fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="save-btn">
+                                    <i class="fa fa-check"></i> Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add New Clinic Modal -->
+            <div class="modal" id="addClinicModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Add New Clinic</h2>
+                        <button class="close-modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addClinicForm">
+                            <h3>Clinic profile</h3>
+                            <div class="upload-container">
+                                <div class="upload-area">
+                                    <i class="fa fa-upload"></i>
+                                    <p>Drag and drop image or</p>
+                                    <button type="button" class="upload-btn">Upload image</button>
+                                    <input type="file" hidden id="newClinicImageUpload" accept="image/*">
+                                </div>
+                            </div>
+                            
+                            <h3>Clinic info</h3>
+                            <div class="form-group">
+                                <label for="newClinicName">Name <span class="required">*</span></label>
+                                <input type="text" id="newClinicName" placeholder="Enter here" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newClinicEmail">Email</label>
+                                <input type="email" id="newClinicEmail" placeholder="Enter email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newClinicAddress">Address <span class="required">*</span></label>
+                                <input type="text" id="newClinicAddress" placeholder="Enter a location" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newClinicPhone">Phone number <span class="required">*</span></label>
+                                <input type="tel" id="newClinicPhone" placeholder="Enter here" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newClinicCategory">Category <span class="required">*</span></label>
+                                <div class="tag-input" id="newTagInputContainer">
+                                    <div class="tag">General <i class="fa fa-times-circle" onclick="removeNewTag(this)"></i></div>
+                                    <div class="tag">Medicine <i class="fa fa-times-circle" onclick="removeNewTag(this)"></i></div>
+                                    <input type="text" id="newClinicCategory" placeholder="Enter Category" onkeypress="handleNewTagInput(event)" required>
+                                </div>
+                            </div>
+
+                            <script>
+                            function handleNewTagInput(event) {
+                                if (event.key === 'Enter') {
+                                    event.preventDefault();
+                                    const input = event.target;
+                                    const value = input.value.trim();
+                                    
+                                    if (value !== '') {
+                                        addNewTag(value);
+                                        input.value = '';
+                                    }
+                                }
+                            }
+
+                            function addNewTag(tagText) {
+                                const tagContainer = document.getElementById('newTagInputContainer');
+                                const input = document.getElementById('newClinicCategory');
+                                
+                                const tagElement = document.createElement('div');
+                                tagElement.className = 'tag';
+                                tagElement.innerHTML = `${tagText} <i class="fa fa-times-circle" onclick="removeNewTag(this)"></i>`;
+                                
+                                tagContainer.insertBefore(tagElement, input);
+                            }
+
+                            function removeNewTag(closeIcon) {
+                                const tag = closeIcon.parentElement;
+                                tag.remove();
+                            }
+                            </script>
+                            
+                            <div class="form-group">
+                                <label for="newClinicDescription">Description <span class="required">*</span></label>
+                                <textarea id="newClinicDescription" placeholder="Enter here" required></textarea>
+                            </div>
+                            
+                            <h3>Opening Hours</h3>
+                            <div class="opening-hours">
+                                <div class="hours-header">
+                                    <div class="hours-day">Days</div>
+                                    <div class="hours-time">Starts at</div>
+                                    <div class="hours-time">Ends at</div>
+                                    <div class="hours-action">Action</div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Saturday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Sunday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Monday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Tuesday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Wednesday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Thursday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="hours-row">
+                                    <div class="hours-day">Friday</div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="10:00 am" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-time">
+                                        <div class="time-input">
+                                            <input type="text" value="8:00 pm" readonly>
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="hours-action">
+                                        <button class="edit-hours-btn"><i class="fa fa-pencil-alt"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Bank & License</h3>
+                            <div class="form-group">
+                                <label for="newBankName">Bank name</label>
+                                <input type="text" id="newBankName" placeholder="Enter here">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newAccountName">Account name</label>
+                                <input type="text" id="newAccountName" placeholder="Enter here">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newAccountNumber">Account number</label>
+                                <input type="text" id="newAccountNumber" placeholder="Enter here">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newLicenseNumber">License number</label>
+                                <input type="text" id="newLicenseNumber" placeholder="Enter here">
+                            </div>
+                            
+                            <div class="upload-container">
+                                <label>License Copy</label>
+                                <div class="upload-area">
+                                    <i class="fa fa-upload"></i>
+                                    <p>Drag and drop image or</p>
+                                    <button type="button" class="upload-btn">Upload image</button>
+                                    <input type="file" hidden id="newLicenseImageUpload" accept="image/*">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newBinNumber">BIN</label>
+                                <input type="text" id="newBinNumber" placeholder="Enter here">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="save-btn">
+                                    <i class="fa fa-check"></i> Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+        <!-- All Clinic Code Ends -->
+
+        <script>
+            function toggleDropdown() {
+                const dropdown = document.querySelector('.dropdown-content');
+                dropdown.classList.toggle('show'); // Toggle the "show" class to display or hide the dropdown
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', function (event) {
+                const dropdown = document.querySelector('.dropdown-content');
+                const settingsButton = document.querySelector('.settings-button');
+                if (!settingsButton.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show'); // Hide the dropdown
+                }
+            });
+            // Clinic Dropdown Functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const clinicDropdownDisplay = document.getElementById('clinicDropdownDisplay');
+                const clinicDropdownMenu = document.getElementById('clinicDropdownMenu');
+                const clinicOptions = document.querySelectorAll('.clinic-option');
+                
+                // Toggle dropdown menu
+                if (clinicDropdownDisplay) {
+                    clinicDropdownDisplay.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        this.classList.toggle('active');
+                        clinicDropdownMenu.classList.toggle('show');
+                    });
+                }
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!clinicDropdownDisplay.contains(event.target) && 
+                        !clinicDropdownMenu.contains(event.target)) {
+                        clinicDropdownDisplay.classList.remove('active');
+                        clinicDropdownMenu.classList.remove('show');
+                    }
+                });
+                
+                // Handle clinic selection
+                clinicOptions.forEach(option => {
+                    option.addEventListener('click', function() {
+                        // Remove selected class from all options
+                        clinicOptions.forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Add selected class to clicked option
+                        this.classList.add('selected');
+                        
+                        // Update display with selected clinic info
+                        const clinicName = this.querySelector('.clinic-option-name').innerText;
+                        const clinicAddress = this.querySelector('.clinic-option-address').innerText;
+                        const clinicLogo = this.querySelector('.clinic-option-logo').src;
+                        const clinicId = this.getAttribute('data-id');
+                        
+                        // Update the display
+                        document.querySelector('.clinic-name').innerText = clinicName;
+                        document.querySelector('.clinic-address').innerHTML = '<i class="fa fa-map-marker-alt"></i> ' + clinicAddress;
+                        document.querySelector('.clinic-logo').src = clinicLogo;
+                        
+                        // You could also store the selected clinic ID in a hidden input or data attribute
+                        // document.getElementById('selectedClinic').value = clinicId;
+                        
+                        // Close the dropdown
+                        clinicDropdownDisplay.classList.remove('active');
+                        clinicDropdownMenu.classList.remove('show');
+                    });
+                });
+            });
+            // Highlight selected sidebar button
+            document.addEventListener('DOMContentLoaded', function() {
+                const sidebarButtons = document.querySelectorAll('.sidebar nav button');
+
+                sidebarButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        sidebarButtons.forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                });
+
+                // Optionally, highlight based on current page
+                const currentPath = window.location.pathname.split('/').pop();
+                sidebarButtons.forEach(btn => {
+                    const link = btn.querySelector('a');
+                    if (link && link.getAttribute('href') && link.getAttribute('href').includes(currentPath)) {
+                        btn.classList.add('selected');
+                    }
+                });
+            });
+            // Logout Modal Functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get modal elements
+                const logoutModal = document.getElementById('logout-modal');
+                const cancelLogout = document.getElementById('cancel-logout');
+                const confirmLogout = document.getElementById('confirm-logout');
+                const logoutButtons = document.querySelectorAll('.logout-btn');
+                
+                // Show modal when logout button is clicked
+                logoutButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        logoutModal.classList.add('active');
+                    });
+                });
+                
+                // Hide modal when cancel is clicked
+                cancelLogout.addEventListener('click', function() {
+                    logoutModal.classList.remove('active');
+                });
+                
+                // Handle logout confirmation
+                confirmLogout.addEventListener('click', function() {
+                    // Perform logout actions here
+                    // For example: redirect to login page
+                    window.location.href = 'index.html'; // Replace with your login page URL
+                });
+                
+                // Close modal when clicking outside
+                logoutModal.addEventListener('click', function(e) {
+                    if (e.target === logoutModal) {
+                        logoutModal.classList.remove('active');
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && logoutModal.classList.contains('active')) {
+                        logoutModal.classList.remove('active');
+                    }
+                });
+            });
+            // Modal handling
+            document.addEventListener('DOMContentLoaded', function() {
+                const addClinicBtn = document.getElementById('addClinicBtn');
+                const addClinicModal = document.getElementById('addClinicModal');
+                const editClinicModal = document.getElementById('editClinicModal');
+                const closeModals = document.querySelectorAll('.close-modal');
+                const editClinicBtns = document.querySelectorAll('.edit-clinic-btn');
+                
+                // Open Add Clinic modal
+                if (addClinicBtn) {
+                    addClinicBtn.addEventListener('click', function() {
+                        addClinicModal.style.display = 'block';
+                    });
+                }
+                
+                // Open Edit Clinic modal
+                editClinicBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const clinicId = this.getAttribute('data-id');
+                        // You can load clinic data based on clinicId here
+                        editClinicModal.style.display = 'block';
+                    });
+                });
+                
+                // Close modals
+                closeModals.forEach(closeBtn => {
+                    closeBtn.addEventListener('click', function() {
+                        addClinicModal.style.display = 'none';
+                        editClinicModal.style.display = 'none';
+                    });
+                });
+                
+                // Close modal when clicking outside
+                window.addEventListener('click', function(event) {
+                    if (event.target === addClinicModal) {
+                        addClinicModal.style.display = 'none';
+                    }
+                    if (event.target === editClinicModal) {
+                        editClinicModal.style.display = 'none';
+                    }
+                });
+                
+                // Handle file uploads
+                const uploadBtns = document.querySelectorAll('.upload-btn');
+                uploadBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const fileInput = this.nextElementSibling;
+                        fileInput.click();
+                    });
+                });
+                
+                // Handle form submissions
+                const editClinicForm = document.getElementById('editClinicForm');
+                const addClinicForm = document.getElementById('addClinicForm');
+                
+                if (editClinicForm) {
+                    editClinicForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        // Handle edit clinic submission
+                        alert('Clinic updated successfully!');
+                        editClinicModal.style.display = 'none';
+                    });
+                }
+                
+                if (addClinicForm) {
+                    addClinicForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        // Handle add clinic submission
+                        alert('New clinic added successfully!');
+                        addClinicModal.style.display = 'none';
+                    });
+                }
+            });
+            // Time picker modal implementation for opening hours
+            document.addEventListener('DOMContentLoaded', function() {
+                // Create the time picker modal
+                const timePickerModal = document.createElement('div');
+                timePickerModal.className = 'time-picker-modal';
+                timePickerModal.innerHTML = `
+                    <div class="time-picker-content">
+                        <button class="close-time-picker">&times;</button>
+                        
+                        <div class="time-picker-section">
+                            <label>Start Time</label>
+                            <div class="time-picker-controls">
+                                <div class="time-spinner">
+                                    <button class="time-arrow" data-direction="up" data-field="start-hour">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                    <span class="time-value" id="start-hour">12</span>
+                                    <button class="time-arrow" data-direction="down" data-field="start-hour">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="time-separator">:</div>
+                                <div class="time-spinner">
+                                    <button class="time-arrow" data-direction="up" data-field="start-minute">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                    <span class="time-value" id="start-minute">00</span>
+                                    <button class="time-arrow" data-direction="down" data-field="start-minute">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="time-picker-section">
+                            <label>End Time</label>
+                            <div class="time-picker-controls">
+                                <div class="time-spinner">
+                                    <button class="time-arrow" data-direction="up" data-field="end-hour">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                    <span class="time-value" id="end-hour">22</span>
+                                    <button class="time-arrow" data-direction="down" data-field="end-hour">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="time-separator">:</div>
+                                <div class="time-spinner">
+                                    <button class="time-arrow" data-direction="up" data-field="end-minute">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </button>
+                                    <span class="time-value" id="end-minute">00</span>
+                                    <button class="time-arrow" data-direction="down" data-field="end-minute">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="time-picker-days">
+                            <p>Set same time slots for other days</p>
+                            <div class="day-buttons">
+                                <button class="day-btn" data-day="sat">Sat</button>
+                                <button class="day-btn" data-day="sun">Sun</button>
+                                <button class="day-btn" data-day="mon">Mon</button>
+                                <button class="day-btn" data-day="tue">Tue</button>
+                                <button class="day-btn" data-day="wed">Wed</button>
+                                <button class="day-btn" data-day="thu">Thu</button>
+                                <button class="day-btn" data-day="fri">Fri</button>
+                            </div>
+                        </div>
+                        
+                        <div class="time-picker-actions">
+                            <button class="remove-time-btn">
+                                <i class="fa fa-trash"></i> Remove
+                            </button>
+                            <button class="cancel-time-btn">
+                                <i class="fa fa-times"></i> Cancel
+                            </button>
+                            <button class="add-time-btn">
+                                <i class="fa fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(timePickerModal);
+                
+                let currentRow = null;
+                let selectedDays = new Set();
+                
+                // Add event listeners to all edit hours buttons
+                const editHoursButtons = document.querySelectorAll('.edit-hours-btn');
+                editHoursButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Get the current row
+                        currentRow = this.closest('.hours-row');
+                        const dayName = currentRow.querySelector('.hours-day').textContent.trim();
+                        
+                        // Reset selected days
+                        selectedDays.clear();
+                        selectedDays.add(dayName.toLowerCase().substring(0, 3));
+                        
+                        // Get current time values
+                        const startTimeInput = currentRow.querySelector('.hours-time:nth-child(2) input');
+                        const endTimeInput = currentRow.querySelector('.hours-time:nth-child(3) input');
+                        
+                        const startTime = parseTime(startTimeInput.value);
+                        const endTime = parseTime(endTimeInput.value);
+                        
+                        // Set values in time picker
+                        document.getElementById('start-hour').textContent = startTime.hour;
+                        document.getElementById('start-minute').textContent = startTime.minute.toString().padStart(2, '0');
+                        document.getElementById('end-hour').textContent = endTime.hour;
+                        document.getElementById('end-minute').textContent = endTime.minute.toString().padStart(2, '0');
+                        
+                        // Clear previous selected days and select current day
+                        document.querySelectorAll('.day-btn').forEach(btn => {
+                            const day = btn.getAttribute('data-day');
+                            if (day === dayName.toLowerCase().substring(0, 3)) {
+                                btn.classList.add('selected');
+                            } else {
+                                btn.classList.remove('selected');
+                            }
+                        });
+                        
+                        // Show the modal
+                        timePickerModal.classList.add('active');
+                    });
+                });
+                
+                // Handle day button clicks
+                document.querySelectorAll('.day-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const day = this.getAttribute('data-day');
+                        
+                        if (this.classList.contains('selected')) {
+                            this.classList.remove('selected');
+                            selectedDays.delete(day);
+                        } else {
+                            this.classList.add('selected');
+                            selectedDays.add(day);
+                        }
+                    });
+                });
+                
+                // Handle time arrow clicks
+                document.querySelectorAll('.time-arrow').forEach(arrow => {
+                    arrow.addEventListener('click', function() {
+                        const field = this.getAttribute('data-field');
+                        const direction = this.getAttribute('data-direction');
+                        const valueElement = document.getElementById(field);
+                        let value = parseInt(valueElement.textContent);
+                        
+                        if (field.includes('hour')) {
+                            // Hours go from 0-23
+                            if (direction === 'up') {
+                                value = (value + 1) % 24;
+                            } else {
+                                value = (value - 1 + 24) % 24;
+                            }
+                            valueElement.textContent = value;
+                        } else {
+                            // Minutes go from 0-59 in increments of 15
+                            if (direction === 'up') {
+                                value = (value + 15) % 60;
+                            } else {
+                                value = (value - 15 + 60) % 60;
+                            }
+                            valueElement.textContent = value.toString().padStart(2, '0');
+                        }
+                    });
+                });
+                
+                // Close the modal
+                document.querySelector('.close-time-picker').addEventListener('click', function() {
+                    timePickerModal.classList.remove('active');
+                });
+                
+                document.querySelector('.cancel-time-btn').addEventListener('click', function() {
+                    timePickerModal.classList.remove('active');
+                });
+                
+                // Add time
+                document.querySelector('.add-time-btn').addEventListener('click', function() {
+                    if (!currentRow) return;
+                    
+                    const startHour = document.getElementById('start-hour').textContent;
+                    const startMinute = document.getElementById('start-minute').textContent;
+                    const endHour = document.getElementById('end-hour').textContent;
+                    const endMinute = document.getElementById('end-minute').textContent;
+                    
+                    const formattedStartTime = formatTime(startHour, startMinute);
+                    const formattedEndTime = formatTime(endHour, endMinute);
+                    
+                    // Update current row
+                    currentRow.querySelector('.hours-time:nth-child(2) input').value = formattedStartTime;
+                    currentRow.querySelector('.hours-time:nth-child(3) input').value = formattedEndTime;
+                    
+                    // Update other selected days
+                    if (selectedDays.size > 1) {
+                        const allRows = document.querySelectorAll('.hours-row');
+                        allRows.forEach(row => {
+                            const dayElement = row.querySelector('.hours-day');
+                            if (!dayElement) return;
+                            
+                            const day = dayElement.textContent.trim().toLowerCase().substring(0, 3);
+                            if (selectedDays.has(day) && row !== currentRow) {
+                                row.querySelector('.hours-time:nth-child(2) input').value = formattedStartTime;
+                                row.querySelector('.hours-time:nth-child(3) input').value = formattedEndTime;
+                            }
+                        });
+                    }
+                    
+                    timePickerModal.classList.remove('active');
+                });
+                
+                // Remove time
+                document.querySelector('.remove-time-btn').addEventListener('click', function() {
+                    if (!currentRow) return;
+                    
+                    // Clear current row
+                    currentRow.querySelector('.hours-time:nth-child(2) input').value = '';
+                    currentRow.querySelector('.hours-time:nth-child(3) input').value = '';
+                    
+                    // Clear other selected days
+                    if (selectedDays.size > 1) {
+                        const allRows = document.querySelectorAll('.hours-row');
+                        allRows.forEach(row => {
+                            const dayElement = row.querySelector('.hours-day');
+                            if (!dayElement) return;
+                            
+                            const day = dayElement.textContent.trim().toLowerCase().substring(0, 3);
+                            if (selectedDays.has(day) && row !== currentRow) {
+                                row.querySelector('.hours-time:nth-child(2) input').value = '';
+                                row.querySelector('.hours-time:nth-child(3) input').value = '';
+                            }
+                        });
+                    }
+                    
+                    timePickerModal.classList.remove('active');
+                });
+                
+                // Helper functions
+                function parseTime(timeString) {
+                    // Parse formats like "8:00 am", "10:00 pm"
+                    const match = timeString.match(/(\d+):(\d+)\s*(am|pm)?/i);
+                    if (!match) return { hour: 12, minute: 0 };
+                    
+                    let hour = parseInt(match[1]);
+                    let minute = parseInt(match[2]);
+                    const period = match[3]?.toLowerCase();
+                    
+                    if (period === 'pm' && hour < 12) hour += 12;
+                    if (period === 'am' && hour === 12) hour = 0;
+                    
+                    return { hour, minute };
+                }
+                
+                function formatTime(hour, minute) {
+                    hour = parseInt(hour);
+                    minute = parseInt(minute);
+                    
+                    let period = 'am';
+                    if (hour >= 12) {
+                        period = 'pm';
+                        if (hour > 12) hour -= 12;
+                    }
+                    
+                    if (hour === 0) hour = 12;
+                    
+                    return `${hour}:${minute.toString().padStart(2, '0')} ${period}`;
+                }
+            });
+            
+            // Function to create and handle the phone search popup
+            function setupPhoneSearchPopup() {
+                // Create the phone search popup
+                const phoneSearchModal = document.createElement('div');
+                phoneSearchModal.className = 'modal phone-search-modal';
+                phoneSearchModal.id = 'phoneSearchModal';
+                phoneSearchModal.innerHTML = `
+                    <div class="modal-content phone-search-content">
+                        <button class="close-modal">&times;</button>
+                        <div class="phone-search-body">
+                            <div class="form-group">
+                                <label for="phoneSearch">Phone number <span class="required">*</span></label>
+                                <input type="tel" id="phoneSearch" class="form-input" placeholder="Enter phone number" required>
+                            </div>
+                            <div class="search-results" id="phoneSearchResults">
+                                <!-- Search results will appear here -->
+                            </div>
+                            <div class="phone-search-actions">
+                                <button type="button" class="add-number-btn">
+                                    <i class="fa fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(phoneSearchModal);
+                
+                // Get modal elements
+                const closeBtn = phoneSearchModal.querySelector('.close-modal');
+                const searchInput = document.getElementById('phoneSearch');
+                const searchResults = document.getElementById('phoneSearchResults');
+                const addBtn = phoneSearchModal.querySelector('.add-number-btn');
+                
+                // Close modal function
+                function closePhoneModal() {
+                    phoneSearchModal.style.display = 'none';
+                    searchInput.value = '';
+                    searchResults.innerHTML = '';
+                }
+                
+                // Event listeners for closing modal
+                closeBtn.addEventListener('click', closePhoneModal);
+                window.addEventListener('click', (event) => {
+                    if (event.target === phoneSearchModal) {
+                        closePhoneModal();
+                    }
+                });
+                
+                // Handle phone number search
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    
+                    // Clear results if empty query
+                    if (!query) {
+                        searchResults.innerHTML = '';
+                        return;
+                    }
+                    
+                    // Simulate search results (Replace with actual API call in production)
+                    if (query.length >= 4) {
+                        // Example search results - replace with actual API call
+                        const mockResults = [
+                            { name: 'Dr. Sakib Ahmed', phone: '01712' + Math.floor(Math.random() * 1000000) },
+                            { name: 'Dr. Rahima Begum', phone: '01812' + Math.floor(Math.random() * 1000000) }
+                        ];
+                        
+                        // Display results
+                        searchResults.innerHTML = mockResults.map(result => `
+                            <div class="search-result-item" data-phone="${result.phone}" data-name="${result.name}">
+                                <div class="doctor-info">
+                                    <h4>${result.name}</h4>
+                                    <p>${result.phone}</p>
+                                </div>
+                                <button class="select-doctor-btn" title="Select">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                        `).join('');
+                        
+                        // Add click events to result items
+                        document.querySelectorAll('.select-doctor-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const item = this.closest('.search-result-item');
+                                const phone = item.getAttribute('data-phone');
+                                const name = item.getAttribute('data-name');
+                                
+                                // Highlight selected item
+                                document.querySelectorAll('.search-result-item').forEach(i => 
+                                    i.classList.remove('selected'));
+                                item.classList.add('selected');
+                                
+                                // Store selected data for add button
+                                phoneSearchModal.setAttribute('data-selected-phone', phone);
+                                phoneSearchModal.setAttribute('data-selected-name', name);
+                            });
+                        });
+                    } else {
+                        searchResults.innerHTML = '<div class="no-results">Type at least 4 digits to search</div>';
+                    }
+                });
+                
+                // Handle add button click
+                addBtn.addEventListener('click', function() {
+                    const selectedPhone = phoneSearchModal.getAttribute('data-selected-phone');
+                    const selectedName = phoneSearchModal.getAttribute('data-selected-name');
+                    
+                    if (!selectedPhone) {
+                        // No selection - validate input instead
+                        const manualNumber = searchInput.value.trim();
+                        if (!manualNumber) {
+                            alert('Please enter a phone number or select a doctor');
+                            return;
+                        }
+                        
+                        // Process manual phone number
+                        processSelectedDoctor({ name: 'New Doctor', phone: manualNumber });
+                    } else {
+                        // Process selected doctor
+                        processSelectedDoctor({ name: selectedName, phone: selectedPhone });
+                    }
+                    
+                    closePhoneModal();
+                });
+                
+                // Set up the Add Doctor button
+                const addDoctorBtn = document.querySelector('.add-doctor-btn');
+                if (addDoctorBtn) {
+                    addDoctorBtn.addEventListener('click', function() {
+                        // Mark which button opened the modal
+                        phoneSearchModal.setAttribute('data-initiator', 'add-doctor');
+                        
+                        // Remove active class from all buttons
+                        document.querySelector('.invite-admin-btn')?.classList.remove('active-button');
+                        addDoctorBtn.classList.add('active-button');
+                        
+                        // Show modal
+                        phoneSearchModal.style.display = 'block';
+                        searchInput.focus();
+                        
+                        // Reset any previous selections
+                        phoneSearchModal.removeAttribute('data-selected-phone');
+                        phoneSearchModal.removeAttribute('data-selected-name');
+                    });
+                }
+                
+                // Set up the Invite Admin button
+                const inviteAdminBtn = document.querySelector('.invite-admin-btn');
+                if (inviteAdminBtn) {
+                    inviteAdminBtn.addEventListener('click', function() {
+                        // Mark which button opened the modal
+                        phoneSearchModal.setAttribute('data-initiator', 'invite-admin');
+                        
+                        // Remove active class from all buttons
+                        document.querySelector('.add-doctor-btn')?.classList.remove('active-button');
+                        inviteAdminBtn.classList.add('active-button');
+                        
+                        // Show modal
+                        phoneSearchModal.style.display = 'block';
+                        searchInput.focus();
+                        
+                        // Reset any previous selections
+                        phoneSearchModal.removeAttribute('data-selected-phone');
+                        phoneSearchModal.removeAttribute('data-selected-name');
+                    });
+                }
+                
+                // Function to process the selected doctor
+                function processSelectedDoctor(doctorData) {
+                    // Determine which section to add to based on which button initiated the popup
+                    let addToSection;
+                    
+                    // Store a reference to which button was clicked to open the modal
+                    const initiatorButton = phoneSearchModal.getAttribute('data-initiator');
+                    
+                    if (initiatorButton === 'add-doctor') {
+                        addDoctorToList(doctorData);
+                    } else if (initiatorButton === 'invite-admin') {
+                        addAdminToList(doctorData);
+                    } else {
+                        // Fallback: check which button was most recently clicked
+                        const addDoctorBtn = document.querySelector('.add-doctor-btn');
+                        const inviteAdminBtn = document.querySelector('.invite-admin-btn');
+                        
+                        if (addDoctorBtn && addDoctorBtn.classList.contains('active-button')) {
+                            addDoctorToList(doctorData);
+                        } else if (inviteAdminBtn && inviteAdminBtn.classList.contains('active-button')) {
+                            addAdminToList(doctorData);
+                        } else {
+                            // If we can't determine, default to doctor
+                            addDoctorToList(doctorData);
+                        }
+                    }
+                }
+            }
+
+            // Call setup function when page loads
+            document.addEventListener('DOMContentLoaded', function() {
+                // Your existing code...
+                
+                // Set up phone search popup
+                setupPhoneSearchPopup();
+            });
+            // Function to add a doctor to the available doctors list
+        function addDoctorToList(doctorData) {
+            const doctorsList = document.getElementById('availableDoctorsList');
+            if (!doctorsList) {
+                console.error('Could not find available doctors list element');
+                return;
+            }
+            
+            const newDoctor = document.createElement('div');
+            newDoctor.className = 'doctor-card';
+            newDoctor.innerHTML = `
+                <div class="doctor-avatar-container">
+                    <img src="./images/doctor.png" alt="Doctor" class="doctor-avatar">
+                </div>
+                <div class="doctor-info">
+                    <h4>${doctorData.name}</h4>
+                    <p><i class="fa fa-phone"></i> ${doctorData.phone}</p>
+                </div>
+                <button class="delete-doctor-btn" title="Remove doctor">
+                    <i class="fa fa-trash"></i>
+                </button>
+            `;
+            
+            // Add delete functionality
+            const deleteBtn = newDoctor.querySelector('.delete-doctor-btn');
+            deleteBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to remove this doctor?')) {
+                    newDoctor.remove();
+                }
+            });
+            
+            doctorsList.appendChild(newDoctor);
+            }
+
+            // Function to add an admin to the clinic admin list
+            function addAdminToList(adminData) {
+                const adminList = document.getElementById('clinicAdminList');
+                if (!adminList) {
+                    console.error('Could not find clinic admin list element');
+                    return;
+                }
+                
+                const newAdmin = document.createElement('div');
+                newAdmin.className = 'doctor-item';
+                newAdmin.innerHTML = `
+                    <img src="./images/doctor.png" alt="Admin" class="admin-avatar">
+                    <div class="doctor-info">
+                        <h4>${adminData.name}</h4>
+                        <p><i class="fa fa-phone"></i> ${adminData.phone}</p>
+                    </div>
+                `;
+                
+                adminList.appendChild(newAdmin);
+            }
+    </script>
+    </div>
+</body>
+</html>

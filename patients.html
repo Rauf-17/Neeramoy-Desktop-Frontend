@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./patients.css">
+</head>
+<body>
+
+    <!-- Common Code Starts -->
+
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="./dashboard.html"><img src="./images/logo.svg" alt="Neeramoy"></a>
+        </div>
+        <div class="doctor-info">
+            <img src="./images/Rauf.png" alt="Doctor" class="doctor-image" id="doctor-image">
+            <h4 id="doctor-name">Doctor Name</h4>
+            <span id="doctor-designation">Designation</span>
+        </div>
+        <nav>
+            <button><a href="./dashboard.html" class="sidebar-btn"><i class="fa-solid fa-border-all"></i>Dashboard</a></button>
+            <button><a href="./appointments.html" class="sidebar-btn"><i class="fa-solid fa-calendar"></i>Appointments</a></button>
+            <button><a href="./patients.html" class="sidebar-btn"><i class="fa-solid fa-user-plus"></i>Patients</a></button>
+            <button><a href="./prescription.html" class="sidebar-btn"><i class="fa-solid fa-file-circle-plus"></i>Prescription</a></button>
+            <div class="settings-dropdown">
+                <button class="settings-button" onclick="toggleDropdown()">
+                    <i class="fa fa-gear"></i>
+                    <span class="sidebar-btn">Settings</span>
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <button class="dropdown-item "><a href="./allclinic.html" class="sidebar-btn">All Clinic</a></button>
+                    <button class="dropdown-item"><a href="./setup.html" class="sidebar-btn">Setup</a></button>
+                    <button class="dropdown-item"><a href="./presetdata.html" class="sidebar-btn">Preset data</a></button>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="clinic-select-container">
+                <div class="clinic-select-field">
+                    <div class="clinic-dropdown-display" id="clinicDropdownDisplay">
+                        <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-logo">
+                        <div class="clinic-info">
+                            <h3 class="clinic-name">NDSL Clinic</h3>
+                            <p class="clinic-address">
+                                <i class="fa fa-map-marker-alt"></i>
+                                Mohakhali DOHS, Dhaka, Bangladesh
+                            </p>
+                        </div>
+                        <span class="dropdown-arrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="clinic-dropdown-menu" id="clinicDropdownMenu">
+                        <div class="clinic-option selected" data-id="clinic1">
+                            <img src="./images/logo.svg" alt="NDSL Clinic" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">NDSL Clinic</h4>
+                                <p class="clinic-option-address">Mohakhali DOHS, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic2">
+                            <img src="./images/logo.svg" alt="Mirpur Hospital" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Mirpur Hospital</h4>
+                                <p class="clinic-option-address">Mirpur, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic3">
+                            <img src="./images/logo.svg" alt="Medinova Medical Services" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Medinova Medical Services</h4>
+                                <p class="clinic-option-address">Kajal Shah, Sylhet, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="clinic-option" data-id="clinic4">
+                            <img src="./images/logo.svg" alt="Neeramoy Online For Brac" class="clinic-option-logo">
+                            <div class="clinic-option-info">
+                                <h4 class="clinic-option-name">Neeramoy Online For Brac</h4>
+                                <p class="clinic-option-address">34 Kemal Ataturk Ave, Dhaka, Bangladesh</p>
+                            </div>
+                            <span class="clinic-option-check">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </div>
+                        <a href="allclinic.html" class="see-all-clinics-btn">
+                            <i class="fa fa-building"></i> See All Clinics
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-section">
+                <button class="status-button">System Health Status</button>
+                <span class="status-indicator online">Online</span>
+                <button class="logout logout-btn" title="Logout">
+                    <i class="fa fa-sign-out-alt"></i>
+                </button>
+            </div>
+
+            <!-- Logout Confirmation Modal -->
+            <div id="logout-modal" class="logout-modal">
+                <div class="logout-modal-content">
+                    <div class="logout-modal-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="logout-modal-title">Confirmation</h2>
+                    <p class="logout-modal-text">Are you sure that you want to logout?</p>
+                    <div class="logout-modal-actions">
+                        <button id="cancel-logout" class="btn-cancel">Cancel</button>
+                        <button id="confirm-logout" class="btn-confirm">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Common Code Ends -->
+
+        <!-- Patients Code Starts -->
+
+        <!-- Patients Section -->
+        <div class="patients-container">
+            <h2>Patients</h2>
+            
+            <div class="patients-table">
+                <div class="table-header">
+                    <div class="column patient-profile">Patient profile</div>
+                    <div class="column contacts">Contacts</div>
+                    <div class="column last-activity">Last activity</div>
+                    <div class="column action">Action</div>
+                </div>
+                
+                <div class="patient-row" data-id="137e39e80871">
+                    <div class="column patient-profile">
+                        <div class="patient-info">
+                            <img src="./images/Rauf.png" alt="Raufull Islam Rauf" class="patient-img">
+                            <div class="name-id">
+                                <h3>Raufull Islam Rauf</h3>
+                                <p>Patient ID: 37e39e80871</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column contacts">
+                        <p>+8801874984270</p>
+                    </div>
+                    <div class="column last-activity">
+                        <p>7:40 AM, 15 May 2025</p>
+                    </div>
+                    <div class="column action">
+                        <button class="edit-btn"><i class="fas fa-pen"></i></button>
+                    </div>
+                </div>
+                
+                <div class="patient-row" data-id="a2325a541383">
+                    <div class="column patient-profile">
+                        <div class="patient-info">
+                            <img src="./images/Rauf.png" alt="Rasel Mia" class="patient-img">
+                            <div class="name-id">
+                                <h3>Rasel Mia</h3>
+                                <p>Patient ID: 2325a541383</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column contacts">
+                        <p>+8801625462696</p>
+                    </div>
+                    <div class="column last-activity">
+                        <p>5:09 AM, 15 May 2025</p>
+                    </div>
+                    <div class="column action">
+                        <button class="edit-btn"><i class="fas fa-pen"></i></button>
+                    </div>
+                </div>
+                
+                <div class="patient-row" data-id="4ca7b0d121ec">
+                    <div class="column patient-profile">
+                        <div class="patient-info">
+                            <img src="./images/Rauf.png" alt="Shuvo Islam" class="patient-img">
+                            <div class="name-id">
+                                <h3>Shuvo Islam</h3>
+                                <p>Patient ID: ca7b0d121ec</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column contacts">
+                        <p>+88012657789654</p>
+                    </div>
+                    <div class="column last-activity">
+                        <p>3:19 PM, 10 May 2025</p>
+                    </div>
+                    <div class="column action">
+                        <button class="edit-btn"><i class="fas fa-pen"></i></button>
+                    </div>
+                </div>
+                
+                <div class="patient-row" data-id="0602895427b">
+                    <div class="column patient-profile">
+                        <div class="patient-info">
+                            <img src="./images/Rauf.png" alt="Shah Habib" class="patient-img">
+                            <div class="name-id">
+                                <h3>Shah Habib</h3>
+                                <p>Patient ID: 602895427b</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column contacts">
+                        <p>+88015598746366</p>
+                    </div>
+                    <div class="column last-activity">
+                        <p>9:24 AM, 28 Apr 2025</p>
+                    </div>
+                    <div class="column action">
+                        <button class="edit-btn"><i class="fas fa-pen"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Details Modal -->
+        <div id="patientModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="patient-details">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Patient Code Ends -->
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown-content');
+            dropdown.classList.toggle('show'); // Toggle the "show" class to display or hide the dropdown
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function (event) {
+            const dropdown = document.querySelector('.dropdown-content');
+            const settingsButton = document.querySelector('.settings-button');
+            if (!settingsButton.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show'); // Hide the dropdown
+            }
+        });
+        // Clinic Dropdown Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const clinicDropdownDisplay = document.getElementById('clinicDropdownDisplay');
+            const clinicDropdownMenu = document.getElementById('clinicDropdownMenu');
+            const clinicOptions = document.querySelectorAll('.clinic-option');
+            
+            // Toggle dropdown menu
+            if (clinicDropdownDisplay) {
+                clinicDropdownDisplay.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    clinicDropdownMenu.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!clinicDropdownDisplay.contains(event.target) && 
+                    !clinicDropdownMenu.contains(event.target)) {
+                    clinicDropdownDisplay.classList.remove('active');
+                    clinicDropdownMenu.classList.remove('show');
+                }
+            });
+            
+            // Handle clinic selection
+            clinicOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    clinicOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Update display with selected clinic info
+                    const clinicName = this.querySelector('.clinic-option-name').innerText;
+                    const clinicAddress = this.querySelector('.clinic-option-address').innerText;
+                    const clinicLogo = this.querySelector('.clinic-option-logo').src;
+                    const clinicId = this.getAttribute('data-id');
+                    
+                    // Update the display
+                    document.querySelector('.clinic-name').innerText = clinicName;
+                    document.querySelector('.clinic-address').innerHTML = '<i class="fa fa-map-marker-alt"></i> ' + clinicAddress;
+                    document.querySelector('.clinic-logo').src = clinicLogo;
+                    
+                    // You could also store the selected clinic ID in a hidden input or data attribute
+                    // document.getElementById('selectedClinic').value = clinicId;
+                    
+                    // Close the dropdown
+                    clinicDropdownDisplay.classList.remove('active');
+                    clinicDropdownMenu.classList.remove('show');
+                });
+            });
+        });
+        // Highlight selected sidebar button
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarButtons = document.querySelectorAll('.sidebar nav button');
+
+            sidebarButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    sidebarButtons.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Optionally, highlight based on current page
+            const currentPath = window.location.pathname.split('/').pop();
+            sidebarButtons.forEach(btn => {
+                const link = btn.querySelector('a');
+                if (link && link.getAttribute('href') && link.getAttribute('href').includes(currentPath)) {
+                    btn.classList.add('selected');
+                }
+            });
+        });
+        // Logout Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const logoutModal = document.getElementById('logout-modal');
+            const cancelLogout = document.getElementById('cancel-logout');
+            const confirmLogout = document.getElementById('confirm-logout');
+            const logoutButtons = document.querySelectorAll('.logout-btn');
+            
+            // Show modal when logout button is clicked
+            logoutButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logoutModal.classList.add('active');
+                });
+            });
+            
+            // Hide modal when cancel is clicked
+            cancelLogout.addEventListener('click', function() {
+                logoutModal.classList.remove('active');
+            });
+            
+            // Handle logout confirmation
+            confirmLogout.addEventListener('click', function() {
+                // Perform logout actions here
+                // For example: redirect to login page
+                window.location.href = 'index.html'; // Replace with your login page URL
+            });
+            
+            // Close modal when clicking outside
+            logoutModal.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && logoutModal.classList.contains('active')) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+        });
+        // Patient Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const modal = document.getElementById("patientModal");
+            const patientDetailsContainer = document.querySelector(".patient-details");
+            
+            // Get all patient rows
+            const patientRows = document.querySelectorAll(".patient-row");
+            
+            // Close modal when clicking on X
+            document.querySelector(".close-modal")?.addEventListener('click', function() {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto"; // Allow scrolling again
+            });
+            
+            // Close modal when clicking outside the content
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            });
+            
+            // Open modal when clicking on a patient row
+            patientRows.forEach(row => {
+                row.addEventListener('click', function() {
+                    const patientId = this.getAttribute('data-id');
+                    loadPatientDetails(patientId);
+                    modal.style.display = "block";
+                    document.body.style.overflow = "hidden"; // Prevent scrolling of background
+                });
+            });
+
+            // Function to load patient details
+            function loadPatientDetails(patientId) {
+                // Set patient data based on ID
+                let patient;
+                switch(patientId) {
+                    case '137e39e80871':
+                        patient = {
+                            name: 'Raufull Islam Rauf',
+                            image: './images/Rauf.png',
+                            dob: '17/02/2000',
+                            phone: '+8801874984270',
+                            hasAppointments: false,
+                            hasDiagnosis: true,
+                            hasPrescriptions: true
+                        };
+                        break;
+                    case 'a2325a541383':
+                        patient = {
+                            name: 'Rasel Mia',
+                            image: './images/Rauf.png',
+                            dob: '05/03/1998',
+                            phone: '+8801625462696',
+                            hasAppointments: false,
+                            hasDiagnosis: false,
+                            hasPrescriptions: false
+                        };
+                        break;
+                    case '4ca7b0d121ec':
+                        patient = {
+                            name: 'Shuvo Islam',
+                            image: './images/Rauf.png',
+                            dob: '17/02/2000',
+                            phone: '+88012657789654',
+                            hasAppointments: true,
+                            hasDiagnosis: false,
+                            hasPrescriptions: false
+                        };
+                        break;
+                    case '0602895427b':
+                        patient = {
+                            name: 'Shah Habib',
+                            image: './images/Rauf.png',
+                            dob: '12/05/1980',
+                            phone: '+88015598746366',
+                            hasAppointments: false,
+                            hasDiagnosis: false,
+                            hasPrescriptions: false
+                        };
+                        break;
+                    default:
+                        patient = {
+                            name: 'Unknown Patient',
+                            image: './images/Rauf.png',
+                            dob: 'Unknown',
+                            phone: 'Unknown',
+                            hasAppointments: false,
+                            hasDiagnosis: false,
+                            hasPrescriptions: false
+                        };
+                }
+                
+                // HTML for patient details
+                let html = `
+                    <div class="patient-sidebar">
+                        <div class="patient-profile-card">
+                            <div class="profile-image-container">
+                                <img src="${patient.image}" alt="${patient.name}" class="profile-image">
+                            </div>
+                            <h3 class="patient-name">${patient.name}</h3>
+                            <div class="patient-basic-info">
+                                <div class="info-row">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span class="dob">${patient.dob}</span>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span class="phone">${patient.phone}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <nav class="patient-nav">
+                            <a href="#appointments" class="nav-item active" data-section="appointments">
+                                <span>Appointments</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#profile" class="nav-item" data-section="profile">
+                                <span>Profile</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#diagnosis" class="nav-item" data-section="diagnosis">
+                                <span>Diagnosis</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#prescription" class="nav-item" data-section="prescription">
+                                <span>Prescription</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#note" class="nav-item" data-section="note">
+                                <span>Note</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="detail-section" id="appointments-section">
+                        <h2>Appointments</h2>
+                        
+                        <div class="section-content">
+                            <h3>Upcoming</h3>
+                            <p class="no-data-message">No upcoming appointment found.</p>
+                            
+                            <h3>History</h3>
+                            ${patient.hasAppointments ? `
+                            <div class="appointment-history">
+                                <div class="appointment-card">
+                                    <div class="date-badge">
+                                        <div class="day">15</div>
+                                        <div class="month">Apr, 25</div>
+                                    </div>
+                                    <div class="appointment-details">
+                                        <div class="appointment-type">Live</div>
+                                        <div class="appointment-time">
+                                            <i class="far fa-clock"></i> 12:28 PM
+                                        </div>
+                                        <div class="appointment-status">Confirmed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            ` : `<p class="no-data-message">No appointment history found.</p>`}
+                        </div>
+                    </div>
+                `;
+                
+                // Add to DOM
+                patientDetailsContainer.innerHTML = html;
+                
+                // Add event listeners to navigation items
+                const navItems = document.querySelectorAll('.patient-nav .nav-item');
+                navItems.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Remove active class from all items
+                        navItems.forEach(navItem => navItem.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // Show corresponding section
+                        const section = this.getAttribute('data-section');
+                        showSection(section, patient);
+                    });
+                });
+            }
+            
+            // Function to show a specific section
+            function showSection(section, patient) {
+                const contentSection = document.querySelector('.detail-section');
+                
+                switch(section) {
+                    case 'appointments':
+                        contentSection.innerHTML = `
+                            <h2>Appointments</h2>
+                            
+                            <div class="section-content">
+                                <h3>Upcoming</h3>
+                                <p class="no-data-message">No upcoming appointment found.</p>
+                                
+                                <h3>History</h3>
+                                ${patient.hasAppointments ? `
+                                <div class="appointment-history">
+                                    <div class="appointment-card">
+                                        <div class="date-badge">
+                                            <div class="day">15</div>
+                                            <div class="month">Apr, 25</div>
+                                        </div>
+                                        <div class="appointment-details">
+                                            <div class="appointment-type">Live</div>
+                                            <div class="appointment-time">
+                                                <i class="far fa-clock"></i> 12:28 PM
+                                            </div>
+                                            <div class="appointment-status">Confirmed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                ` : `<p class="no-data-message">No appointment history found.</p>`}
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'profile':
+                        contentSection.innerHTML = `
+                            <h2>Profile</h2>
+                            <h3>Personal information</h3>
+                            
+                            <div class="profile-details">
+                                <div class="profile-row">
+                                    <div class="label">Name:</div>
+                                    <div class="value">${patient.name}</div>
+                                </div>
+                                <div class="profile-row">
+                                    <div class="label">Gender:</div>
+                                    <div class="value">Male</div>
+                                </div>
+                                <div class="profile-row">
+                                    <div class="label">Age:</div>
+                                    <div class="value">28 years</div>
+                                </div>
+                                <div class="profile-row">
+                                    <div class="label">Contact:</div>
+                                    <div class="value">${patient.phone}</div>
+                                </div>
+                                <div class="profile-row">
+                                    <div class="label">Date of birth:</div>
+                                    <div class="value">${patient.dob}</div>
+                                </div>
+                                <div class="profile-row">
+                                    <div class="label">Address:</div>
+                                    <div class="value">Bashundhara, Dhaka, Bangladesh</div>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'diagnosis':
+                        contentSection.innerHTML = `
+                            <h2>Diagnosis</h2>
+                            
+                            ${patient.hasDiagnosis ? `
+                            <div class="diagnosis-list">
+                                <div class="diagnosis-item">
+                                    <div class="diagnosis-icon">
+                                        <img src="./images/medicine.svg" alt="Diagnosis">
+                                    </div>
+                                    <div class="diagnosis-info">
+                                        <h3 class="diagnosis-title">${patient.name.replace(' ', '-')}-Report-01-Jun-24-1717223144040</h3>
+                                        <p class="diagnosis-date">Date: 12:25 PM - 01 June, 2024</p>
+                                    </div>
+                                    <div class="diagnosis-actions">
+                                        <button class="view-btn"><i class="far fa-file-alt"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            ` : `<p class="no-data-message">No diagnosis found.</p>`}
+                        `;
+                        break;
+                        
+                    case 'prescription':
+                        contentSection.innerHTML = `
+                            <h2>Prescription</h2>
+                            
+                            <div class="action-bar">
+                                <button class="add-prescription">
+                                    <i class="fas fa-plus"></i> Add New Prescription
+                                </button>
+                            </div>
+                            
+                            ${patient.hasPrescriptions ? `
+                            <div class="prescription-list">
+                                <div class="prescription-item">
+                                    <div class="prescription-icon">
+                                        <img src="./images/medicine.svg" alt="Prescription">
+                                    </div>
+                                    <div class="prescription-info">
+                                        <h3 class="prescription-title">${patient.name.split(' ').join('_')}_Rx_045</h3>
+                                        <p class="prescription-date">Date: 9:43 AM - 31 December, 2024</p>
+                                    </div>
+                                    <div class="prescription-actions">
+                                        <button class="view-btn"><i class="far fa-file-alt"></i></button>
+                                        <button class="duplicate-btn"><i class="far fa-copy"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="prescription-item">
+                                    <div class="prescription-icon">
+                                        <img src="./images/medicine.svg" alt="Prescription">
+                                    </div>
+                                    <div class="prescription-info">
+                                        <h3 class="prescription-title">${patient.name.split(' ').join('_')}_Rx_044</h3>
+                                        <p class="prescription-date">Date: 10:44 PM - 02 December, 2024</p>
+                                    </div>
+                                    <div class="prescription-actions">
+                                        <button class="view-btn"><i class="far fa-file-alt"></i></button>
+                                        <button class="duplicate-btn"><i class="far fa-copy"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            ` : `<p class="no-data-message">No prescriptions found.</p>`}
+                        `;
+                        break;
+                        
+                    case 'note':
+                        contentSection.innerHTML = `
+                            <h2>Notes</h2>
+                            
+                            <div class="action-bar">
+                                <button class="add-file-btn">
+                                    <i class="fas fa-plus"></i> Add File
+                                </button>
+                                <button class="add-note-btn">
+                                    <i class="fas fa-plus"></i> Add Note
+                                </button>
+                            </div>
+                            
+                            <div class="notes-content">
+                                <p class="no-data-message">No note found.</p>
+                            </div>
+                        `;
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
