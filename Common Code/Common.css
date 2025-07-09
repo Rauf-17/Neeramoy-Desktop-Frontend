@@ -1,0 +1,1312 @@
+/* Reset code and Common code Starts here */
+:root{
+    --primary-color: teal;
+    --secondary-color: #547792;
+    --third-color: #cfe5e1;
+    --text-color: white;
+    --padding: 1rem;
+    --transition: all 0.3s ease-in-out;
+    --border-radius: 0.6rem;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i{
+    font-size: 20px !important;
+    padding: 0.5rem !important;
+    margin-right: 1rem !important;
+}
+
+.sidebar-btn{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.sidebar-btn:hover{
+    color: var(--primary-color);
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+/* Body Part */
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.logo img{
+    width: 150px;
+    height: auto;
+}
+
+.sidebar {
+  height: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  background-color: #f5f9fc;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: height 0.3s ease-in-out;
+}
+
+.sidebar.expanded {
+  height: auto;
+  min-height: 100vh;
+}
+
+.sidebar .settings-dropdown .dropdown-content {
+    position: static;
+    box-shadow: none;
+    margin: 0.5rem auto;
+    width: 90%;
+    display: none; /* Hide by default */
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f8f7;
+    border-radius: 20px;
+    padding: 0.5rem 0;
+}
+
+.sidebar .settings-dropdown .dropdown-content.show {
+    display: flex;
+}
+
+.sidebar .settings-dropdown .dropdown-item {
+    width: 90%;
+}
+
+.sidebar .settings-dropdown .dropdown-item i {
+    margin-right: 0.5rem !important;
+}
+
+.sidebar .doctor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.sidebar .doctor-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: #025b5b 3px solid;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
+.sidebar .doctor-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.sidebar .doctor-info span {
+    font-size: 14px;
+    color: gray;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.sidebar nav button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar nav button:hover {
+    background: #eaf4fb;
+    border-radius: 25px;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 1rem;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Topbar Design */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Enhanced Topbar Responsiveness - Keeping Horizontal Layout */
+
+/* Base topbar styling */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f9fc;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    width: 100%; /* Full width minus sidebar width */
+    left: 250px; /* Start from the end of the sidebar */
+    z-index: 1000;
+}
+
+/* Default styles for clinic select and status section */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+}
+
+/* Left side - Clinic selector */
+.clinic-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+}
+
+.clinic-logo {
+    width: 100px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain; /* Ensures image maintains aspect ratio */
+}
+
+.clinic-select select {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    min-width: 500px; 
+    width: 80%; 
+    max-width: 800px;
+    /* appearance: none; */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    margin-right: 2rem;
+}
+
+/* Enhanced Clinic Select Dropdown with Label */
+.clinic-select-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 600px;
+    margin-right: 1.5rem;
+}
+
+
+.clinic-select-field {
+    position: relative;
+    width: 100%;
+}
+
+/* Updated clinic dropdown display with smaller height and inline location */
+.clinic-dropdown-display {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced from 12px */
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px; /* Reduced from 10px 15px */
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    height: 56px; /* Increased from 48px */
+}
+
+.clinic-dropdown-display:hover {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.clinic-dropdown-display.active {
+    border-color: #025b5b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Updated clinic logo size */
+.clinic-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-info {
+    flex: 1;
+}
+
+/* Update clinic name */
+.clinic-name {
+    font-weight: 600;
+    font-size: 15px; /* Reduced from 16px */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Make location display inline with icon */
+.clinic-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1;
+}
+
+.clinic-address i {
+    font-size: 11px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #888;
+}
+
+.dropdown-arrow {
+    color: #025b5b;
+    transition: transform 0.3s;
+}
+
+.clinic-dropdown-display.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.clinic-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1020;
+    display: none;
+    animation: fadeInDown 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.clinic-dropdown-menu.show {
+    display: block;
+}
+
+/* Clinic options */
+/* Update clinic options for consistency */
+.clinic-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px; /* Reduced from 12px 15px */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.clinic-option:last-child {
+    border-bottom: none;
+}
+
+.clinic-option:hover {
+    background-color: #f5f9fc;
+}
+
+.clinic-option.selected {
+    background-color: #e6f7f6;
+}
+
+/* Updated clinic logo size */
+.clinic-option-logo {
+    width: 40px; /* Increased from 32px */
+    height: 40px; /* Increased from 32px */
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.clinic-option-info {
+    flex: 1;
+}
+
+/* Update clinic name */
+.clinic-option-name {
+    font-size: 14px; /* Reduced from 15px */
+    font-weight: 500;
+    margin: 0 0 2px; /* Reduced from 0 0 3px */
+    color: #333;
+}
+
+/* Update clinic address */
+.clinic-option-address {
+    font-size: 12px; /* Reduced from 13px */
+    color: #666;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clinic-option-check {
+    color: #025b5b;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.clinic-option.selected .clinic-option-check {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+    .clinic-dropdown-display {
+        padding: 8px 12px;
+    }
+    
+    .clinic-logo {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .clinic-name {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .clinic-dropdown-display {
+        padding: 6px 10px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-name {
+        font-size: 14px;
+    }
+    
+    .clinic-address {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .clinic-logo {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .clinic-name {
+        font-size: 13px;
+    }
+    
+    .clinic-address {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: 100%;
+    }
+}
+
+/* Right side - Status and Logout */
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* System Health Status button */
+.status-button {
+    background: linear-gradient(135deg, #e6f0ff 0%, #d1e0ff 100%);
+    color: #2c3e50;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    border-left: 4px solid #3a5fcd;
+}
+
+/* Add pulse icon before text */
+.status-button::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #3a5fcd;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(58, 95, 205, 0.4);
+    animation: pulse-blue 2s infinite;
+}
+
+/* Shine effect */
+.status-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+
+
+.status-button:hover {
+    background: linear-gradient(135deg, #d1e0ff 0%, #b9d1ff 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(65, 105, 225, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    color: #1e3799;
+}
+
+.status-button:hover::after {
+    left: 100%;
+}
+
+.status-button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(65, 105, 225, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(58, 95, 205, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(58, 95, 205, 0);
+    }
+}
+
+/* Active Status indicator */
+.status-indicator {
+    background: linear-gradient(135deg, #e8f5f5 0%, #f0fcfc 100%);
+    color: #025b5b;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(2, 91, 91, 0.1);
+    border-left: 4px solid #025b5b;
+}
+
+.status-indicator:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.status-indicator.online {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0fcf0 100%);
+    color: #28a745;
+    border-left: 4px solid #28a745;
+}
+
+.status-indicator.online:before {
+    background-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+.status-indicator.offline {
+    background: linear-gradient(135deg, #fbf0f0 0%, #fcf0f0 100%);
+    color: #dc3545;
+    border-left: 4px solid #dc3545;
+}
+
+.status-indicator.offline:before {
+    background-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6c757d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.logout:hover {
+    background-color: #f2f2f2;
+    color: #025b5b;
+}
+
+.logout i {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+/* Responsive Design */
+
+/* Desktop (medium screens): 992px and below */
+@media screen and (max-width: 992px) {
+    /* Dashboard adjustments - change to single column */
+
+    
+    /* Top bar improvements */
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 230px); /* Match the sidebar width */
+        left: 230px;
+    }
+    
+    /* Clinic selector improvements */
+    .clinic-select {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .clinic-select select {
+        min-width: 300px;
+        width: auto;
+        max-width: 450px;
+    }
+    
+    .clinic-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Status section adjustments */
+    .status-section {
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1.2rem;
+        white-space: nowrap;
+    }
+    
+    .sidebar {
+        width: 230px;
+    }
+    
+    .main {
+        margin-left: 230px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Single column layout for dashboard - already set in 992px */
+    
+    /* Top bar improvements */
+    .topbar {
+        width: calc(100% - 200px);
+        left: 200px;
+        background-color: white;
+        padding: 0.8rem 1rem;
+        flex-direction: row; /* Keep horizontal layout */
+        flex-wrap: row; /* Allow wrapping if needed */
+    }
+    
+    .clinic-select {
+        width: auto;
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 0.8rem;
+    }
+    
+    .status-indicator {
+        white-space: nowrap;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    /* Top bar adjustments */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.8rem 1rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main {
+        margin-left: 200px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    
+    /* Top bar adjustments */
+    .status-section {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        width: 100%;
+        justify-content: center;
+        order: -1; /* Move to top */
+    }
+    
+    .status-indicator {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .sidebar {
+        width: 180px;
+    }
+    
+    .main {
+        margin-left: 180px;
+    }
+    
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Top bar adjustments for mobile */
+    .topbar {
+        width: calc(100% - 180px);
+        left: 180px;
+        padding: 0.8rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .status-section {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .status-button {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    .status-indicator {
+        font-size: 13px;
+        padding: 0.6rem 1rem;
+    }
+    
+    /* Status button improvements for mobile */
+    .status-button {
+        width: auto; /* Don't make it 100% width */
+        padding: 0.6rem 1rem;
+        font-size: 13px;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+        margin-right: 0.5rem; /* Add some spacing */
+    }
+    
+    /* Adjust the pulse animation for smaller screens */
+    .status-button::before {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .status-indicator {
+        font-size: 12px;
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
+        flex-shrink: 0; /* Prevent wrapping */
+    }
+    
+    /* Status section layout */
+    .status-section {
+        display: flex;
+        flex-wrap: nowrap; /* Keep items in a row */
+        gap: 0.5rem;
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        padding-bottom: 4px; /* Space for scroll bar */
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Hide scrollbar but maintain functionality */
+    .status-section::-webkit-scrollbar {
+        height: 2px;
+    }
+    
+    .status-section::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .sidebar {
+        width: 160px;
+    }
+    
+    .main {
+        margin-left: 160px;
+    }
+    
+    .topbar {
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .sidebar-btn {
+        font-size: 13px;
+    }
+    
+    .sidebar nav button {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    i {
+        font-size: 16px !important;
+        padding: 0.4rem !important;
+        margin-right: 0.7rem !important;
+    }
+    
+    /* Optimize status elements for tiny screens */
+    .status-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 12px;
+    }
+    
+    .status-button::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.8rem;
+        font-size: 11px;
+    }
+    
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+    
+    /* Change topbar layout */
+    .topbar {
+        padding: 0.6rem;
+    }
+    
+    .clinic-select {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* Medium screens: 992px and below */
+@media screen and (max-width: 992px) {
+    .topbar {
+        padding: 0.8rem 1.5rem;
+        width: calc(100% - 230px);
+        left: 230px;
+    }
+    
+    .clinic-select {
+        gap: 0.8rem;
+    }
+    
+    .clinic-select select {
+        min-width: unset;
+        width: auto;
+        max-width: 400px;
+        flex-shrink: 1;
+    }
+    
+    .status-section {
+        gap: 0.8rem;
+    }
+    
+    .status-button {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+    
+    .status-indicator {
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+    }
+}
+
+/* Tablet: 768px and below */
+@media screen and (max-width: 768px) {
+    .topbar {
+        padding: 0.8rem 1rem;
+        width: calc(100% - 200px);
+        left: 200px;
+    }
+    
+    .clinic-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .clinic-select {
+        gap: 0.6rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.4rem 0.8rem;
+        font-size: 13px;
+        width: auto;
+        flex: 1;
+    }
+    
+    .status-section {
+        gap: 0.6rem;
+    }
+    
+    .status-button {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-button::before {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .status-indicator {
+        padding: 0.6rem 0.8rem;
+        font-size: 13px;
+    }
+    
+    .status-indicator::before {
+        width: 9px;
+        height: 9px;
+    }
+}
+
+/* Mobile: 600px and below */
+@media screen and (max-width: 600px) {
+    .topbar {
+        padding: 0.7rem;
+        width: calc(100% - 180px);
+        left: 180px;
+    }
+    
+    .clinic-logo {
+        width: 25px;
+        height: 25px;
+        min-width: 25px; /* Prevent shrinking */
+    }
+    
+    .clinic-select {
+        gap: 0.4rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.6rem;
+        font-size: 12px;
+        max-width: 150px;
+    }
+    
+    .status-section {
+        gap: 0.4rem;
+    }
+    
+    .status-button {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-button::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .status-indicator {
+        padding: 0.5rem 0.7rem;
+        font-size: 12px;
+        max-width: 70px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .status-indicator::before {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .logout {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Very small mobile devices */
+@media screen and (max-width: 400px) {
+    .topbar {
+        padding: 0.6rem;
+        width: calc(100% - 160px);
+        left: 160px;
+    }
+    
+    .clinic-select {
+        gap: 0.3rem;
+    }
+    
+    .clinic-select select {
+        padding: 0.3rem 0.5rem;
+        font-size: 11px;
+        max-width: 100px;
+    }
+    
+    .status-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 80px;
+    }
+    
+    .status-indicator {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+        max-width: 60px;
+    }
+    
+    .status-button::before,
+    .status-indicator::before {
+        width: 6px;
+        height: 6px;
+        margin-right: 3px;
+    }
+    
+    .logout {
+        width: 28px;
+        height: 28px;
+    }
+}
+.see-all-clinics-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 0;
+    font-weight: 600;
+    color: #025b5b;
+    background: #e6f7f6;
+    border-top: 1px solid #e0e0e0;
+    text-decoration: none;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.2s;
+}
+.see-all-clinics-btn:hover {
+    background: #d0f0ee;
+    color: #028080;
+}
+.see-all-clinics-btn i {
+    font-size: 16px;
+    color: #025b5b;
+}
+.sidebar nav button.selected,
+.sidebar nav button.selected a {
+    background:  #E6FAFA;
+    color: #025b5b;
+    border-radius: 25px;
+    font-size: 14;
+    font-weight: 600;
+}
+/* Logout Modal Styling */
+.logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.logout-modal.active {
+    display: flex;
+}
+
+.logout-modal-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logout-modal-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #60BFC5;
+    color: white;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.logout-modal-icon i {
+    font-size: 36px;
+    color: white;
+    margin-right: 0 !important;
+}
+.logout-modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.logout-modal-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.logout-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-cancel {
+    padding: 12px 30px;
+    background-color: #F2F4F7;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #d7d8d9;
+}
+
+.btn-confirm {
+    padding: 12px 40px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-confirm:hover {
+    background-color: #8d0606;
+}
