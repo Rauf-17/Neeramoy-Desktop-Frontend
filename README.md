@@ -2,7 +2,7 @@
 
 ## View Live Site
 ```
-https://rauf-17.github.io/Neeramoy_Desktop/dashboard.html
+https://rauf-17.github.io/Neeramoy_Desktop/index.html
 ```
 
 
